@@ -76,9 +76,11 @@ _PAD       = 12
 
 _UI_CATEGORIES: list[str] = [
     "contacts",
+    "contact_groups",
     "blocked",
     "sms",
     "calls",
+    "voicemail",
     "photos",
     "videos",
     "ringtones",
@@ -89,38 +91,46 @@ _UI_CATEGORIES: list[str] = [
     "notes",
     "alarms",
     "bookmarks",
+    "browser_history",
+    "clipboard",
     "apps",
     "whatsapp",
     "signal",
+    "mail_accounts",
 ]
 
 _CATEGORY_LABELS: dict[str, str] = {
-    "contacts":    "Contacts",
-    "blocked":     "Blocked Numbers",
-    "sms":         "Messages / SMS",
-    "calls":       "Call Log",
-    "photos":      "Photos",
-    "videos":      "Videos",
-    "ringtones":   "Ringtones",
-    "voice_memos": "Voice Memos",
-    "wallpaper":   "Wallpaper",
-    "calendar":    "Calendar",
-    "reminders":   "Reminders",
-    "notes":       "Notes",
-    "alarms":      "Alarms",
-    "bookmarks":   "Bookmarks",
-    "apps":        "Apps",
-    "whatsapp":    "WhatsApp",
-    "signal":      "Signal",
+    "contacts":       "Contacts",
+    "contact_groups": "Contact Groups",
+    "blocked":        "Blocked Numbers",
+    "sms":            "Messages / SMS",
+    "calls":          "Call Log",
+    "voicemail":      "Voicemail",
+    "photos":         "Photos",
+    "videos":         "Videos",
+    "ringtones":      "Ringtones",
+    "voice_memos":    "Voice Memos",
+    "wallpaper":      "Wallpaper",
+    "calendar":       "Calendar",
+    "reminders":      "Reminders",
+    "notes":          "Notes",
+    "alarms":         "Alarms",
+    "bookmarks":      "Bookmarks",
+    "browser_history": "Browser History",
+    "clipboard":      "Clipboard",
+    "apps":           "Apps",
+    "whatsapp":       "WhatsApp",
+    "signal":         "Signal",
+    "mail_accounts":  "Mail Accounts",
 }
 
 # Groups shown in the scrollable category panel (order matters).
 _CATEGORY_GROUPS: list[tuple[str, list[str]]] = [
-    ("Communication", ["contacts", "blocked", "sms", "calls"]),
+    ("Communication", ["contacts", "contact_groups", "blocked", "sms", "calls", "voicemail"]),
     ("Media",         ["photos", "videos", "ringtones", "voice_memos", "wallpaper"]),
     ("Productivity",  ["calendar", "reminders", "notes", "alarms", "bookmarks"]),
-    ("Apps",          ["apps"]),
-    ("3rd Party",     ["whatsapp", "signal"]),
+    ("Apps",          ["apps", "browser_history", "clipboard"]),
+    ("3rd Party",     ["whatsapp", "signal", "mail_accounts"]),
 ]
 
 
@@ -1868,15 +1878,19 @@ class MainWindow(ctk.CTk):
             self._log("Transfer cancelled by user.")
             return
 
+        is_dry = self._dry_run_var.get()
+
         self._main_bar.set(1.0)
-        self._current_cat_label.configure(text="Transfer complete")
+        self._current_cat_label.configure(
+            text="Preview complete — nothing written" if is_dry else "Transfer complete"
+        )
 
         cats      = summary.get("categories", {})
         completed = sum(1 for v in cats.values() if v["status"] == "completed")
         failed    = sum(1 for v in cats.values() if v["status"] == "failed")
         total     = len(cats)
         self._main_stats_label.configure(
-            text=f"{completed} of {total} succeeded"
+            text=f"{completed} of {total} {'would transfer' if is_dry else 'succeeded'}"
             + (f"  •  {failed} failed" if failed else "")
         )
 
@@ -1885,9 +1899,9 @@ class MainWindow(ctk.CTk):
         self._last_transfer_src = self._source_dev
         self._last_transfer_dst = self._dest_dev
 
-        msg = f"Transfer done  {completed} completed, {failed} failed."
+        prefix = "Dry run" if is_dry else "Transfer"
+        msg = f"{prefix} done  {completed} completed, {failed} failed."
         self._set_status(msg, color="green" if not failed else "orange")
-        self._log(msg)
 
         # Save category selections for the source device
         if self._source_dev:
@@ -1897,19 +1911,44 @@ class MainWindow(ctk.CTk):
         if get_settings().notify_on_completion:
             src_name = self._source_dev.name if self._source_dev else "device"
             body = f"{src_name}: {completed}/{total} categories"
+            if is_dry:
+                body = f"[DRY RUN] {body}"
             if failed:
                 body += f"  •  {failed} failed"
             self._fire_toast("PhoneTransfer — Transfer complete", body)
 
+        # ── Structured summary log ─────────────────────────────────────────
+        SEP = "─" * 58
+        self._log(SEP)
+        self._log("  DRY RUN PREVIEW — no data was written" if is_dry else "  TRANSFER SUMMARY")
+        self._log(SEP)
+        self._log(f"  {'Category':<22} {'Extracted':>10} {'Injected':>10}  Status")
+        self._log(SEP)
+        total_extracted = total_injected = 0
+        for cat, res in cats.items():
+            label  = _CATEGORY_LABELS.get(cat, cat.replace("_", " ").title())
+            status = res["status"]
+            ext    = res.get("extracted", 0)
+            inj    = res.get("injected", 0)
+            total_extracted += ext
+            total_injected  += inj
+            icon = "✓" if status == "completed" else ("✗" if status == "failed" else "—")
+            dropped = ext - inj
+            drop_note = f"  ({dropped} dropped)" if dropped > 0 else ""
+            self._log(f"  {icon} {label:<21} {ext:>10} {inj:>10}  {status}{drop_note}")
+            if res.get("error"):
+                self._log(f"      ! {res['error']}")
+        self._log(SEP)
+        self._log(f"  {'TOTAL':<22} {total_extracted:>10} {total_injected:>10}")
+        self._log(SEP)
+
         archive = summary.get("archive_path")
         if archive:
             self._log(f"  Archive: {archive}")
-        for cat, res in cats.items():
-            self._log(
-                f"  {cat}: {res['status']}"
-                f"  extracted={res.get('extracted', 0)}"
-                f"  injected={res.get('injected', 0)}"
-            )
+
+        log_path = self._write_transfer_log(summary, is_dry)
+        if log_path:
+            self._log(f"  Log saved: {log_path}")
 
         # Show post-transfer revert reminder for any quirks that asked the user
         # to temporarily change settings (e.g. USB Restricted Mode, PTP mode).
@@ -1929,6 +1968,51 @@ class MainWindow(ctk.CTk):
                 )
             except Exception:
                 pass  # non-critical — transfer is complete regardless
+
+    def _write_transfer_log(self, summary: dict, is_dry: bool) -> str | None:
+        """Write a plain-text transfer summary to ~/Documents/PhoneTransfer/logs/."""
+        try:
+            from datetime import datetime as _dt
+            import os as _os
+            log_dir = Path(_os.path.expanduser("~")) / "Documents" / "PhoneTransfer" / "logs"
+            log_dir.mkdir(parents=True, exist_ok=True)
+            ts = _dt.now().strftime("%Y%m%d_%H%M%S")
+            tag = "dryrun" if is_dry else "transfer"
+            log_file = log_dir / f"{tag}_{ts}.txt"
+            cats = summary.get("categories", {})
+            SEP = "─" * 58
+            lines: list[str] = [
+                SEP,
+                f"  PhoneTransfer {'DRY RUN PREVIEW' if is_dry else 'TRANSFER LOG'}",
+                f"  {_dt.now().strftime('%Y-%m-%d %H:%M:%S')}",
+            ]
+            src = summary.get("source", {})
+            dst = summary.get("destination", {})
+            if src:
+                lines.append(f"  Source:      {src.get('platform','').upper()} {src.get('serial','')}")
+            if dst:
+                lines.append(f"  Destination: {dst.get('platform','').upper()} {dst.get('serial','')}")
+            lines += [SEP, f"  {'Category':<22} {'Extracted':>10} {'Injected':>10}  Status", SEP]
+            total_ext = total_inj = 0
+            for cat, res in cats.items():
+                label = _CATEGORY_LABELS.get(cat, cat.replace("_", " ").title())
+                ext   = res.get("extracted", 0)
+                inj   = res.get("injected", 0)
+                total_ext += ext
+                total_inj += inj
+                icon = "✓" if res["status"] == "completed" else ("✗" if res["status"] == "failed" else "—")
+                dropped = ext - inj
+                drop = f"  ({dropped} dropped)" if dropped > 0 else ""
+                lines.append(f"  {icon} {label:<21} {ext:>10} {inj:>10}  {res['status']}{drop}")
+                if res.get("error"):
+                    lines.append(f"      ! {res['error']}")
+            lines += [SEP, f"  {'TOTAL':<22} {total_ext:>10} {total_inj:>10}", SEP]
+            if summary.get("archive_path"):
+                lines.append(f"  Archive: {summary['archive_path']}")
+            log_file.write_text("\n".join(lines) + "\n", encoding="utf-8")
+            return str(log_file)
+        except Exception:
+            return None
 
     def _on_transfer_error(self, msg: str) -> None:
         self._start_btn.configure(state="normal")
