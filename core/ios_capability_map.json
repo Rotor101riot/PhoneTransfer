@@ -1,0 +1,55 @@
+{
+  "_comment": "PhoneTransfer device capability map. Update this file as new iOS versions are verified.",
+
+  "ios": {
+    "14": {
+      "heic_support": true,
+      "live_afc_inject": true,
+      "photos_schema_verified": false,
+      "notes": "Schema unverified on iOS 14 — DB injection skipped, files land in DCIM"
+    },
+    "15": {
+      "heic_support": true,
+      "live_afc_inject": true,
+      "photos_schema_verified": false,
+      "notes": "Schema unverified on iOS 15 — DB injection skipped, files land in DCIM"
+    },
+    "16": {
+      "heic_support": true,
+      "live_afc_inject": true,
+      "photos_schema_verified": true,
+      "notes": "Schema verified on iOS 16.x — full injection supported"
+    },
+    "17": {
+      "heic_support": true,
+      "live_afc_inject": true,
+      "photos_schema_verified": true,
+      "notes": "Schema verified on iOS 17.x — full injection supported"
+    },
+    "18": {
+      "heic_support": true,
+      "live_afc_inject": true,
+      "photos_schema_verified": false,
+      "notes": "Schema unverified on iOS 18 — runtime validation will confirm at transfer time"
+    }
+  },
+
+  "categories": {
+    "contacts":    { "ios_min": 8,  "android_min": 5  },
+    "blocked":     { "ios_min": 13, "android_min": 7  },
+    "sms":         { "ios_min": 8,  "android_min": 5  },
+    "photos":      { "ios_min": 10, "android_min": 6  },
+    "videos":      { "ios_min": 10, "android_min": 6  },
+    "calls":       { "ios_min": 10, "android_min": 5  },
+    "calendar":    { "ios_min": 8,  "android_min": 5  },
+    "reminders":   { "ios_min": 8,  "android_min": 7  },
+    "notes":       { "ios_min": 9,  "android_min": 6  },
+    "alarms":      { "ios_min": 12, "android_min": 5  },
+    "ringtones":   { "ios_min": 14, "android_min": 6  },
+    "voice_memos": { "ios_min": 12, "android_min": 7  },
+    "wallpaper":   { "ios_min": 16, "android_min": 7  },
+    "bookmarks":   { "ios_min": 12, "android_min": 6  },
+    "whatsapp":    { "ios_min": 12, "android_min": 6  },
+    "signal":      { "ios_min": 12, "android_min": 6  }
+  }
+}

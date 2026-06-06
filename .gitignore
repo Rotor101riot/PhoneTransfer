@@ -1,0 +1,46 @@
+# Python bytecode
+**/__pycache__/
+*.py[cod]
+*$py.class
+
+# Test / type / lint caches
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+
+# Distribution / packaging
+*.egg-info/
+dist/
+build/
+# PyInstaller analysis side-files (generated alongside the spec at build time)
+warn*.txt
+xref-*.toc
+*.toc
+
+# Runtime artifacts
+tmp/
+archives/
+*.log
+*.ptbak
+
+# Large redistributable binaries — downloaded automatically by prerequisite
+# checker at first run, or manually per bin/README.md.
+bin/ffmpeg/bin/ffmpeg.exe
+bin/ffmpeg/bin/ffplay.exe
+bin/ffmpeg/bin/ffprobe.exe
+bin/redist/iTunes64Setup.exe
+
+# User config — contains machine-specific paths and may contain passphrases
+settings.json
+
+# Claude Code session data
+.claude/
+
+# Android companion — local machine config, never commit
+local.properties
+
+# IDE
+.vscode/
+.idea/
+*.suo
+*.user

@@ -1,0 +1,1374 @@
+{
+  "_source": "Derived from 3uTools devices_table.txt v2026.03.06.02",
+  "_note": "productType -> CPU/SoC info. clockSpeed includes unit (e.g. 3.46GHz).",
+  "cpus": {
+    "iPhone1,1": {
+      "chip": "ARM 1176",
+      "coprocessor": "",
+      "coreCount": "1",
+      "clockSpeed": "400MHz",
+      "resolution": "320x480",
+      "displayLabel": "ARM 1176 Single"
+    },
+    "iPhone1,2": {
+      "chip": "ARM 11",
+      "coprocessor": "",
+      "coreCount": "1",
+      "clockSpeed": "412MHz",
+      "resolution": "320x480",
+      "displayLabel": "ARM 11 Single"
+    },
+    "iPhone2,1": {
+      "chip": "Samsung S5PC100",
+      "coprocessor": "",
+      "coreCount": "1",
+      "clockSpeed": "833MHz",
+      "resolution": "320x480",
+      "displayLabel": "Samsung S5 Single"
+    },
+    "iPhone3,1": {
+      "chip": "Apple A4",
+      "coprocessor": "",
+      "coreCount": "1",
+      "clockSpeed": "1GHz",
+      "resolution": "640 x 960",
+      "displayLabel": "A4 Single"
+    },
+    "iPhone3,3": {
+      "chip": "Apple A4",
+      "coprocessor": "",
+      "coreCount": "1",
+      "clockSpeed": "1GHz",
+      "resolution": "640 x 960",
+      "displayLabel": "A4 Single"
+    },
+    "iPhone4,1": {
+      "chip": "Apple A5",
+      "coprocessor": "",
+      "coreCount": "2",
+      "clockSpeed": "1GHz",
+      "resolution": "640 x 960",
+      "displayLabel": "A5 Dual"
+    },
+    "iPhone5,1": {
+      "chip": "Apple A6",
+      "coprocessor": "",
+      "coreCount": "2",
+      "clockSpeed": "1.3GHz",
+      "resolution": "640 x 1136",
+      "displayLabel": "A6 Dual"
+    },
+    "iPhone5,2": {
+      "chip": "Apple A6",
+      "coprocessor": "",
+      "coreCount": "2",
+      "clockSpeed": "1.3GHz",
+      "resolution": "640 x 1136",
+      "displayLabel": "A6 Dual"
+    },
+    "iPhone5,3": {
+      "chip": "Apple A6",
+      "coprocessor": "",
+      "coreCount": "2",
+      "clockSpeed": "1.3GHz",
+      "resolution": "640 x 1136",
+      "displayLabel": "A6 Dual"
+    },
+    "iPhone5,4": {
+      "chip": "Apple A6",
+      "coprocessor": "",
+      "coreCount": "2",
+      "clockSpeed": "1.3GHz",
+      "resolution": "640 x 1136",
+      "displayLabel": "A6 Dual"
+    },
+    "iPhone6,1": {
+      "chip": "Apple A7",
+      "coprocessor": "M7",
+      "coreCount": "2",
+      "clockSpeed": "1.3GHz",
+      "resolution": "640 x 1136",
+      "displayLabel": "A7 Dual"
+    },
+    "iPhone6,2": {
+      "chip": "Apple A7",
+      "coprocessor": "M7",
+      "coreCount": "2",
+      "clockSpeed": "1.3GHz",
+      "resolution": "640 x 1136",
+      "displayLabel": "A7 Dual"
+    },
+    "iPhone7,1": {
+      "chip": "Apple A8",
+      "coprocessor": "M8",
+      "coreCount": "2",
+      "clockSpeed": "1.4GHz",
+      "resolution": "1080 x 1920",
+      "displayLabel": "A8 Dual"
+    },
+    "iPhone7,2": {
+      "chip": "Apple A8",
+      "coprocessor": "M8",
+      "coreCount": "2",
+      "clockSpeed": "1.4GHz",
+      "resolution": "750 x 1334",
+      "displayLabel": "A8 Dual"
+    },
+    "iPhone8,1": {
+      "chip": "Apple A9",
+      "coprocessor": "M9",
+      "coreCount": "2",
+      "clockSpeed": "1.8GHz",
+      "resolution": "750 x 1334",
+      "displayLabel": "A9 Dual"
+    },
+    "iPhone8,2": {
+      "chip": "Apple A9",
+      "coprocessor": "M9",
+      "coreCount": "2",
+      "clockSpeed": "1.8GHz",
+      "resolution": "1080 x 1920",
+      "displayLabel": "A9 Dual"
+    },
+    "iPhone8,4": {
+      "chip": "Apple A9",
+      "coprocessor": "M9",
+      "coreCount": "2",
+      "clockSpeed": "1.8GHz",
+      "resolution": "640 x 1136",
+      "displayLabel": "A9 Dual"
+    },
+    "iPhone9,1": {
+      "chip": "Apple A10",
+      "coprocessor": "M10",
+      "coreCount": "4",
+      "clockSpeed": "2.3GHz",
+      "resolution": "750 x 1334",
+      "displayLabel": "A10 Quad"
+    },
+    "iPhone9,3": {
+      "chip": "Apple A10",
+      "coprocessor": "M10",
+      "coreCount": "4",
+      "clockSpeed": "2.3GHz",
+      "resolution": "750 x 1334",
+      "displayLabel": "A10 Quad"
+    },
+    "iPhone9,2": {
+      "chip": "Apple A10",
+      "coprocessor": "M10",
+      "coreCount": "4",
+      "clockSpeed": "2.3GHz",
+      "resolution": "1080 x 1920",
+      "displayLabel": "A10 Quad"
+    },
+    "iPhone9,4": {
+      "chip": "Apple A10",
+      "coprocessor": "M10",
+      "coreCount": "4",
+      "clockSpeed": "2.3GHz",
+      "resolution": "1080 x 1920",
+      "displayLabel": "A10 Quad"
+    },
+    "iPhone10,1": {
+      "chip": "Apple A11",
+      "coprocessor": "M11",
+      "coreCount": "6",
+      "clockSpeed": "2.45GHz",
+      "resolution": "750 x 1334",
+      "displayLabel": "A11 Hexa"
+    },
+    "iPhone10,4": {
+      "chip": "Apple A11",
+      "coprocessor": "M11",
+      "coreCount": "6",
+      "clockSpeed": "2.45GHz",
+      "resolution": "750 x 1334",
+      "displayLabel": "A11 Hexa"
+    },
+    "iPhone10,2": {
+      "chip": "Apple A11",
+      "coprocessor": "M11",
+      "coreCount": "6",
+      "clockSpeed": "2.45GHz",
+      "resolution": "1080 x 1920",
+      "displayLabel": "A11 Hexa"
+    },
+    "iPhone10,5": {
+      "chip": "Apple A11",
+      "coprocessor": "M11",
+      "coreCount": "6",
+      "clockSpeed": "2.45GHz",
+      "resolution": "1080 x 1920",
+      "displayLabel": "A11 Hexa"
+    },
+    "iPhone10,3": {
+      "chip": "Apple A11",
+      "coprocessor": "M11",
+      "coreCount": "6",
+      "clockSpeed": "2.45GHz",
+      "resolution": "1125 x 2436",
+      "displayLabel": "A11 Hexa"
+    },
+    "iPhone10,6": {
+      "chip": "Apple A11",
+      "coprocessor": "M11",
+      "coreCount": "6",
+      "clockSpeed": "2.45GHz",
+      "resolution": "1125 x 2436",
+      "displayLabel": "A11 Hexa"
+    },
+    "iPhone11,2": {
+      "chip": "Apple A12",
+      "coprocessor": "M12",
+      "coreCount": "6",
+      "clockSpeed": "2.5GHz",
+      "resolution": "1125 x 2436",
+      "displayLabel": "A12 Hexa"
+    },
+    "iPhone11,4": {
+      "chip": "Apple A12",
+      "coprocessor": "M12",
+      "coreCount": "6",
+      "clockSpeed": "2.5GHz",
+      "resolution": "1242 x 2688",
+      "displayLabel": "A12 Hexa"
+    },
+    "iPhone11,6": {
+      "chip": "Apple A12",
+      "coprocessor": "M12",
+      "coreCount": "6",
+      "clockSpeed": "2.5GHz",
+      "resolution": "1242 x 2688",
+      "displayLabel": "A12 Hexa"
+    },
+    "iPhone11,8": {
+      "chip": "Apple A12",
+      "coprocessor": "M12",
+      "coreCount": "6",
+      "clockSpeed": "2.5GHz",
+      "resolution": "828 x 1792",
+      "displayLabel": "A12 Hexa"
+    },
+    "iPhone12,1": {
+      "chip": "Apple A13",
+      "coprocessor": "M13",
+      "coreCount": "6",
+      "clockSpeed": "2.6GHz",
+      "resolution": "828 x 1792",
+      "displayLabel": "A13 Hexa"
+    },
+    "iPhone12,3": {
+      "chip": "Apple A13",
+      "coprocessor": "M13",
+      "coreCount": "6",
+      "clockSpeed": "2.6GHz",
+      "resolution": "1125 x 2436",
+      "displayLabel": "A13 Hexa"
+    },
+    "iPhone12,5": {
+      "chip": "Apple A13",
+      "coprocessor": "M13",
+      "coreCount": "6",
+      "clockSpeed": "2.6GHz",
+      "resolution": "1242 x 2688",
+      "displayLabel": "A13 Hexa"
+    },
+    "iPhone12,8": {
+      "chip": "Apple A13",
+      "coprocessor": "M13",
+      "coreCount": "6",
+      "clockSpeed": "2.6GHz",
+      "resolution": "750 x 1334",
+      "displayLabel": "A13 Hexa"
+    },
+    "iPhone13,1": {
+      "chip": "Apple A14",
+      "coprocessor": "",
+      "coreCount": "6",
+      "clockSpeed": "3.1GHz",
+      "resolution": "2340 x 1080",
+      "displayLabel": "A14 Hexa"
+    },
+    "iPhone13,2": {
+      "chip": "Apple A14",
+      "coprocessor": "",
+      "coreCount": "6",
+      "clockSpeed": "3.1GHz",
+      "resolution": "2532 x 1170",
+      "displayLabel": "A14 Hexa"
+    },
+    "iPhone13,3": {
+      "chip": "Apple A14",
+      "coprocessor": "",
+      "coreCount": "6",
+      "clockSpeed": "3.1GHz",
+      "resolution": "2532 x 1170",
+      "displayLabel": "A14 Hexa"
+    },
+    "iPhone13,4": {
+      "chip": "Apple A14",
+      "coprocessor": "",
+      "coreCount": "6",
+      "clockSpeed": "3.1GHz",
+      "resolution": "2778 x 1284",
+      "displayLabel": "A14 Hexa"
+    },
+    "iPhone14,2": {
+      "chip": "Apple A15",
+      "coprocessor": "",
+      "coreCount": "6",
+      "clockSpeed": "3.2GHz",
+      "resolution": "2532 x 1170",
+      "displayLabel": "A15 Hexa"
+    },
+    "iPhone14,3": {
+      "chip": "Apple A15",
+      "coprocessor": "",
+      "coreCount": "6",
+      "clockSpeed": "3.2GHz",
+      "resolution": "2778 x 1284",
+      "displayLabel": "A15 Hexa"
+    },
+    "iPhone14,4": {
+      "chip": "Apple A15",
+      "coprocessor": "",
+      "coreCount": "6",
+      "clockSpeed": "3.2GHz",
+      "resolution": "2340 x 1080",
+      "displayLabel": "A15 Hexa"
+    },
+    "iPhone14,5": {
+      "chip": "Apple A15",
+      "coprocessor": "",
+      "coreCount": "6",
+      "clockSpeed": "3.2GHz",
+      "resolution": "2532 x 1170",
+      "displayLabel": "A15 Hexa"
+    },
+    "iPhone14,6": {
+      "chip": "Apple A15",
+      "coprocessor": "",
+      "coreCount": "6",
+      "clockSpeed": "3.2GHz",
+      "resolution": "750 x 1334",
+      "displayLabel": "A15 Hexa"
+    },
+    "iPhone14,7": {
+      "chip": "Apple A15",
+      "coprocessor": "",
+      "coreCount": "6",
+      "clockSpeed": "3.2GHz",
+      "resolution": "2532 x 1170",
+      "displayLabel": "A15 Hexa"
+    },
+    "iPhone14,8": {
+      "chip": "Apple A15",
+      "coprocessor": "",
+      "coreCount": "6",
+      "clockSpeed": "3.2GHz",
+      "resolution": "2778 x 1284",
+      "displayLabel": "A15 Hexa"
+    },
+    "iPhone15,2": {
+      "chip": "Apple A16",
+      "coprocessor": "",
+      "coreCount": "6",
+      "clockSpeed": "3.46GHz",
+      "resolution": "2556 x 1179",
+      "displayLabel": "A16 Hexa"
+    },
+    "iPhone15,3": {
+      "chip": "Apple A16",
+      "coprocessor": "",
+      "coreCount": "6",
+      "clockSpeed": "3.46GHz",
+      "resolution": "2796 x 1290",
+      "displayLabel": "A16 Hexa"
+    },
+    "iPhone15,4": {
+      "chip": "Apple A16",
+      "coprocessor": "",
+      "coreCount": "6",
+      "clockSpeed": "3.46GHz",
+      "resolution": "2556 x 1179",
+      "displayLabel": "A16 Hexa"
+    },
+    "iPhone15,5": {
+      "chip": "Apple A16",
+      "coprocessor": "",
+      "coreCount": "6",
+      "clockSpeed": "3.46GHz",
+      "resolution": "2796 x 1290",
+      "displayLabel": "A16 Hexa"
+    },
+    "iPhone16,1": {
+      "chip": "Apple A17 Pro",
+      "coprocessor": "",
+      "coreCount": "6",
+      "clockSpeed": "3.78GHz",
+      "resolution": "2556 x 1179",
+      "displayLabel": "A17 Pro Hexa"
+    },
+    "iPhone16,2": {
+      "chip": "Apple A17 Pro",
+      "coprocessor": "",
+      "coreCount": "6",
+      "clockSpeed": "3.78GHz",
+      "resolution": "2796 x 1290",
+      "displayLabel": "A17 Pro Hexa"
+    },
+    "iPhone17,3": {
+      "chip": "Apple A18",
+      "coprocessor": "",
+      "coreCount": "6",
+      "clockSpeed": "4.05GHz",
+      "resolution": "2556 x 1179",
+      "displayLabel": "A18 Hexa"
+    },
+    "iPhone17,4": {
+      "chip": "Apple A18",
+      "coprocessor": "",
+      "coreCount": "6",
+      "clockSpeed": "4.05GHz",
+      "resolution": "2796 x 1290",
+      "displayLabel": "A18 Hexa"
+    },
+    "iPhone17,5": {
+      "chip": "Apple A18",
+      "coprocessor": "",
+      "coreCount": "6",
+      "clockSpeed": "4.05GHz",
+      "resolution": "2556 x 1179",
+      "displayLabel": "A18 Hexa"
+    },
+    "iPhone17,1": {
+      "chip": "Apple A18 Pro",
+      "coprocessor": "",
+      "coreCount": "6",
+      "clockSpeed": "4.05GHz",
+      "resolution": "2622 x 1206",
+      "displayLabel": "A18 Pro Hexa"
+    },
+    "iPhone17,2": {
+      "chip": "Apple A18 Pro",
+      "coprocessor": "",
+      "coreCount": "6",
+      "clockSpeed": "4.05GHz",
+      "resolution": "2868 x 1320",
+      "displayLabel": "A18 Pro Hexa"
+    },
+    "iPhone18,1": {
+      "chip": "Apple A19 Pro",
+      "coprocessor": "",
+      "coreCount": "6",
+      "clockSpeed": "4.4GHz",
+      "resolution": "2622 x 1206",
+      "displayLabel": "A19 Pro Hexa"
+    },
+    "iPhone18,2": {
+      "chip": "Apple A19 Pro",
+      "coprocessor": "",
+      "coreCount": "6",
+      "clockSpeed": "4.4GHz",
+      "resolution": "2868 x 1320",
+      "displayLabel": "A19 Pro Hexa"
+    },
+    "iPhone18,3": {
+      "chip": "Apple A19",
+      "coprocessor": "",
+      "coreCount": "6",
+      "clockSpeed": "4.4GHz",
+      "resolution": "2622 x 1206",
+      "displayLabel": "A19 Hexa"
+    },
+    "iPhone18,4": {
+      "chip": "Apple A19 Pro",
+      "coprocessor": "",
+      "coreCount": "6",
+      "clockSpeed": "4.4GHz",
+      "resolution": "2736 x 1260",
+      "displayLabel": "A19 Pro Hexa"
+    },
+    "iPhone18,5": {
+      "chip": "Apple A19",
+      "coprocessor": "",
+      "coreCount": "6",
+      "clockSpeed": "4.4GHz",
+      "resolution": "2622 x 1206",
+      "displayLabel": "A19 Hexa"
+    },
+    "iPad1,1": {
+      "chip": "Apple A4",
+      "coprocessor": "",
+      "coreCount": "1",
+      "clockSpeed": "1GHz",
+      "resolution": "1024 x 768",
+      "displayLabel": "A4 Single"
+    },
+    "iPad2,1": {
+      "chip": "Apple A5",
+      "coprocessor": "",
+      "coreCount": "2",
+      "clockSpeed": "1GHz",
+      "resolution": "1024 x 768",
+      "displayLabel": "A5 Dual"
+    },
+    "iPad2,2": {
+      "chip": "Apple A5",
+      "coprocessor": "",
+      "coreCount": "2",
+      "clockSpeed": "1GHz",
+      "resolution": "1024 x 768",
+      "displayLabel": "A5 Dual"
+    },
+    "iPad2,3": {
+      "chip": "Apple A5",
+      "coprocessor": "",
+      "coreCount": "2",
+      "clockSpeed": "1GHz",
+      "resolution": "1024 x 768",
+      "displayLabel": "A5 Dual"
+    },
+    "iPad2,4": {
+      "chip": "Apple A5",
+      "coprocessor": "",
+      "coreCount": "2",
+      "clockSpeed": "1GHz",
+      "resolution": "1024 x 768",
+      "displayLabel": "A5 Dual"
+    },
+    "iPad2,5": {
+      "chip": "Apple A5",
+      "coprocessor": "",
+      "coreCount": "2",
+      "clockSpeed": "1GHz",
+      "resolution": "1024 x 768",
+      "displayLabel": "A5 Dual"
+    },
+    "iPad2,6": {
+      "chip": "Apple A5",
+      "coprocessor": "",
+      "coreCount": "2",
+      "clockSpeed": "1GHz",
+      "resolution": "1024 x 768",
+      "displayLabel": "A5 Dual"
+    },
+    "iPad2,7": {
+      "chip": "Apple A5",
+      "coprocessor": "",
+      "coreCount": "2",
+      "clockSpeed": "1GHz",
+      "resolution": "1024 x 768",
+      "displayLabel": "A5 Dual"
+    },
+    "iPad3,1": {
+      "chip": "Apple A5X",
+      "coprocessor": "",
+      "coreCount": "2",
+      "clockSpeed": "1GHz",
+      "resolution": "2048 x 1536",
+      "displayLabel": "A5X Dual"
+    },
+    "iPad3,2": {
+      "chip": "Apple A5X",
+      "coprocessor": "",
+      "coreCount": "2",
+      "clockSpeed": "1GHz",
+      "resolution": "2048 x 1536",
+      "displayLabel": "A5X Dual"
+    },
+    "iPad3,3": {
+      "chip": "Apple A5X",
+      "coprocessor": "",
+      "coreCount": "2",
+      "clockSpeed": "1GHz",
+      "resolution": "2048 x 1536",
+      "displayLabel": "A5X Dual"
+    },
+    "iPad3,4": {
+      "chip": "Apple A6X",
+      "coprocessor": "",
+      "coreCount": "2",
+      "clockSpeed": "1.3GHz",
+      "resolution": "2048 x 1536",
+      "displayLabel": "A6X Dual"
+    },
+    "iPad3,5": {
+      "chip": "Apple A6X",
+      "coprocessor": "",
+      "coreCount": "2",
+      "clockSpeed": "1.3GHz",
+      "resolution": "2048 x 1536",
+      "displayLabel": "A6X Dual"
+    },
+    "iPad3,6": {
+      "chip": "Apple A6X",
+      "coprocessor": "",
+      "coreCount": "2",
+      "clockSpeed": "1.3GHz",
+      "resolution": "2048 x 1536",
+      "displayLabel": "A6X Dual"
+    },
+    "iPad4,1": {
+      "chip": "Apple A7",
+      "coprocessor": "M7",
+      "coreCount": "2",
+      "clockSpeed": "1.3GHz",
+      "resolution": "2048 x 1536",
+      "displayLabel": "A7 Dual"
+    },
+    "iPad4,2": {
+      "chip": "Apple A7",
+      "coprocessor": "M7",
+      "coreCount": "2",
+      "clockSpeed": "1.3GHz",
+      "resolution": "2048 x 1536",
+      "displayLabel": "A7 Dual"
+    },
+    "iPad4,3": {
+      "chip": "Apple A7",
+      "coprocessor": "M7",
+      "coreCount": "2",
+      "clockSpeed": "1.3GHz",
+      "resolution": "2048 x 1536",
+      "displayLabel": "A7 Dual"
+    },
+    "iPad4,4": {
+      "chip": "Apple A7",
+      "coprocessor": "M7",
+      "coreCount": "2",
+      "clockSpeed": "1.3GHz",
+      "resolution": "2048 x 1536",
+      "displayLabel": "A7 Dual"
+    },
+    "iPad4,5": {
+      "chip": "Apple A7",
+      "coprocessor": "M7",
+      "coreCount": "2",
+      "clockSpeed": "1.3GHz",
+      "resolution": "2048 x 1536",
+      "displayLabel": "A7 Dual"
+    },
+    "iPad4,6": {
+      "chip": "Apple A7",
+      "coprocessor": "M7",
+      "coreCount": "2",
+      "clockSpeed": "1.3GHz",
+      "resolution": "2048 x 1536",
+      "displayLabel": "A7 Dual"
+    },
+    "iPad4,7": {
+      "chip": "Apple A7",
+      "coprocessor": "M7",
+      "coreCount": "2",
+      "clockSpeed": "1.3GHz",
+      "resolution": "2048 x 1536",
+      "displayLabel": "A7 Dual"
+    },
+    "iPad4,8": {
+      "chip": "Apple A7",
+      "coprocessor": "M7",
+      "coreCount": "2",
+      "clockSpeed": "1.3GHz",
+      "resolution": "2048 x 1536",
+      "displayLabel": "A7 Dual"
+    },
+    "iPad4,9": {
+      "chip": "Apple A7",
+      "coprocessor": "M7",
+      "coreCount": "2",
+      "clockSpeed": "1.3GHz",
+      "resolution": "2048 x 1536",
+      "displayLabel": "A7 Dual"
+    },
+    "iPad5,1": {
+      "chip": "Apple A8",
+      "coprocessor": "M8",
+      "coreCount": "2",
+      "clockSpeed": "1.5GHz",
+      "resolution": "2048 x 1536",
+      "displayLabel": "A8 Dual"
+    },
+    "iPad5,2": {
+      "chip": "Apple A8",
+      "coprocessor": "M8",
+      "coreCount": "2",
+      "clockSpeed": "1.5GHz",
+      "resolution": "2048 x 1536",
+      "displayLabel": "A8 Dual"
+    },
+    "iPad5,3": {
+      "chip": "Apple A8X",
+      "coprocessor": "M8",
+      "coreCount": "3",
+      "clockSpeed": "1.5GHz",
+      "resolution": "2048 x 1536",
+      "displayLabel": "A8X Triple"
+    },
+    "iPad5,4": {
+      "chip": "Apple A8X",
+      "coprocessor": "M8",
+      "coreCount": "3",
+      "clockSpeed": "1.5GHz",
+      "resolution": "2048 x 1536",
+      "displayLabel": "A8X Triple"
+    },
+    "iPad6,3": {
+      "chip": "Apple A9X",
+      "coprocessor": "M9",
+      "coreCount": "2",
+      "clockSpeed": "2.3GHz",
+      "resolution": "2048 x 1536",
+      "displayLabel": "A9X Dual"
+    },
+    "iPad6,4": {
+      "chip": "Apple A9X",
+      "coprocessor": "M9",
+      "coreCount": "2",
+      "clockSpeed": "2.3GHz",
+      "resolution": "2048 x 1536",
+      "displayLabel": "A9X Dual"
+    },
+    "iPad6,7": {
+      "chip": "Apple A9X",
+      "coprocessor": "M9",
+      "coreCount": "2",
+      "clockSpeed": "2.3GHz",
+      "resolution": "2732 x 2048",
+      "displayLabel": "A9X Dual"
+    },
+    "iPad6,8": {
+      "chip": "Apple A9X",
+      "coprocessor": "M9",
+      "coreCount": "2",
+      "clockSpeed": "2.3GHz",
+      "resolution": "2732 x 2048",
+      "displayLabel": "A9X Dual"
+    },
+    "iPad6,11": {
+      "chip": "Apple A9",
+      "coprocessor": "M9",
+      "coreCount": "2",
+      "clockSpeed": "1.8GHz",
+      "resolution": "2048 x 1536",
+      "displayLabel": "A9 Dual"
+    },
+    "iPad6,12": {
+      "chip": "Apple A9",
+      "coprocessor": "M9",
+      "coreCount": "2",
+      "clockSpeed": "1.8GHz",
+      "resolution": "2048 x 1536",
+      "displayLabel": "A9 Dual"
+    },
+    "iPad7,1": {
+      "chip": "Apple A10X",
+      "coprocessor": "M10",
+      "coreCount": "6",
+      "clockSpeed": "2.4GHz",
+      "resolution": "2732 x 2048",
+      "displayLabel": "A10X Hexa"
+    },
+    "iPad7,2": {
+      "chip": "Apple A10X",
+      "coprocessor": "M10",
+      "coreCount": "6",
+      "clockSpeed": "2.4GHz",
+      "resolution": "2732 x 2048",
+      "displayLabel": "A10X Hexa"
+    },
+    "iPad7,3": {
+      "chip": "Apple A10X",
+      "coprocessor": "M10",
+      "coreCount": "6",
+      "clockSpeed": "2.4GHz",
+      "resolution": "2224 x 1668",
+      "displayLabel": "A10X Hexa"
+    },
+    "iPad7,4": {
+      "chip": "Apple A10X",
+      "coprocessor": "M10",
+      "coreCount": "6",
+      "clockSpeed": "2.4GHz",
+      "resolution": "2224 x 1668",
+      "displayLabel": "A10X Hexa"
+    },
+    "iPad7,5": {
+      "chip": "Apple A10",
+      "coprocessor": "M10",
+      "coreCount": "4",
+      "clockSpeed": "2.3GHz",
+      "resolution": "2048 x 1536",
+      "displayLabel": "A10 Quad"
+    },
+    "iPad7,6": {
+      "chip": "Apple A10",
+      "coprocessor": "M10",
+      "coreCount": "4",
+      "clockSpeed": "2.3GHz",
+      "resolution": "2048 x 1536",
+      "displayLabel": "A10 Quad"
+    },
+    "iPad7,11": {
+      "chip": "Apple A10",
+      "coprocessor": "M10",
+      "coreCount": "4",
+      "clockSpeed": "2.3GHz",
+      "resolution": "2048 x 1536",
+      "displayLabel": "A10 Quad"
+    },
+    "iPad7,12": {
+      "chip": "Apple A10",
+      "coprocessor": "M10",
+      "coreCount": "4",
+      "clockSpeed": "2.3GHz",
+      "resolution": "2048 x 1536",
+      "displayLabel": "A10 Quad"
+    },
+    "iPad8,1": {
+      "chip": "Apple A12X",
+      "coprocessor": "M12",
+      "coreCount": "8",
+      "clockSpeed": "2.5GHz",
+      "resolution": "2388 x 1668",
+      "displayLabel": "A12X Octa"
+    },
+    "iPad8,2": {
+      "chip": "Apple A12X",
+      "coprocessor": "M12",
+      "coreCount": "8",
+      "clockSpeed": "2.5GHz",
+      "resolution": "2388 x 1668",
+      "displayLabel": "A12X Octa"
+    },
+    "iPad8,3": {
+      "chip": "Apple A12X",
+      "coprocessor": "M12",
+      "coreCount": "8",
+      "clockSpeed": "2.5GHz",
+      "resolution": "2388 x 1668",
+      "displayLabel": "A12X Octa"
+    },
+    "iPad8,4": {
+      "chip": "Apple A12X",
+      "coprocessor": "M12",
+      "coreCount": "8",
+      "clockSpeed": "2.5GHz",
+      "resolution": "2388 x 1668",
+      "displayLabel": "A12X Octa"
+    },
+    "iPad8,5": {
+      "chip": "Apple A12X",
+      "coprocessor": "M12",
+      "coreCount": "8",
+      "clockSpeed": "2.5GHz",
+      "resolution": "2732 x 2048",
+      "displayLabel": "A12X Octa"
+    },
+    "iPad8,6": {
+      "chip": "Apple A12X",
+      "coprocessor": "M12",
+      "coreCount": "8",
+      "clockSpeed": "2.5GHz",
+      "resolution": "2732 x 2048",
+      "displayLabel": "A12X Octa"
+    },
+    "iPad8,7": {
+      "chip": "Apple A12X",
+      "coprocessor": "M12",
+      "coreCount": "8",
+      "clockSpeed": "2.5GHz",
+      "resolution": "2732 x 2048",
+      "displayLabel": "A12X Octa"
+    },
+    "iPad8,8": {
+      "chip": "Apple A12X",
+      "coprocessor": "M12",
+      "coreCount": "8",
+      "clockSpeed": "2.5GHz",
+      "resolution": "2732 x 2048",
+      "displayLabel": "A12X Octa"
+    },
+    "iPad8,9": {
+      "chip": "Apple A12Z",
+      "coprocessor": "M12",
+      "coreCount": "8",
+      "clockSpeed": "2.5GHz",
+      "resolution": "2388 x 1668",
+      "displayLabel": "A12Z Octa"
+    },
+    "iPad8,10": {
+      "chip": "Apple A12Z",
+      "coprocessor": "M12",
+      "coreCount": "8",
+      "clockSpeed": "2.5GHz",
+      "resolution": "2388 x 1668",
+      "displayLabel": "A12Z Octa"
+    },
+    "iPad8,11": {
+      "chip": "Apple A12Z",
+      "coprocessor": "M12",
+      "coreCount": "8",
+      "clockSpeed": "2.5GHz",
+      "resolution": "2732 x 2048",
+      "displayLabel": "A12Z Octa"
+    },
+    "iPad8,12": {
+      "chip": "Apple A12Z",
+      "coprocessor": "M12",
+      "coreCount": "8",
+      "clockSpeed": "2.5GHz",
+      "resolution": "2732 x 2048",
+      "displayLabel": "A12Z Octa"
+    },
+    "iPad11,1": {
+      "chip": "Apple A12",
+      "coprocessor": "M12",
+      "coreCount": "6",
+      "clockSpeed": "2.5GHz",
+      "resolution": "2048 x 1536",
+      "displayLabel": "A12 Hexa"
+    },
+    "iPad11,2": {
+      "chip": "Apple A12",
+      "coprocessor": "M12",
+      "coreCount": "6",
+      "clockSpeed": "2.5GHz",
+      "resolution": "2048 x 1536",
+      "displayLabel": "A12 Hexa"
+    },
+    "iPad11,3": {
+      "chip": "Apple A12",
+      "coprocessor": "M12",
+      "coreCount": "6",
+      "clockSpeed": "2.5GHz",
+      "resolution": "2224 x 1668",
+      "displayLabel": "A12 Hexa"
+    },
+    "iPad11,4": {
+      "chip": "Apple A12",
+      "coprocessor": "M12",
+      "coreCount": "6",
+      "clockSpeed": "2.5GHz",
+      "resolution": "2224 x 1668",
+      "displayLabel": "A12 Hexa"
+    },
+    "iPad11,6": {
+      "chip": "Apple A12",
+      "coprocessor": "M12",
+      "coreCount": "6",
+      "clockSpeed": "2.5GHz",
+      "resolution": "2160 x 1620",
+      "displayLabel": "A12 Hexa"
+    },
+    "iPad11,7": {
+      "chip": "Apple A12",
+      "coprocessor": "M12",
+      "coreCount": "6",
+      "clockSpeed": "2.5GHz",
+      "resolution": "2160 x 1620",
+      "displayLabel": "A12 Hexa"
+    },
+    "iPad12,1": {
+      "chip": "Apple A13",
+      "coprocessor": "M13",
+      "coreCount": "6",
+      "clockSpeed": "2.6GHz",
+      "resolution": "2160 x 1620",
+      "displayLabel": "A13 Hexa"
+    },
+    "iPad12,2": {
+      "chip": "Apple A13",
+      "coprocessor": "M13",
+      "coreCount": "6",
+      "clockSpeed": "2.6GHz",
+      "resolution": "2160 x 1620",
+      "displayLabel": "A13 Hexa"
+    },
+    "iPad13,1": {
+      "chip": "Apple A14",
+      "coprocessor": "4-coreGPU, 16-coreNE",
+      "coreCount": "6",
+      "clockSpeed": "3.1GHz",
+      "resolution": "2360 x 1640",
+      "displayLabel": "A14 Hexa"
+    },
+    "iPad13,2": {
+      "chip": "Apple A14",
+      "coprocessor": "4-coreGPU, 16-coreNE",
+      "coreCount": "6",
+      "clockSpeed": "3.1GHz",
+      "resolution": "2360 x 1640",
+      "displayLabel": "A14 Hexa"
+    },
+    "iPad13,4": {
+      "chip": "Apple M1",
+      "coprocessor": "8-coreGPU, 16-coreNE",
+      "coreCount": "8",
+      "clockSpeed": "3.2GHz",
+      "resolution": "2732 x 2048",
+      "displayLabel": "M1 Octa"
+    },
+    "iPad13,5": {
+      "chip": "Apple M1",
+      "coprocessor": "8-coreGPU, 16-coreNE",
+      "coreCount": "8",
+      "clockSpeed": "3.2GHz",
+      "resolution": "2732 x 2048",
+      "displayLabel": "M1 Octa"
+    },
+    "iPad13,6": {
+      "chip": "Apple M1",
+      "coprocessor": "8-coreGPU, 16-coreNE",
+      "coreCount": "8",
+      "clockSpeed": "3.2GHz",
+      "resolution": "2732 x 2048",
+      "displayLabel": "M1 Octa"
+    },
+    "iPad13,7": {
+      "chip": "Apple M1",
+      "coprocessor": "8-coreGPU, 16-coreNE",
+      "coreCount": "8",
+      "clockSpeed": "3.2GHz",
+      "resolution": "2388 x 1668",
+      "displayLabel": "M1 Octa"
+    },
+    "iPad13,8": {
+      "chip": "Apple M1",
+      "coprocessor": "8-coreGPU, 16-coreNE",
+      "coreCount": "8",
+      "clockSpeed": "3.2GHz",
+      "resolution": "2732 x 2048",
+      "displayLabel": "M1 Octa"
+    },
+    "iPad13,16": {
+      "chip": "Apple M1",
+      "coprocessor": "8-coreGPU, 16-coreNE",
+      "coreCount": "8",
+      "clockSpeed": "3.2GHz",
+      "resolution": "2360 x 1640",
+      "displayLabel": "M1 Octa"
+    },
+    "iPad13,17": {
+      "chip": "Apple M1",
+      "coprocessor": "8-coreGPU, 16-coreNE",
+      "coreCount": "8",
+      "clockSpeed": "3.2GHz",
+      "resolution": "2360 x 1640",
+      "displayLabel": "M1 Octa"
+    },
+    "iPad13,18": {
+      "chip": "Apple A14",
+      "coprocessor": "4-coreGPU, 16-coreNE",
+      "coreCount": "6",
+      "clockSpeed": "3.1GHz",
+      "resolution": "2360 x 1640",
+      "displayLabel": "A14 Hexa"
+    },
+    "iPad13,19": {
+      "chip": "Apple A14",
+      "coprocessor": "4-coreGPU, 16-coreNE",
+      "coreCount": "6",
+      "clockSpeed": "3.1GHz",
+      "resolution": "2360 x 1640",
+      "displayLabel": "A14 Hexa"
+    },
+    "iPad14,1": {
+      "chip": "Apple A15",
+      "coprocessor": "5-coreGPU, 16-coreNE",
+      "coreCount": "6",
+      "clockSpeed": "3.2GHz",
+      "resolution": "2266 x 1488",
+      "displayLabel": "A15 Hexa"
+    },
+    "iPad14,2": {
+      "chip": "Apple A15",
+      "coprocessor": "5-coreGPU, 16-coreNE",
+      "coreCount": "6",
+      "clockSpeed": "3.2GHz",
+      "resolution": "2266 x 1488",
+      "displayLabel": "A15 Hexa"
+    },
+    "iPad14,3": {
+      "chip": "Apple M2",
+      "coprocessor": "10-coreGPU, 16-coreNE",
+      "coreCount": "8",
+      "clockSpeed": "3.2GHz",
+      "resolution": "2338 x 1668",
+      "displayLabel": "M2 Octa"
+    },
+    "iPad14,4": {
+      "chip": "Apple M2",
+      "coprocessor": "10-coreGPU, 16-coreNE",
+      "coreCount": "8",
+      "clockSpeed": "3.2GHz",
+      "resolution": "2338 x 1668",
+      "displayLabel": "M2 Octa"
+    },
+    "iPad14,5": {
+      "chip": "Apple M2",
+      "coprocessor": "10-coreGPU, 16-coreNE",
+      "coreCount": "8",
+      "clockSpeed": "3.2GHz",
+      "resolution": "2732 x 2048",
+      "displayLabel": "M2 Octa"
+    },
+    "iPad14,6": {
+      "chip": "Apple M2",
+      "coprocessor": "10-coreGPU, 16-coreNE",
+      "coreCount": "8",
+      "clockSpeed": "3.2GHz",
+      "resolution": "2732 x 2048",
+      "displayLabel": "M2 Octa"
+    },
+    "iPad14,8": {
+      "chip": "Apple M2",
+      "coprocessor": "10-coreGPU, 16-coreNE",
+      "coreCount": "8",
+      "clockSpeed": "3.2GHz",
+      "resolution": "2360 x 1640",
+      "displayLabel": "M2 Octa"
+    },
+    "iPad14,9": {
+      "chip": "Apple M2",
+      "coprocessor": "10-coreGPU, 16-coreNE",
+      "coreCount": "8",
+      "clockSpeed": "3.2GHz",
+      "resolution": "2360 x 1640",
+      "displayLabel": "M2 Octa"
+    },
+    "iPad14,10": {
+      "chip": "Apple M2",
+      "coprocessor": "10-coreGPU, 16-coreNE",
+      "coreCount": "8",
+      "clockSpeed": "3.2GHz",
+      "resolution": "2732 x 2048",
+      "displayLabel": "M2 Octa"
+    },
+    "iPad14,11": {
+      "chip": "Apple M2",
+      "coprocessor": "10-coreGPU, 16-coreNE",
+      "coreCount": "8",
+      "clockSpeed": "3.2GHz",
+      "resolution": "2732 x 2048",
+      "displayLabel": "M2 Octa"
+    },
+    "iPad15,3": {
+      "chip": "Apple M3",
+      "coprocessor": "9-coreGPU, 16-coreNE",
+      "coreCount": "8",
+      "clockSpeed": "3.2GHz",
+      "resolution": "2360 x 1640",
+      "displayLabel": "M3 Octa"
+    },
+    "iPad15,4": {
+      "chip": "Apple M3",
+      "coprocessor": "9-coreGPU, 16-coreNE",
+      "coreCount": "8",
+      "clockSpeed": "3.2GHz",
+      "resolution": "2360 x 1640",
+      "displayLabel": "M3 Octa"
+    },
+    "iPad15,5": {
+      "chip": "Apple M3",
+      "coprocessor": "9-coreGPU, 16-coreNE",
+      "coreCount": "8",
+      "clockSpeed": "3.2GHz",
+      "resolution": "2732 x 2048",
+      "displayLabel": "M3 Octa"
+    },
+    "iPad15,6": {
+      "chip": "Apple M3",
+      "coprocessor": "9-coreGPU, 16-coreNE",
+      "coreCount": "8",
+      "clockSpeed": "3.2GHz",
+      "resolution": "2732 x 2048",
+      "displayLabel": "M3 Octa"
+    },
+    "iPad15,7": {
+      "chip": "Apple A16",
+      "coprocessor": "4-coreGPU, 16-coreNE",
+      "coreCount": "5",
+      "clockSpeed": "3.46GHz",
+      "resolution": "2360 x 1640",
+      "displayLabel": "A16 Pent"
+    },
+    "iPad15,8": {
+      "chip": "Apple A16",
+      "coprocessor": "4-coreGPU, 16-coreNE",
+      "coreCount": "5",
+      "clockSpeed": "3.46GHz",
+      "resolution": "2360 x 1640",
+      "displayLabel": "A16 Pent"
+    },
+    "iPad16,1": {
+      "chip": "Apple A17 Pro",
+      "coprocessor": "5-coreGPU, 16-coreNE",
+      "coreCount": "6",
+      "clockSpeed": "3.78GHz",
+      "resolution": "2266 x 1488",
+      "displayLabel": "A17 Pro Hexa"
+    },
+    "iPad16,2": {
+      "chip": "Apple A17 Pro",
+      "coprocessor": "5-coreGPU, 16-coreNE",
+      "coreCount": "6",
+      "clockSpeed": "3.78GHz",
+      "resolution": "2266 x 1488",
+      "displayLabel": "A17 Pro Hexa"
+    },
+    "iPad16,3": {
+      "chip": "Apple M4",
+      "coprocessor": "10-coreGPU, 16-coreNE",
+      "coreCount": "10",
+      "clockSpeed": "3.2GHz",
+      "resolution": "2420 x 1668",
+      "displayLabel": "M4 Deca"
+    },
+    "iPad16,4": {
+      "chip": "Apple M4",
+      "coprocessor": "10-coreGPU, 16-coreNE",
+      "coreCount": "10",
+      "clockSpeed": "3.2GHz",
+      "resolution": "2420 x 1668",
+      "displayLabel": "M4 Deca"
+    },
+    "iPad16,5": {
+      "chip": "Apple M4",
+      "coprocessor": "10-coreGPU, 16-coreNE",
+      "coreCount": "10",
+      "clockSpeed": "3.2GHz",
+      "resolution": "2752 x 2064",
+      "displayLabel": "M4 Deca"
+    },
+    "iPad16,6": {
+      "chip": "Apple M4",
+      "coprocessor": "10-coreGPU, 16-coreNE",
+      "coreCount": "10",
+      "clockSpeed": "3.2GHz",
+      "resolution": "2752 x 2064",
+      "displayLabel": "M4 Deca"
+    },
+    "iPad16,8": {
+      "chip": "Apple M4",
+      "coprocessor": "9-coreGPU, 16-coreNE",
+      "coreCount": "8",
+      "clockSpeed": "3.2GHz",
+      "resolution": "2360 x 1640",
+      "displayLabel": "M4 Deca"
+    },
+    "iPad16,9": {
+      "chip": "Apple M4",
+      "coprocessor": "9-coreGPU, 16-coreNE",
+      "coreCount": "8",
+      "clockSpeed": "3.2GHz",
+      "resolution": "2360 x 1640",
+      "displayLabel": "M4 Deca"
+    },
+    "iPad16,10": {
+      "chip": "Apple M4",
+      "coprocessor": "9-coreGPU, 16-coreNE",
+      "coreCount": "8",
+      "clockSpeed": "3.2GHz",
+      "resolution": "2732 x 2048",
+      "displayLabel": "M4 Deca"
+    },
+    "iPad16,11": {
+      "chip": "Apple M4",
+      "coprocessor": "9-coreGPU, 16-coreNE",
+      "coreCount": "8",
+      "clockSpeed": "3.2GHz",
+      "resolution": "2732 x 2048",
+      "displayLabel": "M4 Deca"
+    },
+    "iPad17,1": {
+      "chip": "Apple M5",
+      "coprocessor": "10-coreGPU, 16-coreNE",
+      "coreCount": "10",
+      "clockSpeed": "4.42GHz",
+      "resolution": "2420 x 1668",
+      "displayLabel": "M5 Deca"
+    },
+    "iPad17,2": {
+      "chip": "Apple M5",
+      "coprocessor": "10-coreGPU, 16-coreNE",
+      "coreCount": "10",
+      "clockSpeed": "4.42GHz",
+      "resolution": "2420 x 1668",
+      "displayLabel": "M5 Deca"
+    },
+    "iPad17,3": {
+      "chip": "Apple M5",
+      "coprocessor": "10-coreGPU, 16-coreNE",
+      "coreCount": "10",
+      "clockSpeed": "4.42GHz",
+      "resolution": "2752 x 2064",
+      "displayLabel": "M5 Deca"
+    },
+    "iPad17,4": {
+      "chip": "Apple M5",
+      "coprocessor": "10-coreGPU, 16-coreNE",
+      "coreCount": "10",
+      "clockSpeed": "4.42GHz",
+      "resolution": "2752 x 2064",
+      "displayLabel": "M5 Deca"
+    },
+    "iPod1,1": {
+      "chip": "ARM 11",
+      "coprocessor": "",
+      "coreCount": "1",
+      "clockSpeed": "412MHz",
+      "resolution": "320 x 480",
+      "displayLabel": "ARM 11 Single"
+    },
+    "iPod2,1": {
+      "chip": "ARM 11",
+      "coprocessor": "",
+      "coreCount": "1",
+      "clockSpeed": "412MHz",
+      "resolution": "320 x 480",
+      "displayLabel": "ARM 11 Single"
+    },
+    "iPod3,1": {
+      "chip": "Samsung S5PC100",
+      "coprocessor": "",
+      "coreCount": "1",
+      "clockSpeed": "833MHz",
+      "resolution": "320 x 480",
+      "displayLabel": "Samsung S5PC100 Single"
+    },
+    "iPod4,1": {
+      "chip": "Apple A4",
+      "coprocessor": "",
+      "coreCount": "1",
+      "clockSpeed": "1GHz",
+      "resolution": "640 x 960",
+      "displayLabel": "A4 Single"
+    },
+    "iPod5,1": {
+      "chip": "Apple A5",
+      "coprocessor": "",
+      "coreCount": "2",
+      "clockSpeed": "1GHz",
+      "resolution": "640 x 1136",
+      "displayLabel": "A5 Dual"
+    },
+    "iPod7,1": {
+      "chip": "Apple A8",
+      "coprocessor": "M8",
+      "coreCount": "2",
+      "clockSpeed": "1.4GHz",
+      "resolution": "640 x 1136",
+      "displayLabel": "A8 Dual"
+    },
+    "iPod9,1": {
+      "chip": "Apple A10",
+      "coprocessor": "M10",
+      "coreCount": "4",
+      "clockSpeed": "2.3GHz",
+      "resolution": "640 x 1136",
+      "displayLabel": "A10 Quad"
+    }
+  }
+}

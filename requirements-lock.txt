@@ -1,0 +1,124 @@
+# PhoneTransfer — pinned dependency lock
+# ─────────────────────────────────────────────────────────────────────────────
+# Captured 2026-04-29 from pip's clean resolution of requirements.txt under
+# Python 3.14.3 on Windows 11.  Use this file for reproducible installs:
+#     py -m pip install -r requirements-lock.txt
+# Use requirements.txt instead if you want flexibility on patch versions.
+#
+# Regenerate with:
+#     py -m pip install --dry-run --ignore-installed -r requirements.txt
+# then convert the 'Would install' line into name==version lines (one per
+# package) and prepend this header.  Or, in a clean venv:
+#     py -m venv .venv && .venv/Scripts/activate
+#     py -m pip install -r requirements.txt && py -m pip freeze
+#
+# Safe-to-leave-broken on Windows-without-MSVC: pylzss (only reached via
+# pyimg4 → pymobiledevice3 IPSW handling, never used by PhoneTransfer).
+
+annotated-doc==0.0.4
+annotated-types==0.7.0
+ansicon==1.89.0
+anyio==4.13.0
+arrow==1.4.0
+asn1==2.8.0
+asttokens==3.0.1
+blessed==1.38.0
+bpylist2==4.1.1
+certifi==2026.4.22
+cffi==2.0.0
+charset-normalizer==3.4.7
+click==8.3.3
+colorama==0.4.6
+coloredlogs==15.0.1
+construct-typing==0.7.0
+construct==2.10.70
+cryptography==47.0.0
+customtkinter==5.2.2
+daemonize==2.5.0
+darkdetect==0.8.0
+decorator==5.2.1
+defusedxml==0.7.1
+developer_disk_image==0.2.0
+editor==1.7.0
+enum-compat==0.0.3
+executing==2.2.1
+fastapi==0.136.1
+gpxpy==1.6.2
+h11==0.16.0
+hexdump==3.3
+humanfriendly==10.0
+hyperframe==6.1.0
+idna==3.13
+ifaddr==0.2.0
+inquirer3==0.6.1
+iOSbackup==0.9.925
+iphone_backup_decrypt==0.9.0
+ipsw-parser==1.6.0
+ipython==9.13.0
+ipython_pygments_lexers==1.1.1
+javaobj-py3==0.4.4
+jedi==0.19.2
+jinxed==1.4.0
+lzfse==0.4.2
+markdown-it-py==4.0.0
+matplotlib-inline==0.2.1
+mdurl==0.1.2
+NSKeyedUnArchiver==1.5.2
+opack2==0.0.1
+packaging==26.2
+parameter-decorators==0.0.2
+parso==0.8.6
+pillow==12.2.0
+pillow_heif==1.3.0
+plumbum==1.10.0
+prompt_toolkit==3.0.52
+protobuf==5.27.5
+psutil==7.2.2
+pure_eval==0.2.3
+pycparser==3.0
+pycrashreport==2.0.0
+pycryptodome==3.23.0
+pycryptodomex==3.23.0
+pydantic==2.13.3
+pydantic_core==2.46.3
+Pygments==2.20.0
+pygnuutils==0.1.1
+pyimg4==0.8.8
+pykdebugparser==1.2.7
+pylzss==0.3.4
+pymobiledevice3==9.12.0
+pyreadline3==3.5.4
+python-dateutil==2.9.0.post0
+python-pcapng==2.1.1
+pytun-pmd3==3.0.3
+pytz==2026.1.post1
+pyusb==1.3.1
+pywin32==311
+qh3==1.7.4
+readchar==4.2.2
+remotezip2==0.0.2
+requests==2.33.1
+rich==15.0.0
+runs==1.3.0
+shellingham==1.5.4
+six==1.17.0
+sqlcipher3==0.6.2
+srptools==1.0.1
+stack-data==0.6.3
+starlette==1.0.0
+termcolor==3.3.0
+tqdm==4.67.3
+traitlets==5.14.3
+typer-injector==0.2.2
+typer==0.25.0
+typing-inspection==0.4.2
+typing_extensions==4.15.0
+tzdata==2026.2
+urllib3==2.6.3
+uvicorn==0.46.0
+vobject==0.9.9
+wa-crypt-tools==0.1.0
+wcwidth==0.6.0
+wsproto==1.3.2
+xmod==1.9.0
+xonsh==0.23.2

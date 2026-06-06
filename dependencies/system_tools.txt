@@ -1,0 +1,234 @@
+# System-Level Tools (bundled in /bin or installed on host PC)
+# ─────────────────────────────────────────────────────────────
+# These are external binaries the Python scripts call via subprocess.
+# All should be bundled inside the .exe package where possible,
+# or verified at startup with clear user-facing error if missing.
+
+# ── ANDROID ──────────────────────────────────────────────────
+Android Platform Tools (ADB)
+  Version: 37.0.0
+  Source:  https://developer.android.com/tools/releases/platform-tools
+  Location: /bin/adb/                                  ← pre-built, ready to use
+  Key files: adb.exe, AdbWinApi.dll, AdbWinUsbApi.dll, libwinpthread-1.dll
+  Usage:   All Android device communication, file transfer, shell commands
+
+# ── iOS — LIBIMOBILEDEVICE BINARY LAYER ──────────────────────
+# All EXEs and DLLs were obtained as pre-built binaries via MSYS2 pacman
+# (MinGW64 toolchain). They are now in /bin/libimobiledevice/ and ready
+# to bundle — NO compilation required.
+#
+# pymobiledevice3 (Python) is the PRIMARY iOS layer — these are FALLBACK only.
+# Vendor source repos in /vendor/ are retained as reference and in case a
+# specific version or custom build is ever needed.
+#
+# MSYS2 packages used:
+#   pacman -S mingw-w64-x86_64-libimobiledevice       → 1.3.0
+#   pacman -S mingw-w64-x86_64-ideviceinstaller        → 1.1.1
+#   pacman -S mingw-w64-x86_64-libplist                → 2.7.0
+#   pacman -S mingw-w64-x86_64-libusbmuxd              → 2.1.1
+#   pacman -S mingw-w64-x86_64-libimobiledevice-glue   → 1.3.2
+#   pacman -S mingw-w64-x86_64-libzip                  → 1.11.4
+#   pacman -S mingw-w64-x86_64-openssl                 → 3.6.1
+#   pacman -S mingw-w64-x86_64-ntldd-git               → (dep audit tool, dev only)
+
+#  [BUILT] libimobiledevice  v1.3.0  (vendor has 1.4.0 — 1.3.0 adequate for fallback)
+  Location: /bin/libimobiledevice/                     ← pre-built, ready to bundle
+  DLL: libimobiledevice-1.0.dll
+  Vendor source: /vendor/libimobiledevice-1.4.0/       ← if 1.4.0 ever specifically needed
+
+#  [BUILT] libplist  v2.7.0
+  Location: /bin/libimobiledevice/
+  DLL: libplist-2.0.dll
+  Vendor source: /vendor/libplist-2.7.0/
+
+#  [BUILT] libusbmuxd  v2.1.1
+  Location: /bin/libimobiledevice/
+  DLL: libusbmuxd-2.0.dll
+  Vendor source: /vendor/libusbmuxd-2.1.1/
+
+#  [BUILT] libimobiledevice-glue  v1.3.2
+  Location: /bin/libimobiledevice/
+  DLL: libimobiledevice-glue-1.0.dll
+  Vendor source: /vendor/libimobiledevice-glue-1.3.2/
+
+#  [BUILT] ideviceinstaller  v1.1.1  (vendor has 1.2.0 — 1.1.1 adequate)
+  Location: /bin/libimobiledevice/
+  EXE: ideviceinstaller.exe
+  Vendor source: /vendor/ideviceinstaller-1.2.0/
+
+# ── CONFIRMED DLL MANIFEST (verified via ntldd -R) ───────────
+# These are the ONLY non-Windows DLLs required by the idevice tools.
+# MSYS2 packages were compiled with -static-libgcc / -static-libstdc++
+# so NO libgcc_s_seh-1.dll or libwinpthread-1.dll is needed at runtime.
+
+# Core (required by ALL idevice EXEs):
+#   libimobiledevice-1.0.dll
+#   libssl-3-x64.dll
+#   libcrypto-3-x64.dll
+#   libplist-2.0.dll
+#   libusbmuxd-2.0.dll
+#   libimobiledevice-glue-1.0.dll
+
+# ideviceinstaller extras (required only by ideviceinstaller.exe):
+#   libzip.dll
+#   libbz2-1.dll
+#   liblzma-5.dll
+#   zlib1.dll
+#   libzstd.dll
+
+# OpenSSL legacy cipher module (for older iOS pairing/backup crypto):
+#   ossl-modules/legacy.dll   ← MUST be in ossl-modules/ subfolder relative to EXEs
+
+# Total: 11 DLLs + 1 subfolder DLL + 23 EXEs = 35 entries in /bin/libimobiledevice/
+
+# ── IDEVICE TOOLS INCLUDED ───────────────────────────────────
+# idevice_id           — list/identify connected devices
+# idevicebackup        — legacy MobileSync backup (iOS ≤ 12)
+# idevicebackup2       — full backup/restore via MobileSync
+# idevicecrashreport   — pull crash logs from device
+# idevicedate          — get/set device clock
+# idevicedebug         — attach debugserver
+# idevicedebugserverproxy — proxy debugserver over TCP
+# idevicediagnostics   — device diagnostics / reboot / shutdown
+# ideviceenterrecovery — put device into recovery mode
+# ideviceimagemounter  — mount developer disk image
+# ideviceinfo          — query lockdown info / device properties
+# ideviceinstaller     — install/remove/list apps (IPA sideload)
+# idevicename          — get/set device name
+# idevicenotificationproxy — send/receive notifications
+# idevicepair          — pair, validate, unpair device
+# ideviceprovision     — manage provisioning profiles
+# idevicescreenshot    — capture device screenshot
+# idevicesetlocation   — GPS spoof (developer mode)
+# idevicesyslog        — stream device syslog
+# inetcat              — TCP tunnel via usbmuxd
+# iproxy               — port forward over USB
+# plistutil            — plist binary/XML inspection (dev utility)
+# openssl              — cert/key inspection (dev utility)
+
+#  [MAYBE] libirecovery  v1.3.1
+  Source:   https://github.com/libimobiledevice/libirecovery
+  Location: /vendor/libirecovery-1.3.1/                ← source, held unbuilt
+  Note:     NOT available as MSYS2 package — would need manual compile from vendor.
+  Output if activated: libirecovery-1.0.dll, irecovery.exe
+  Usage:    DFU and recovery mode communication.
+  Decision: Do NOT compile unless recovery mode handling is explicitly scoped in.
+
+#  [NO] usbmuxd (the daemon)
+  Reason:   On Windows, Apple provides this via AppleMobileDeviceService.exe
+            (installed with iTunes or Apple Devices app from Microsoft Store).
+            Installing the OSS daemon would conflict with Apple's service.
+
+#  [NO] ifuse
+  Reason:   FUSE filesystem mount — Linux/macOS only. No Windows support.
+
+#  [NO] idevicerestore
+  Reason:   Full firmware/IPSW restore. Completely outside project scope.
+
+#  [NO] libtatsu
+  Reason:   Apple TSS server / firmware signing. Out of scope.
+
+#  [NO] ideviceactivation
+  Reason:   Device activation protocol. Out of scope.
+
+#  [NO] libgpod
+  Reason:   Legacy iPod media library. Irrelevant.
+
+# ── COMPILE ORDER (if vendor source ever needed) ─────────────
+# Only needed if MSYS2 packages are insufficient (wrong version, missing feature).
+# Build via MSYS2 MinGW64 shell with MinGW-w64 toolchain:
+#   1. libplist-2.7.0
+#   2. libimobiledevice-glue-1.3.2  (depends on libplist)
+#   3. libusbmuxd-2.1.1             (depends on libplist)
+#   4. libimobiledevice-1.4.0       (depends on all three above)
+#   5. ideviceinstaller-1.2.0       (depends on libimobiledevice + libplist)
+
+# ── MEDIA PROCESSING ─────────────────────────────────────────
+FFmpeg
+  Version: 8.0.1 full build
+  Source:  https://www.gyan.dev/ffmpeg/builds/ (Windows static builds)
+  Location: /bin/ffmpeg/                               ← pre-built, ready to use
+  Key files: /bin/ffmpeg/bin/ffmpeg.exe, ffplay.exe, ffprobe.exe
+  Usage:
+    - OGG → AAC/MP3 audio conversion
+    - MOV → MP4 container remux (no re-encode)
+    - M4A → MP3 for Android compatibility
+    - M4R ringtone creation (AAC → M4R, 30s cap)
+    - CAF (iOS audio format) → M4A
+    - General audio normalization
+
+libheif  (via pillow-heif Python binding)
+  Version: 1.17+
+  Source:  Installed as part of pillow-heif pip package
+  Bundle:  Handled by pip — Python wheel includes the native binary
+  Usage:   HEIC/HEIF image decoding → JPEG for Android destinations
+
+# ── RUNTIME ──────────────────────────────────────────────────
+Python 3.11+
+  Used for: All PC-side script execution
+  Bundled:  YES when building .exe via PyInstaller (self-contained)
+  Standalone use: User must have Python 3.11+ if running scripts directly
+
+Visual C++ Redistributable (vc_redist)
+  Version: 2015-2022 (x64, x86, arm64)
+  Source:  Microsoft — binaries in /bin/redist/
+  Bundle:  YES — silently run VC_redist.x64.exe at first launch before any other step
+  Usage:   Required by ADB binaries on Windows. NOT present on a fresh Windows install.
+  Note:    libimobiledevice DLLs do NOT require vc_redist — MSYS2 packages
+           statically link their C/C++ runtimes (-static-libgcc).
+
+# ── SYSTEM REQUIREMENTS ───────────────────────────────────────────
+iTunes (Apple website)
+  Required: YES — provides AppleMobileDeviceService.exe and Apple USB drivers
+  Bundle:   YES — installer in /bin/redist/iTunes64Setup.exe
+  Detection: Check for AppleMobileDeviceService in Windows services at startup.
+             If missing, launch iTunes64Setup.exe automatically (shows iTunes UI wizard).
+  Note:     Using the standalone Apple website installer, not the Microsoft Store
+            version. Both provide the same driver stack.
+
+Apple Application Support (32-bit and 64-bit)
+  Required: Installed automatically alongside iTunes / Apple Devices
+  Usage:    Required for AFC/usbmuxd named pipe communication on Windows
+
+Android USB Drivers
+  Required (baseline): Google USB Driver only (android_winusb.inf).
+                       This is the single ADB interface driver that
+                       covers virtually every modern Android device in
+                       ADB mode — it binds via WinUSB on Windows 10/11
+                       once USB debugging is enabled and the user
+                       accepts the "Trust this computer" prompt.
+                       Matches core.prerequisite_checker._ANDROID_DRIVER_REQUIRED.
+
+  Optional (fallbacks): The 13 OEM driver installers in /bin/drivers/android/
+                       (sourced from Chimera's driver pack, ~202 MB total)
+                       are NOT required by ADB and are NOT required by
+                       PhoneTransfer.  They cover OEM-specific service /
+                       diagnostic / download protocols (Qualcomm 9008/EDL,
+                       MediaTek BROM, Samsung Odin, vendor service modes)
+                       which PhoneTransfer never invokes — its entire
+                       Android-side communication path is `adb.exe` over
+                       USB or Wi-Fi, plus the companion APK over an
+                       ADB-forwarded TCP socket.
+                       Keep them around as a fallback for the rare device
+                       Google's generic driver doesn't recognise (typically
+                       very old Android-4-era hardware), but they should
+                       NOT be installed silently and should NOT be implied
+                       to be required.
+
+  ADB over Wi-Fi:      No driver needed at all.
+
+  Detection (current): config_loader._check_system_drivers() greps the
+                       Windows driver store via `pnputil /enum-drivers`
+                       for "android" / "adbinterface" / "androidusb" and
+                       warns (does not block) on absence.
+                       prerequisite_checker.scan_system() reports per-OEM
+                       coverage to the UI without prompting an install.
+
+  Recommended UX:      If `adb devices` returns empty AND the Google USB
+                       Driver is absent, prompt the user to install it
+                       (the only one that materially helps).  Do NOT
+                       enumerate the OEM packages in the prompt — most
+                       are irrelevant to a given user's device, and an
+                       "unauthorized" line in `adb devices` is a trust-
+                       prompt issue (not a driver issue) so a driver
+                       install won't fix it.

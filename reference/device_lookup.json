@@ -1,0 +1,2843 @@
+{
+  "_source": "Merged: 3uTools devices_table.txt v2026.03.06.02 + appledb.dev main.json.gz (MIT, up to 2026)",
+  "_note": "productType -> device info. fingerprint/faceId are bool. network is list.",
+  "devices": {
+    "iPhone1,1": {
+      "name": "iPhone",
+      "fingerprint": false,
+      "faceId": false,
+      "screenInches": "3.5",
+      "network": [
+        "GSM",
+        "WiFi"
+      ],
+      "releasedEn": "6/9/2008",
+      "hardwareModel": "m68ap",
+      "cpuId": "8900",
+      "boardId": "00"
+    },
+    "iPhone1,2": {
+      "name": "iPhone 3G",
+      "fingerprint": false,
+      "faceId": false,
+      "screenInches": "3.5",
+      "network": [
+        "GSM",
+        "WiFi"
+      ],
+      "releasedEn": "6/9/2008",
+      "hardwareModel": "n82ap",
+      "cpuId": "8900",
+      "boardId": "04"
+    },
+    "iPhone2,1": {
+      "name": "iPhone 3GS",
+      "fingerprint": false,
+      "faceId": false,
+      "screenInches": "3.5",
+      "network": [
+        "GSM",
+        "WiFi"
+      ],
+      "releasedEn": "6/9/2009",
+      "hardwareModel": "n88ap",
+      "cpuId": "8920",
+      "boardId": "00"
+    },
+    "iPhone3,1": {
+      "name": "iPhone 4 (GSM)",
+      "fingerprint": false,
+      "faceId": false,
+      "screenInches": "3.5",
+      "network": [
+        "GSM",
+        "WiFi"
+      ],
+      "releasedEn": "6/8/2010",
+      "hardwareModel": "n90ap",
+      "cpuId": "8930",
+      "boardId": "00"
+    },
+    "iPhone3,2": {
+      "name": "iPhone 4 (GSM, 2012)",
+      "fingerprint": false,
+      "faceId": false,
+      "screenInches": "3.5",
+      "network": [
+        "GSM",
+        "WiFi"
+      ],
+      "releasedEn": "6/8/2010",
+      "hardwareModel": "n90bap",
+      "cpuId": "8930",
+      "boardId": "04"
+    },
+    "iPhone3,3": {
+      "name": "iPhone 4 (CDMA)",
+      "fingerprint": false,
+      "faceId": false,
+      "screenInches": "3.5",
+      "network": [
+        "CDMA",
+        "WiFi"
+      ],
+      "releasedEn": "6/8/2010",
+      "hardwareModel": "n92ap",
+      "cpuId": "8930",
+      "boardId": "06"
+    },
+    "iPhone4,1": {
+      "name": "iPhone 4S",
+      "fingerprint": false,
+      "faceId": false,
+      "screenInches": "3.5",
+      "network": [
+        "GSM",
+        "CDMA",
+        "WiFi"
+      ],
+      "releasedEn": "10/4/2011",
+      "hardwareModel": "n94ap",
+      "cpuId": "8940",
+      "boardId": "08"
+    },
+    "iPhone5,1": {
+      "name": "iPhone 5 (GSM)",
+      "fingerprint": false,
+      "faceId": false,
+      "screenInches": "4.0",
+      "network": [
+        "GSM",
+        "WiFi"
+      ],
+      "releasedEn": "9/21/2012",
+      "hardwareModel": "n41ap",
+      "cpuId": "8950",
+      "boardId": "00"
+    },
+    "iPhone5,2": {
+      "name": "iPhone 5 (CDMA)",
+      "fingerprint": false,
+      "faceId": false,
+      "screenInches": "4.0",
+      "network": [
+        "CDMA",
+        "WiFi"
+      ],
+      "releasedEn": "9/21/2012",
+      "hardwareModel": "n42ap",
+      "cpuId": "8950",
+      "boardId": "02"
+    },
+    "iPhone5,3": {
+      "name": "iPhone 5c (GSM)",
+      "fingerprint": false,
+      "faceId": false,
+      "screenInches": "4.0",
+      "network": [
+        "CDMA",
+        "WiFi"
+      ],
+      "releasedEn": "9/10/2013",
+      "hardwareModel": "n48ap",
+      "cpuId": "8950",
+      "boardId": "0A"
+    },
+    "iPhone5,4": {
+      "name": "iPhone 5c (CDMA)",
+      "fingerprint": false,
+      "faceId": false,
+      "screenInches": "4.0",
+      "network": [
+        "GSM",
+        "WiFi"
+      ],
+      "releasedEn": "9/10/2013",
+      "hardwareModel": "n49ap",
+      "cpuId": "8950",
+      "boardId": "0E"
+    },
+    "iPhone6,1": {
+      "name": "iPhone 5s (GSM)",
+      "fingerprint": true,
+      "faceId": false,
+      "screenInches": "4.0",
+      "network": [
+        "CDMA",
+        "WiFi"
+      ],
+      "releasedEn": "9/10/2013",
+      "hardwareModel": "n51ap",
+      "cpuId": "8960",
+      "boardId": "00"
+    },
+    "iPhone6,2": {
+      "name": "iPhone 5s (CDMA)",
+      "fingerprint": true,
+      "faceId": false,
+      "screenInches": "4.0",
+      "network": [
+        "GSM",
+        "WiFi"
+      ],
+      "releasedEn": "9/10/2013",
+      "hardwareModel": "n53ap",
+      "cpuId": "8960",
+      "boardId": "02"
+    },
+    "iPhone7,1": {
+      "name": "iPhone 6 Plus",
+      "fingerprint": true,
+      "faceId": false,
+      "screenInches": "5.5",
+      "network": [
+        "4G",
+        "WiFi"
+      ],
+      "releasedEn": "9/9/2014",
+      "hardwareModel": "n56ap",
+      "cpuId": "7000",
+      "boardId": "04"
+    },
+    "iPhone7,2": {
+      "name": "iPhone 6",
+      "fingerprint": true,
+      "faceId": false,
+      "screenInches": "4.7",
+      "network": [
+        "4G",
+        "WiFi"
+      ],
+      "releasedEn": "9/9/2014",
+      "hardwareModel": "n61ap",
+      "cpuId": "7000",
+      "boardId": "06"
+    },
+    "iPhone8,1": {
+      "name": "iPhone 6s",
+      "fingerprint": true,
+      "faceId": false,
+      "screenInches": "5.5",
+      "network": [
+        "4G",
+        "WiFi"
+      ],
+      "releasedEn": "9/9/2015",
+      "hardwareModel": "n71ap",
+      "cpuId": "8003",
+      "boardId": "04"
+    },
+    "iPhone8,2": {
+      "name": "iPhone 6s Plus",
+      "fingerprint": true,
+      "faceId": false,
+      "screenInches": "5.5",
+      "network": [
+        "4G",
+        "WiFi"
+      ],
+      "releasedEn": "9/9/2015",
+      "hardwareModel": "n66map",
+      "cpuId": "8003",
+      "boardId": "06"
+    },
+    "iPhone8,4": {
+      "name": "iPhone SE (1st generation)",
+      "fingerprint": true,
+      "faceId": false,
+      "screenInches": "4.0",
+      "network": [
+        "4G",
+        "WiFi"
+      ],
+      "releasedEn": "3/21/2016",
+      "hardwareModel": "n69ap",
+      "cpuId": "8000",
+      "boardId": "02"
+    },
+    "iPhone9,1": {
+      "name": "iPhone 7 (CDMA)",
+      "fingerprint": true,
+      "faceId": false,
+      "screenInches": "4.7",
+      "network": [
+        "4G",
+        "WiFi"
+      ],
+      "releasedEn": "9/7/2016",
+      "hardwareModel": "d10ap",
+      "cpuId": "8010",
+      "boardId": "08"
+    },
+    "iPhone9,3": {
+      "name": "iPhone 7 (GSM)",
+      "fingerprint": true,
+      "faceId": false,
+      "screenInches": "4.7",
+      "network": [
+        "4G",
+        "WiFi"
+      ],
+      "releasedEn": "9/7/2016",
+      "hardwareModel": "d101ap",
+      "cpuId": "8010",
+      "boardId": "0C"
+    },
+    "iPhone9,2": {
+      "name": "iPhone 7 Plus (CDMA)",
+      "fingerprint": true,
+      "faceId": false,
+      "screenInches": "5.5",
+      "network": [
+        "4G",
+        "WiFi"
+      ],
+      "releasedEn": "9/7/2016",
+      "hardwareModel": "d11ap",
+      "cpuId": "8010",
+      "boardId": "0A"
+    },
+    "iPhone9,4": {
+      "name": "iPhone 7 Plus (GSM)",
+      "fingerprint": true,
+      "faceId": false,
+      "screenInches": "5.5",
+      "network": [
+        "4G",
+        "WiFi"
+      ],
+      "releasedEn": "9/7/2016",
+      "hardwareModel": "d111ap",
+      "cpuId": "8010",
+      "boardId": "0E"
+    },
+    "iPhone10,1": {
+      "name": "iPhone 8 (CDMA)",
+      "fingerprint": true,
+      "faceId": false,
+      "screenInches": "4.7",
+      "network": [
+        "4G",
+        "WiFi"
+      ],
+      "releasedEn": "9/12/2017",
+      "hardwareModel": "d20ap",
+      "cpuId": "8015",
+      "boardId": "02"
+    },
+    "iPhone10,4": {
+      "name": "iPhone 8 (GSM)",
+      "fingerprint": true,
+      "faceId": false,
+      "screenInches": "4.7",
+      "network": [
+        "4G",
+        "WiFi"
+      ],
+      "releasedEn": "9/12/2017",
+      "hardwareModel": "d201ap",
+      "cpuId": "8015",
+      "boardId": "0A"
+    },
+    "iPhone10,2": {
+      "name": "iPhone 8 Plus (CDMA)",
+      "fingerprint": true,
+      "faceId": false,
+      "screenInches": "5.5",
+      "network": [
+        "4G",
+        "WiFi"
+      ],
+      "releasedEn": "9/12/2017",
+      "hardwareModel": "d21ap",
+      "cpuId": "8015",
+      "boardId": "04"
+    },
+    "iPhone10,5": {
+      "name": "iPhone 8 Plus (GSM)",
+      "fingerprint": true,
+      "faceId": false,
+      "screenInches": "5.5",
+      "network": [
+        "4G",
+        "WiFi"
+      ],
+      "releasedEn": "9/12/2017",
+      "hardwareModel": "d211ap",
+      "cpuId": "8015",
+      "boardId": "0C"
+    },
+    "iPhone10,3": {
+      "name": "iPhone X (CDMA)",
+      "fingerprint": false,
+      "faceId": true,
+      "screenInches": "5.8",
+      "network": [
+        "4G",
+        "WiFi"
+      ],
+      "releasedEn": "9/12/2017",
+      "hardwareModel": "d22ap",
+      "cpuId": "8015",
+      "boardId": "06"
+    },
+    "iPhone10,6": {
+      "name": "iPhone X (GSM)",
+      "fingerprint": false,
+      "faceId": true,
+      "screenInches": "5.8",
+      "network": [
+        "4G",
+        "WiFi"
+      ],
+      "releasedEn": "9/12/2017",
+      "hardwareModel": "d221ap",
+      "cpuId": "8015",
+      "boardId": "0E"
+    },
+    "iPhone11,2": {
+      "name": "iPhone XS",
+      "fingerprint": false,
+      "faceId": true,
+      "screenInches": "5.8",
+      "network": [
+        "4G",
+        "WiFi"
+      ],
+      "releasedEn": "9/12/2018",
+      "hardwareModel": "d321ap",
+      "cpuId": "8020",
+      "boardId": "0E"
+    },
+    "iPhone11,4": {
+      "name": "iPhone XS Max (China mainland)",
+      "fingerprint": false,
+      "faceId": true,
+      "screenInches": "6.5",
+      "network": [
+        "4G",
+        "WiFi"
+      ],
+      "releasedEn": "9/12/2018",
+      "hardwareModel": "d331ap",
+      "cpuId": "8020",
+      "boardId": "0A"
+    },
+    "iPhone11,6": {
+      "name": "iPhone XS Max",
+      "fingerprint": false,
+      "faceId": true,
+      "screenInches": "6.5",
+      "network": [
+        "4G",
+        "WiFi"
+      ],
+      "releasedEn": "9/12/2018",
+      "hardwareModel": "d331pap",
+      "cpuId": "8020",
+      "boardId": "1A"
+    },
+    "iPhone11,8": {
+      "name": "iPhone XR",
+      "fingerprint": false,
+      "faceId": true,
+      "screenInches": "6.1",
+      "network": [
+        "4G",
+        "WiFi"
+      ],
+      "releasedEn": "9/12/2018",
+      "hardwareModel": "n841ap",
+      "cpuId": "8020",
+      "boardId": "0C"
+    },
+    "iPhone12,5": {
+      "name": "iPhone 11 Pro Max",
+      "fingerprint": false,
+      "faceId": true,
+      "screenInches": "6.5",
+      "network": [
+        "4G",
+        "WiFi"
+      ],
+      "releasedEn": "9/10/2019",
+      "hardwareModel": "d431ap",
+      "cpuId": "8030",
+      "boardId": "02"
+    },
+    "iPhone12,3": {
+      "name": "iPhone 11 Pro",
+      "fingerprint": false,
+      "faceId": true,
+      "screenInches": "5.8",
+      "network": [
+        "4G",
+        "WiFi"
+      ],
+      "releasedEn": "9/10/2019",
+      "hardwareModel": "d421ap",
+      "cpuId": "8030",
+      "boardId": "06"
+    },
+    "iPhone12,1": {
+      "name": "iPhone 11",
+      "fingerprint": false,
+      "faceId": true,
+      "screenInches": "6.1",
+      "network": [
+        "4G",
+        "WiFi"
+      ],
+      "releasedEn": "9/10/2019",
+      "hardwareModel": "n104ap",
+      "cpuId": "8030",
+      "boardId": "04"
+    },
+    "iPhone12,8": {
+      "name": "iPhone SE (2nd generation)",
+      "fingerprint": true,
+      "faceId": false,
+      "screenInches": "4.7",
+      "network": [
+        "4G",
+        "WiFi"
+      ],
+      "releasedEn": "4/15/2020",
+      "hardwareModel": "d79ap",
+      "cpuId": "8030",
+      "boardId": "10"
+    },
+    "iPhone14,6": {
+      "name": "iPhone SE (3rd generation)",
+      "fingerprint": true,
+      "faceId": false,
+      "screenInches": "4.7",
+      "network": [
+        "5G",
+        "WiFi"
+      ],
+      "releasedEn": "3/8/2022",
+      "hardwareModel": "d49ap",
+      "cpuId": "8110",
+      "boardId": "10"
+    },
+    "iPhone13,1": {
+      "name": "iPhone 12 mini",
+      "fingerprint": false,
+      "faceId": true,
+      "screenInches": "5.4",
+      "network": [
+        "5G",
+        "WiFi"
+      ],
+      "releasedEn": "10/13/2020",
+      "hardwareModel": "d52gap",
+      "cpuId": "8101",
+      "boardId": "0A"
+    },
+    "iPhone13,2": {
+      "name": "iPhone 12",
+      "fingerprint": false,
+      "faceId": true,
+      "screenInches": "6.1",
+      "network": [
+        "5G",
+        "WiFi"
+      ],
+      "releasedEn": "10/13/2020",
+      "hardwareModel": "d53gap",
+      "cpuId": "8101",
+      "boardId": "0C"
+    },
+    "iPhone13,3": {
+      "name": "iPhone 12 Pro",
+      "fingerprint": false,
+      "faceId": true,
+      "screenInches": "6.1",
+      "network": [
+        "5G",
+        "WiFi"
+      ],
+      "releasedEn": "10/13/2020",
+      "hardwareModel": "d53pap",
+      "cpuId": "8101",
+      "boardId": "0E"
+    },
+    "iPhone13,4": {
+      "name": "iPhone 12 Pro Max",
+      "fingerprint": false,
+      "faceId": true,
+      "screenInches": "6.7",
+      "network": [
+        "5G",
+        "WiFi"
+      ],
+      "releasedEn": "10/13/2020",
+      "hardwareModel": "d54pap",
+      "cpuId": "8101",
+      "boardId": "08"
+    },
+    "iPhone14,4": {
+      "name": "iPhone 13 mini",
+      "fingerprint": false,
+      "faceId": true,
+      "screenInches": "5.4",
+      "network": [
+        "5G",
+        "WiFi"
+      ],
+      "releasedEn": "9/14/2021",
+      "hardwareModel": "d16ap",
+      "cpuId": "8110",
+      "boardId": "08"
+    },
+    "iPhone14,5": {
+      "name": "iPhone 13",
+      "fingerprint": false,
+      "faceId": true,
+      "screenInches": "6.1",
+      "network": [
+        "5G",
+        "WiFi"
+      ],
+      "releasedEn": "9/14/2021",
+      "hardwareModel": "d17ap",
+      "cpuId": "8110",
+      "boardId": "0A"
+    },
+    "iPhone14,2": {
+      "name": "iPhone 13 Pro",
+      "fingerprint": false,
+      "faceId": true,
+      "screenInches": "6.1",
+      "network": [
+        "5G",
+        "WiFi"
+      ],
+      "releasedEn": "9/14/2021",
+      "hardwareModel": "d63ap",
+      "cpuId": "8110",
+      "boardId": "0C"
+    },
+    "iPhone14,3": {
+      "name": "iPhone 13 Pro Max",
+      "fingerprint": false,
+      "faceId": true,
+      "screenInches": "6.7",
+      "network": [
+        "5G",
+        "WiFi"
+      ],
+      "releasedEn": "9/14/2021",
+      "hardwareModel": "d64ap",
+      "cpuId": "8110",
+      "boardId": "0E"
+    },
+    "iPhone14,7": {
+      "name": "iPhone 14",
+      "fingerprint": false,
+      "faceId": true,
+      "screenInches": "6.1",
+      "network": [
+        "5G",
+        "WiFi"
+      ],
+      "releasedEn": "9/7/2022",
+      "hardwareModel": "d27ap",
+      "cpuId": "8110",
+      "boardId": "18"
+    },
+    "iPhone14,8": {
+      "name": "iPhone 14 Plus",
+      "fingerprint": false,
+      "faceId": true,
+      "screenInches": "6.7",
+      "network": [
+        "5G",
+        "WiFi"
+      ],
+      "releasedEn": "9/7/2022",
+      "hardwareModel": "d28ap",
+      "cpuId": "8110",
+      "boardId": "1A"
+    },
+    "iPhone15,2": {
+      "name": "iPhone 14 Pro",
+      "fingerprint": false,
+      "faceId": true,
+      "screenInches": "6.1",
+      "network": [
+        "5G",
+        "WiFi"
+      ],
+      "releasedEn": "9/7/2022",
+      "hardwareModel": "d73ap",
+      "cpuId": "8120",
+      "boardId": "0C"
+    },
+    "iPhone15,3": {
+      "name": "iPhone 14 Pro Max",
+      "fingerprint": false,
+      "faceId": true,
+      "screenInches": "6.7",
+      "network": [
+        "5G",
+        "WiFi"
+      ],
+      "releasedEn": "9/7/2022",
+      "hardwareModel": "d74ap",
+      "cpuId": "8120",
+      "boardId": "0E"
+    },
+    "iPhone15,4": {
+      "name": "iPhone 15",
+      "fingerprint": false,
+      "faceId": true,
+      "screenInches": "6.1",
+      "network": [
+        "5G",
+        "WiFi"
+      ],
+      "releasedEn": "9/13/2023",
+      "hardwareModel": "d37ap",
+      "cpuId": "8120",
+      "boardId": "08"
+    },
+    "iPhone15,5": {
+      "name": "iPhone 15 Plus",
+      "fingerprint": false,
+      "faceId": true,
+      "screenInches": "6.7",
+      "network": [
+        "5G",
+        "WiFi"
+      ],
+      "releasedEn": "9/13/2023",
+      "hardwareModel": "d38ap",
+      "cpuId": "8120",
+      "boardId": "0A"
+    },
+    "iPhone16,1": {
+      "name": "iPhone 15 Pro",
+      "fingerprint": false,
+      "faceId": true,
+      "screenInches": "6.1",
+      "network": [
+        "5G",
+        "WiFi"
+      ],
+      "releasedEn": "9/13/2023",
+      "hardwareModel": "d83ap",
+      "cpuId": "8130",
+      "boardId": "04"
+    },
+    "iPhone16,2": {
+      "name": "iPhone 15 Pro Max",
+      "fingerprint": false,
+      "faceId": true,
+      "screenInches": "6.7",
+      "network": [
+        "5G",
+        "WiFi"
+      ],
+      "releasedEn": "9/13/2023",
+      "hardwareModel": "d84ap",
+      "cpuId": "8130",
+      "boardId": "06"
+    },
+    "iPhone17,3": {
+      "name": "iPhone 16",
+      "fingerprint": false,
+      "faceId": true,
+      "screenInches": "6.1",
+      "network": [
+        "5G",
+        "WiFi"
+      ],
+      "releasedEn": "9/10/2024",
+      "hardwareModel": "d47ap",
+      "cpuId": "8140",
+      "boardId": "08"
+    },
+    "iPhone17,4": {
+      "name": "iPhone 16 Plus",
+      "fingerprint": false,
+      "faceId": true,
+      "screenInches": "6.7",
+      "network": [
+        "5G",
+        "WiFi"
+      ],
+      "releasedEn": "9/10/2024",
+      "hardwareModel": "d48ap",
+      "cpuId": "8140",
+      "boardId": "0A"
+    },
+    "iPhone17,1": {
+      "name": "iPhone 16 Pro",
+      "fingerprint": false,
+      "faceId": true,
+      "screenInches": "6.3",
+      "network": [
+        "5G",
+        "WiFi"
+      ],
+      "releasedEn": "9/10/2024",
+      "hardwareModel": "d93ap",
+      "cpuId": "8140",
+      "boardId": "0C"
+    },
+    "iPhone17,2": {
+      "name": "iPhone 16 Pro Max",
+      "fingerprint": false,
+      "faceId": true,
+      "screenInches": "6.9",
+      "network": [
+        "5G",
+        "WiFi"
+      ],
+      "releasedEn": "9/10/2024",
+      "hardwareModel": "d94ap",
+      "cpuId": "8140",
+      "boardId": "0E"
+    },
+    "iPhone17,5": {
+      "name": "iPhone 16e",
+      "fingerprint": false,
+      "faceId": true,
+      "screenInches": "6.1",
+      "network": [
+        "5G",
+        "WiFi"
+      ],
+      "releasedEn": "9/20/2025",
+      "hardwareModel": "v59ap",
+      "cpuId": "8140",
+      "boardId": "04"
+    },
+    "iPhone18,3": {
+      "name": "iPhone 17",
+      "fingerprint": false,
+      "faceId": true,
+      "screenInches": "6.3",
+      "network": [
+        "5G",
+        "WiFi"
+      ],
+      "releasedEn": "9/10/2025",
+      "hardwareModel": "v57ap",
+      "cpuId": "8150",
+      "boardId": "08"
+    },
+    "iPhone18,1": {
+      "name": "iPhone 17 Pro",
+      "fingerprint": false,
+      "faceId": true,
+      "screenInches": "6.3",
+      "network": [
+        "5G",
+        "WiFi"
+      ],
+      "releasedEn": "9/10/2025",
+      "hardwareModel": "v53ap",
+      "cpuId": "8150",
+      "boardId": "0C"
+    },
+    "iPhone18,2": {
+      "name": "iPhone 17 Pro Max",
+      "fingerprint": false,
+      "faceId": true,
+      "screenInches": "6.9",
+      "network": [
+        "5G",
+        "WiFi"
+      ],
+      "releasedEn": "9/10/2025",
+      "hardwareModel": "v54ap",
+      "cpuId": "8150",
+      "boardId": "0E"
+    },
+    "iPhone18,4": {
+      "name": "iPhone Air",
+      "fingerprint": false,
+      "faceId": true,
+      "screenInches": "6.5",
+      "network": [
+        "5G",
+        "WiFi"
+      ],
+      "releasedEn": "9/10/2025",
+      "hardwareModel": "d23ap",
+      "cpuId": "8150",
+      "boardId": "0A"
+    },
+    "iPhone18,5": {
+      "name": "iPhone 17e",
+      "fingerprint": false,
+      "faceId": true,
+      "screenInches": "6.1",
+      "network": [
+        "5G",
+        "WiFi"
+      ],
+      "releasedEn": "3/4/2025",
+      "hardwareModel": "v159ap",
+      "cpuId": "8150",
+      "boardId": "16"
+    },
+    "iPad1,1": {
+      "name": "iPad",
+      "fingerprint": false,
+      "faceId": false,
+      "screenInches": "9.7",
+      "network": [
+        "WiFi"
+      ],
+      "releasedEn": "1/27/2010",
+      "hardwareModel": "k48ap",
+      "cpuId": "8930",
+      "boardId": "02"
+    },
+    "iPad2,3": {
+      "name": "iPad 2 Wi-Fi + 3G (CDMA)",
+      "fingerprint": false,
+      "faceId": false,
+      "screenInches": "9.7",
+      "network": [
+        "CDMA",
+        "WiFi"
+      ],
+      "releasedEn": "3/2/2011",
+      "hardwareModel": "k95ap",
+      "cpuId": "8940",
+      "boardId": "02"
+    },
+    "iPad2,1": {
+      "name": "iPad 2 Wi-Fi",
+      "fingerprint": false,
+      "faceId": false,
+      "screenInches": "9.7",
+      "network": [
+        "WiFi"
+      ],
+      "releasedEn": "3/2/2011",
+      "hardwareModel": "k93ap",
+      "cpuId": "8940",
+      "boardId": "04"
+    },
+    "iPad2,2": {
+      "name": "iPad 2 Wi-Fi + 3G (GSM)",
+      "fingerprint": false,
+      "faceId": false,
+      "screenInches": "9.7",
+      "network": [
+        "GSM",
+        "WiFi"
+      ],
+      "releasedEn": "3/2/2011",
+      "hardwareModel": "k94ap",
+      "cpuId": "8940",
+      "boardId": "06"
+    },
+    "iPad2,4": {
+      "name": "iPad 2 Wi-Fi (Mid 2012)",
+      "fingerprint": false,
+      "faceId": false,
+      "screenInches": "9.7",
+      "network": [
+        "WiFi"
+      ],
+      "releasedEn": "3/2/2011",
+      "hardwareModel": "k93aap",
+      "cpuId": "8942",
+      "boardId": "06"
+    },
+    "iPad3,1": {
+      "name": "iPad (3rd generation) Wi-Fi",
+      "fingerprint": false,
+      "faceId": false,
+      "screenInches": "9.7",
+      "network": [
+        "WiFi"
+      ],
+      "releasedEn": "3/7/2012",
+      "hardwareModel": "j1ap",
+      "cpuId": "8945",
+      "boardId": "00"
+    },
+    "iPad3,2": {
+      "name": "iPad (3rd generation) Wi-Fi + Cellular (VZ)",
+      "fingerprint": false,
+      "faceId": false,
+      "screenInches": "9.7",
+      "network": [
+        "CDMA",
+        "WiFi"
+      ],
+      "releasedEn": "3/7/2012",
+      "hardwareModel": "j2ap",
+      "cpuId": "8945",
+      "boardId": "02"
+    },
+    "iPad3,3": {
+      "name": "iPad (3rd generation) Wi-Fi + Cellular",
+      "fingerprint": false,
+      "faceId": false,
+      "screenInches": "9.7",
+      "network": [
+        "GSM",
+        "WiFi"
+      ],
+      "releasedEn": "3/7/2012",
+      "hardwareModel": "j2aap",
+      "cpuId": "8945",
+      "boardId": "04"
+    },
+    "iPad3,4": {
+      "name": "iPad (4th generation) Wi-Fi",
+      "fingerprint": false,
+      "faceId": false,
+      "screenInches": "9.7",
+      "network": [
+        "WiFi"
+      ],
+      "releasedEn": "10/24/2012",
+      "hardwareModel": "p101ap",
+      "cpuId": "8955",
+      "boardId": "00"
+    },
+    "iPad3,5": {
+      "name": "iPad (4th generation) Wi-Fi + Cellular",
+      "fingerprint": false,
+      "faceId": false,
+      "screenInches": "9.7",
+      "network": [
+        "GSM",
+        "WiFi"
+      ],
+      "releasedEn": "10/24/2012",
+      "hardwareModel": "p102ap",
+      "cpuId": "8955",
+      "boardId": "02"
+    },
+    "iPad3,6": {
+      "name": "iPad (4th generation) Wi-Fi + Cellular (MM)",
+      "fingerprint": false,
+      "faceId": false,
+      "screenInches": "9.7",
+      "network": [
+        "CDMA",
+        "WiFi"
+      ],
+      "releasedEn": "10/24/2012",
+      "hardwareModel": "p103ap",
+      "cpuId": "8955",
+      "boardId": "04"
+    },
+    "iPad4,1": {
+      "name": "iPad Air Wi-Fi",
+      "fingerprint": false,
+      "faceId": false,
+      "screenInches": "9.7",
+      "network": [
+        "WiFi"
+      ],
+      "releasedEn": "10/23/2013",
+      "hardwareModel": "j71ap",
+      "cpuId": "8960",
+      "boardId": "10"
+    },
+    "iPad4,2": {
+      "name": "iPad Air Wi-Fi + Cellular",
+      "fingerprint": false,
+      "faceId": false,
+      "screenInches": "9.7",
+      "network": [
+        "4G",
+        "WiFi"
+      ],
+      "releasedEn": "10/23/2013",
+      "hardwareModel": "j72ap",
+      "cpuId": "8960",
+      "boardId": "12"
+    },
+    "iPad4,3": {
+      "name": "iPad Air Wi-Fi + Cellular (TD-LTE)",
+      "fingerprint": false,
+      "faceId": false,
+      "screenInches": "9.7",
+      "network": [
+        "4G",
+        "WiFi"
+      ],
+      "releasedEn": "10/23/2013",
+      "hardwareModel": "j73ap",
+      "cpuId": "8960",
+      "boardId": "14"
+    },
+    "iPad5,3": {
+      "name": "iPad Air 2 Wi-Fi",
+      "fingerprint": true,
+      "faceId": false,
+      "screenInches": "9.7",
+      "network": [
+        "WiFi"
+      ],
+      "releasedEn": "10/16/2014",
+      "hardwareModel": "j81ap",
+      "cpuId": "7001",
+      "boardId": "06"
+    },
+    "iPad5,4": {
+      "name": "iPad Air 2 Wi-Fi + Cellular",
+      "fingerprint": true,
+      "faceId": false,
+      "screenInches": "9.7",
+      "network": [
+        "4G",
+        "WiFi"
+      ],
+      "releasedEn": "10/16/2014",
+      "hardwareModel": "j82ap",
+      "cpuId": "7001",
+      "boardId": "02"
+    },
+    "iPad11,3": {
+      "name": "iPad Air (3rd generation) Wi-Fi",
+      "fingerprint": true,
+      "faceId": false,
+      "screenInches": "10.5",
+      "network": [
+        "WiFi"
+      ],
+      "releasedEn": "3/18/2019",
+      "hardwareModel": "j217ap",
+      "cpuId": "8020",
+      "boardId": "1C"
+    },
+    "iPad11,4": {
+      "name": "iPad Air (3rd generation) Wi-Fi + Cellular",
+      "fingerprint": true,
+      "faceId": false,
+      "screenInches": "10.5",
+      "network": [
+        "4G",
+        "WiFi"
+      ],
+      "releasedEn": "3/18/2019",
+      "hardwareModel": "j218ap",
+      "cpuId": "8020",
+      "boardId": "1E"
+    },
+    "iPad13,1": {
+      "name": "iPad Air (4th generation) Wi-Fi",
+      "fingerprint": true,
+      "faceId": false,
+      "screenInches": "10.9",
+      "network": [
+        "WiFi"
+      ],
+      "releasedEn": "9/15/2020",
+      "hardwareModel": "j307ap",
+      "cpuId": "8101",
+      "boardId": "04"
+    },
+    "iPad13,2": {
+      "name": "iPad Air (4th generation) Wi-Fi + Cellular",
+      "fingerprint": true,
+      "faceId": false,
+      "screenInches": "10.9",
+      "network": [
+        "4G",
+        "WiFi"
+      ],
+      "releasedEn": "9/15/2020",
+      "hardwareModel": "j308ap",
+      "cpuId": "8101",
+      "boardId": "06"
+    },
+    "iPad13,16": {
+      "name": "iPad Air (5th generation) Wi-Fi",
+      "fingerprint": true,
+      "faceId": false,
+      "screenInches": "10.9",
+      "network": [
+        "WiFi"
+      ],
+      "releasedEn": "3/8/2022",
+      "hardwareModel": "j407ap",
+      "cpuId": "8103",
+      "boardId": "10"
+    },
+    "iPad13,17": {
+      "name": "iPad Air (5th generation) Wi-Fi + Cellular",
+      "fingerprint": true,
+      "faceId": false,
+      "screenInches": "10.9",
+      "network": [
+        "5G",
+        "WiFi"
+      ],
+      "releasedEn": "3/8/2022",
+      "hardwareModel": "j408ap",
+      "cpuId": "8103",
+      "boardId": "12"
+    },
+    "iPad14,8": {
+      "name": "iPad Air 11-inch (M2) Wi-Fi",
+      "fingerprint": true,
+      "faceId": false,
+      "screenInches": "11",
+      "network": [
+        "WiFi"
+      ],
+      "releasedEn": "5/7/2024",
+      "hardwareModel": "j507ap",
+      "cpuId": "8112",
+      "boardId": "10"
+    },
+    "iPad14,9": {
+      "name": "iPad Air 11-inch (M2) Wi-Fi + Cellular",
+      "fingerprint": true,
+      "faceId": false,
+      "screenInches": "11",
+      "network": [
+        "5G",
+        "WiFi"
+      ],
+      "releasedEn": "5/7/2024",
+      "hardwareModel": "j508ap",
+      "cpuId": "8112",
+      "boardId": "12"
+    },
+    "iPad14,10": {
+      "name": "iPad Air 13-inch (M2) Wi-Fi",
+      "fingerprint": true,
+      "faceId": false,
+      "screenInches": "13",
+      "network": [
+        "WiFi"
+      ],
+      "releasedEn": "5/7/2024",
+      "hardwareModel": "j537ap",
+      "cpuId": "8112",
+      "boardId": "14"
+    },
+    "iPad14,11": {
+      "name": "iPad Air 13-inch (M2) Wi-Fi + Cellular",
+      "fingerprint": true,
+      "faceId": false,
+      "screenInches": "13",
+      "network": [
+        "5G",
+        "WiFi"
+      ],
+      "releasedEn": "5/7/2024",
+      "hardwareModel": "j538ap",
+      "cpuId": "8112",
+      "boardId": "16"
+    },
+    "iPad15,3": {
+      "name": "iPad Air 11-inch (M3) Wi-Fi",
+      "fingerprint": true,
+      "faceId": false,
+      "screenInches": "11",
+      "network": [
+        "WiFi"
+      ],
+      "releasedEn": "3/4/2025",
+      "hardwareModel": "j607ap",
+      "cpuId": "8122",
+      "boardId": "08"
+    },
+    "iPad15,4": {
+      "name": "iPad Air 11-inch (M3) Wi-Fi + Cellular",
+      "fingerprint": true,
+      "faceId": false,
+      "screenInches": "11",
+      "network": [
+        "5G",
+        "WiFi"
+      ],
+      "releasedEn": "3/4/2025",
+      "hardwareModel": "j608ap",
+      "cpuId": "8122",
+      "boardId": "0A"
+    },
+    "iPad15,5": {
+      "name": "iPad Air 13-inch (M3) Wi-Fi",
+      "fingerprint": true,
+      "faceId": false,
+      "screenInches": "13",
+      "network": [
+        "WiFi"
+      ],
+      "releasedEn": "3/4/2025",
+      "hardwareModel": "j637ap",
+      "cpuId": "8122",
+      "boardId": "0C"
+    },
+    "iPad15,6": {
+      "name": "iPad Air 13-inch (M3) Wi-Fi + Cellular",
+      "fingerprint": true,
+      "faceId": false,
+      "screenInches": "13",
+      "network": [
+        "5G",
+        "WiFi"
+      ],
+      "releasedEn": "3/4/2025",
+      "hardwareModel": "j638ap",
+      "cpuId": "8122",
+      "boardId": "0E"
+    },
+    "iPad16,8": {
+      "name": "iPad Air 11-inch (M4) Wi-Fi",
+      "fingerprint": true,
+      "faceId": false,
+      "screenInches": "11",
+      "network": [
+        "WiFi"
+      ],
+      "releasedEn": "3/4/2026",
+      "hardwareModel": "j707ap",
+      "cpuId": "8132",
+      "boardId": "10"
+    },
+    "iPad16,9": {
+      "name": "iPad Air 11-inch (M4) Wi-Fi + Cellular",
+      "fingerprint": true,
+      "faceId": false,
+      "screenInches": "11",
+      "network": [
+        "5G",
+        "WiFi"
+      ],
+      "releasedEn": "3/4/2026",
+      "hardwareModel": "j708ap",
+      "cpuId": "8132",
+      "boardId": "12"
+    },
+    "iPad16,10": {
+      "name": "iPad Air 13-inch (M4) Wi-Fi",
+      "fingerprint": true,
+      "faceId": false,
+      "screenInches": "13",
+      "network": [
+        "WiFi"
+      ],
+      "releasedEn": "3/4/2026",
+      "hardwareModel": "j737ap",
+      "cpuId": "8132",
+      "boardId": "14"
+    },
+    "iPad16,11": {
+      "name": "iPad Air 13-inch (M4) Wi-Fi + Cellular",
+      "fingerprint": true,
+      "faceId": false,
+      "screenInches": "13",
+      "network": [
+        "5G",
+        "WiFi"
+      ],
+      "releasedEn": "3/4/2026",
+      "hardwareModel": "j738ap",
+      "cpuId": "8132",
+      "boardId": "16"
+    },
+    "iPad6,3": {
+      "name": "iPad Pro (9.7-inch) Wi-Fi",
+      "fingerprint": true,
+      "faceId": false,
+      "screenInches": "9.7",
+      "network": [
+        "WiFi"
+      ],
+      "releasedEn": "3/21/2016",
+      "hardwareModel": "j127ap",
+      "cpuId": "8001",
+      "boardId": "08"
+    },
+    "iPad6,4": {
+      "name": "iPad Pro (9.7-inch) Wi-Fi + Cellular",
+      "fingerprint": true,
+      "faceId": false,
+      "screenInches": "9.7",
+      "network": [
+        "4G",
+        "WiFi"
+      ],
+      "releasedEn": "3/21/2016",
+      "hardwareModel": "j128ap",
+      "cpuId": "8001",
+      "boardId": "0A"
+    },
+    "iPad6,7": {
+      "name": "iPad Pro (12.9-inch) (1st generation) Wi-Fi",
+      "fingerprint": true,
+      "faceId": false,
+      "screenInches": "12.9",
+      "network": [
+        "WiFi"
+      ],
+      "releasedEn": "11/11/2015",
+      "hardwareModel": "j98aap",
+      "cpuId": "8001",
+      "boardId": "10"
+    },
+    "iPad6,8": {
+      "name": "iPad Pro (12.9-inch) (1st generation) Wi-Fi + Cellular",
+      "fingerprint": true,
+      "faceId": false,
+      "screenInches": "12.9",
+      "network": [
+        "4G",
+        "WiFi"
+      ],
+      "releasedEn": "11/11/2015",
+      "hardwareModel": "j99aap",
+      "cpuId": "8001",
+      "boardId": "12"
+    },
+    "iPad6,11": {
+      "name": "iPad (5th generation) Wi-Fi",
+      "fingerprint": true,
+      "faceId": false,
+      "screenInches": "9.7",
+      "network": [
+        "WiFi"
+      ],
+      "releasedEn": "3/21/2017",
+      "hardwareModel": "j71sap",
+      "cpuId": "8000",
+      "boardId": "10"
+    },
+    "iPad6,12": {
+      "name": "iPad (5th generation) Wi-Fi + Cellular",
+      "fingerprint": true,
+      "faceId": false,
+      "screenInches": "9.7",
+      "network": [
+        "4G",
+        "WiFi"
+      ],
+      "releasedEn": "3/21/2017",
+      "hardwareModel": "j72sap",
+      "cpuId": "8000",
+      "boardId": "12"
+    },
+    "iPad7,3": {
+      "name": "iPad Pro (10.5-inch) Wi-Fi",
+      "fingerprint": true,
+      "faceId": false,
+      "screenInches": "10.5",
+      "network": [
+        "WiFi"
+      ],
+      "releasedEn": "6/5/2017",
+      "hardwareModel": "j207ap",
+      "cpuId": "8011",
+      "boardId": "04"
+    },
+    "iPad7,4": {
+      "name": "iPad Pro (10.5-inch) Wi-Fi + Cellular",
+      "fingerprint": true,
+      "faceId": false,
+      "screenInches": "10.5",
+      "network": [
+        "WiFi",
+        "4G"
+      ],
+      "releasedEn": "6/5/2017",
+      "hardwareModel": "j208ap",
+      "cpuId": "8011",
+      "boardId": "06"
+    },
+    "iPad7,1": {
+      "name": "iPad Pro (12.9-inch) (2nd generation) Wi-Fi",
+      "fingerprint": true,
+      "faceId": false,
+      "screenInches": "12.9",
+      "network": [
+        "WiFi"
+      ],
+      "releasedEn": "6/5/2017",
+      "hardwareModel": "j120ap",
+      "cpuId": "8011",
+      "boardId": "0C"
+    },
+    "iPad7,2": {
+      "name": "iPad Pro (12.9-inch) (2nd generation) Wi-Fi + Cellular",
+      "fingerprint": true,
+      "faceId": false,
+      "screenInches": "12.9",
+      "network": [
+        "WiFi",
+        "4G"
+      ],
+      "releasedEn": "6/5/2017",
+      "hardwareModel": "j121ap",
+      "cpuId": "8011",
+      "boardId": "0E"
+    },
+    "iPad7,5": {
+      "name": "iPad (6th generation) Wi-Fi",
+      "fingerprint": true,
+      "faceId": false,
+      "screenInches": "9.7",
+      "network": [
+        "WiFi"
+      ],
+      "releasedEn": "3/27/2018",
+      "hardwareModel": "j71bap",
+      "cpuId": "8010",
+      "boardId": "18"
+    },
+    "iPad7,6": {
+      "name": "iPad (6th generation) Wi-Fi + Cellular",
+      "fingerprint": true,
+      "faceId": false,
+      "screenInches": "9.7",
+      "network": [
+        "4G",
+        "WiFi"
+      ],
+      "releasedEn": "3/27/2018",
+      "hardwareModel": "j72bap",
+      "cpuId": "8010",
+      "boardId": "1A"
+    },
+    "iPad7,11": {
+      "name": "iPad (7th generation) Wi-Fi",
+      "fingerprint": true,
+      "faceId": false,
+      "screenInches": "10.2",
+      "network": [
+        "WiFi"
+      ],
+      "releasedEn": "9/30/2019",
+      "hardwareModel": "j171ap",
+      "cpuId": "8010",
+      "boardId": "1C"
+    },
+    "iPad7,12": {
+      "name": "iPad (7th generation) Wi-Fi + Cellular",
+      "fingerprint": true,
+      "faceId": false,
+      "screenInches": "10.2",
+      "network": [
+        "4G",
+        "WiFi"
+      ],
+      "releasedEn": "9/30/2019",
+      "hardwareModel": "j172ap",
+      "cpuId": "8010",
+      "boardId": "1E"
+    },
+    "iPad8,1": {
+      "name": "iPad Pro 11-inch (1st generation) Wi-Fi",
+      "fingerprint": false,
+      "faceId": true,
+      "screenInches": "11",
+      "network": [
+        "WiFi"
+      ],
+      "releasedEn": "10/30/2018",
+      "hardwareModel": "j317ap",
+      "cpuId": "8027",
+      "boardId": "0C"
+    },
+    "iPad8,2": {
+      "name": "iPad Pro 11-inch (1st generation) Wi-Fi (1TB)",
+      "fingerprint": false,
+      "faceId": true,
+      "screenInches": "11",
+      "network": [
+        "WiFi",
+        "1TB"
+      ],
+      "releasedEn": "10/30/2018",
+      "hardwareModel": "j317xap",
+      "cpuId": "8027",
+      "boardId": "1C"
+    },
+    "iPad8,3": {
+      "name": "iPad Pro 11-inch (1st generation) Wi-Fi + Cellular",
+      "fingerprint": false,
+      "faceId": true,
+      "screenInches": "11",
+      "network": [
+        "4G",
+        "WiFi"
+      ],
+      "releasedEn": "10/30/2018",
+      "hardwareModel": "j318ap",
+      "cpuId": "8027",
+      "boardId": "0E"
+    },
+    "iPad8,4": {
+      "name": "iPad Pro 11-inch (1st generation) Wi-Fi + Cellular (1TB)",
+      "fingerprint": false,
+      "faceId": true,
+      "screenInches": "11",
+      "network": [
+        "4G",
+        "WiFi",
+        "1TB"
+      ],
+      "releasedEn": "10/30/2018",
+      "hardwareModel": "j318xap",
+      "cpuId": "8027",
+      "boardId": "1E"
+    },
+    "iPad8,5": {
+      "name": "iPad Pro 12.9-inch (3rd generation) Wi-Fi",
+      "fingerprint": false,
+      "faceId": true,
+      "screenInches": "12.9",
+      "network": [
+        "WiFi"
+      ],
+      "releasedEn": "10/30/2018",
+      "hardwareModel": "j320ap",
+      "cpuId": "8027",
+      "boardId": "08"
+    },
+    "iPad8,6": {
+      "name": "iPad Pro 12.9-inch (3rd generation) Wi-Fi (1TB)",
+      "fingerprint": false,
+      "faceId": true,
+      "screenInches": "12.9",
+      "network": [
+        "WiFi",
+        "1TB"
+      ],
+      "releasedEn": "10/30/2018",
+      "hardwareModel": "j320xap",
+      "cpuId": "8027",
+      "boardId": "18"
+    },
+    "iPad8,7": {
+      "name": "iPad Pro 12.9-inch (3rd generation) Wi-Fi + Cellular",
+      "fingerprint": false,
+      "faceId": true,
+      "screenInches": "12.9",
+      "network": [
+        "4G",
+        "WiFi"
+      ],
+      "releasedEn": "10/30/2018",
+      "hardwareModel": "j321ap",
+      "cpuId": "8027",
+      "boardId": "0A"
+    },
+    "iPad8,8": {
+      "name": "iPad Pro 12.9-inch (3rd generation) Wi-Fi + Cellular (1TB)",
+      "fingerprint": false,
+      "faceId": true,
+      "screenInches": "12.9",
+      "network": [
+        "4G",
+        "WiFi",
+        "1TB"
+      ],
+      "releasedEn": "10/30/2018",
+      "hardwareModel": "j321xap",
+      "cpuId": "8027",
+      "boardId": "1A"
+    },
+    "iPad8,9": {
+      "name": "iPad Pro 11-inch (2nd generation) Wi-Fi",
+      "fingerprint": false,
+      "faceId": true,
+      "screenInches": "11",
+      "network": [
+        "WiFi"
+      ],
+      "releasedEn": "3/25/2020",
+      "hardwareModel": "j417ap",
+      "cpuId": "8027",
+      "boardId": "3C"
+    },
+    "iPad8,10": {
+      "name": "iPad Pro 11-inch (2nd generation) Wi-Fi + Cellular",
+      "fingerprint": false,
+      "faceId": true,
+      "screenInches": "11",
+      "network": [
+        "4G",
+        "WiFi"
+      ],
+      "releasedEn": "3/25/2020",
+      "hardwareModel": "j418ap",
+      "cpuId": "8027",
+      "boardId": "3E"
+    },
+    "iPad8,11": {
+      "name": "iPad Pro 12.9-inch (4th generation) Wi-Fi",
+      "fingerprint": false,
+      "faceId": true,
+      "screenInches": "12.9",
+      "network": [
+        "WiFi"
+      ],
+      "releasedEn": "3/25/2020",
+      "hardwareModel": "j420ap",
+      "cpuId": "8027",
+      "boardId": "38"
+    },
+    "iPad8,12": {
+      "name": "iPad Pro 12.9-inch (4th generation) Wi-Fi + Cellular",
+      "fingerprint": false,
+      "faceId": true,
+      "screenInches": "12.9",
+      "network": [
+        "4G",
+        "WiFi"
+      ],
+      "releasedEn": "3/25/2020",
+      "hardwareModel": "j421ap",
+      "cpuId": "8027",
+      "boardId": "3A"
+    },
+    "iPad13,4": {
+      "name": "iPad Pro 11-inch (3rd generation) Wi-Fi",
+      "fingerprint": false,
+      "faceId": true,
+      "screenInches": "11",
+      "network": [
+        "WiFi"
+      ],
+      "releasedEn": "4/21/2021",
+      "hardwareModel": "j517ap",
+      "cpuId": "8103",
+      "boardId": "08"
+    },
+    "iPad13,5": {
+      "name": "iPad Pro 11-inch (3rd generation) Wi-Fi (1 or 2 TB)",
+      "fingerprint": false,
+      "faceId": true,
+      "screenInches": "11",
+      "network": [
+        "WiFi"
+      ],
+      "releasedEn": "4/21/2021",
+      "hardwareModel": "j517xap",
+      "cpuId": "8103",
+      "boardId": "0A"
+    },
+    "iPad13,6": {
+      "name": "iPad Pro 11-inch (3rd generation) Wi-Fi + Cellular",
+      "fingerprint": false,
+      "faceId": true,
+      "screenInches": "11",
+      "network": [
+        "WiFi"
+      ],
+      "releasedEn": "4/21/2021",
+      "hardwareModel": "j518ap",
+      "cpuId": "8103",
+      "boardId": "0C"
+    },
+    "iPad13,7": {
+      "name": "iPad Pro 11-inch (3rd generation) Wi-Fi + Cellular (1 or 2 TB)",
+      "fingerprint": false,
+      "faceId": true,
+      "screenInches": "11",
+      "network": [
+        "WiFi"
+      ],
+      "releasedEn": "4/21/2021",
+      "hardwareModel": "j518xap",
+      "cpuId": "8103",
+      "boardId": "0E"
+    },
+    "iPad13,8": {
+      "name": "iPad Pro 12.9-inch (5th generation) Wi-Fi",
+      "fingerprint": false,
+      "faceId": true,
+      "screenInches": "312.9",
+      "network": [
+        "WiFi"
+      ],
+      "releasedEn": "4/21/2021",
+      "hardwareModel": "j522ap",
+      "cpuId": "8103",
+      "boardId": "18"
+    },
+    "iPad13,9": {
+      "name": "iPad Pro 12.9-inch (5th generation) Wi-Fi (1 or 2 TB)",
+      "fingerprint": false,
+      "faceId": true,
+      "screenInches": "12.9",
+      "network": [
+        "WiFi"
+      ],
+      "releasedEn": "4/21/2021",
+      "hardwareModel": "j522xap",
+      "cpuId": "8103",
+      "boardId": "1A"
+    },
+    "iPad13,10": {
+      "name": "iPad Pro 12.9-inch (5th generation) Wi-Fi + Cellular",
+      "fingerprint": false,
+      "faceId": true,
+      "screenInches": "12.9",
+      "network": [
+        "WiFi"
+      ],
+      "releasedEn": "4/21/2021",
+      "hardwareModel": "j523ap",
+      "cpuId": "8103",
+      "boardId": "1C"
+    },
+    "iPad13,11": {
+      "name": "iPad Pro 12.9-inch (5th generation) Wi-Fi + Cellular (1 or 2 TB)",
+      "fingerprint": false,
+      "faceId": true,
+      "screenInches": "12.9",
+      "network": [
+        "WiFi"
+      ],
+      "releasedEn": "4/21/2021",
+      "hardwareModel": "j523xap",
+      "cpuId": "8103",
+      "boardId": "1E"
+    },
+    "iPad14,3": {
+      "name": "iPad Pro 11-inch (4th generation) Wi-Fi",
+      "fingerprint": false,
+      "faceId": true,
+      "screenInches": "11",
+      "network": [
+        "WiFi"
+      ],
+      "releasedEn": "10/18/2022",
+      "hardwareModel": "j617ap",
+      "cpuId": "8112",
+      "boardId": "08"
+    },
+    "iPad14,4": {
+      "name": "iPad Pro 11-inch (4th generation) Wi-Fi + Cellular",
+      "fingerprint": false,
+      "faceId": true,
+      "screenInches": "11",
+      "network": [
+        "4G",
+        "WiFi"
+      ],
+      "releasedEn": "10/18/2022",
+      "hardwareModel": "j618ap",
+      "cpuId": "8112",
+      "boardId": "0A"
+    },
+    "iPad14,5": {
+      "name": "iPad Pro 12.9-inch (6th generation) Wi-Fi",
+      "fingerprint": false,
+      "faceId": true,
+      "screenInches": "12.9",
+      "network": [
+        "WiFi"
+      ],
+      "releasedEn": "10/18/2022",
+      "hardwareModel": "j620ap",
+      "cpuId": "8112",
+      "boardId": "0C"
+    },
+    "iPad14,6": {
+      "name": "iPad Pro 12.9-inch (6th generation) Wi-Fi + Cellular",
+      "fingerprint": false,
+      "faceId": true,
+      "screenInches": "12.9",
+      "network": [
+        "4G",
+        "WiFi"
+      ],
+      "releasedEn": "10/18/2022",
+      "hardwareModel": "j621ap",
+      "cpuId": "8112",
+      "boardId": "0E"
+    },
+    "iPad16,3": {
+      "name": "iPad Pro 11-inch (M4) Wi-Fi",
+      "fingerprint": false,
+      "faceId": true,
+      "screenInches": "11",
+      "network": [
+        "5G",
+        "WiFi"
+      ],
+      "releasedEn": "5/7/2024",
+      "hardwareModel": "j717ap",
+      "cpuId": "8132",
+      "boardId": "08"
+    },
+    "iPad16,4": {
+      "name": "iPad Pro 11-inch (M4) Wi-Fi + Cellular",
+      "fingerprint": false,
+      "faceId": true,
+      "screenInches": "11",
+      "network": [
+        "5G",
+        "WiFi"
+      ],
+      "releasedEn": "5/7/2024",
+      "hardwareModel": "j718ap",
+      "cpuId": "8132",
+      "boardId": "0A"
+    },
+    "iPad16,5": {
+      "name": "iPad Pro 13-inch (M4) Wi-Fi",
+      "fingerprint": false,
+      "faceId": true,
+      "screenInches": "13",
+      "network": [
+        "5G",
+        "WiFi"
+      ],
+      "releasedEn": "5/7/2024",
+      "hardwareModel": "j720ap",
+      "cpuId": "8132",
+      "boardId": "0C"
+    },
+    "iPad16,6": {
+      "name": "iPad Pro 13-inch (M4) Wi-Fi + Cellular",
+      "fingerprint": false,
+      "faceId": true,
+      "screenInches": "13",
+      "network": [
+        "5G",
+        "WiFi"
+      ],
+      "releasedEn": "5/7/2024",
+      "hardwareModel": "j721ap",
+      "cpuId": "8132",
+      "boardId": "0E"
+    },
+    "iPad17,1": {
+      "name": "iPad Pro 11-inch Wi-Fi (M5)",
+      "fingerprint": false,
+      "faceId": true,
+      "screenInches": "11",
+      "network": [
+        "WiFi"
+      ],
+      "releasedEn": "15/10/2025",
+      "hardwareModel": "J817AP",
+      "cpuId": "8142",
+      "boardId": "08"
+    },
+    "iPad17,2": {
+      "name": "iPad Pro 11-inch Wi-Fi + Cellular (M5)",
+      "fingerprint": false,
+      "faceId": true,
+      "screenInches": "11",
+      "network": [
+        "5G",
+        "WiFi"
+      ],
+      "releasedEn": "15/10/2025",
+      "hardwareModel": "J818AP",
+      "cpuId": "8142",
+      "boardId": "0A"
+    },
+    "iPad17,3": {
+      "name": "iPad Pro 13-inch Wi-Fi (M5)",
+      "fingerprint": false,
+      "faceId": true,
+      "screenInches": "13",
+      "network": [
+        "WiFi"
+      ],
+      "releasedEn": "15/10/2025",
+      "hardwareModel": "J820AP",
+      "cpuId": "8142",
+      "boardId": "0C"
+    },
+    "iPad17,4": {
+      "name": "iPad Pro 13-inch Wi-Fi + Cellular (M5)",
+      "fingerprint": false,
+      "faceId": true,
+      "screenInches": "13",
+      "network": [
+        "5G",
+        "WiFi"
+      ],
+      "releasedEn": "15/10/2025",
+      "hardwareModel": "J821AP",
+      "cpuId": "8142",
+      "boardId": "0E"
+    },
+    "iPad2,5": {
+      "name": "iPad mini Wi-Fi",
+      "fingerprint": false,
+      "faceId": false,
+      "screenInches": "7.9",
+      "network": [
+        "WiFi"
+      ],
+      "releasedEn": "10/24/2012",
+      "hardwareModel": "p105ap",
+      "cpuId": "8942",
+      "boardId": "0A"
+    },
+    "iPad2,6": {
+      "name": "iPad mini Wi-Fi + Cellular",
+      "fingerprint": false,
+      "faceId": false,
+      "screenInches": "7.9",
+      "network": [
+        "GSM",
+        "WiFi"
+      ],
+      "releasedEn": "10/24/2012",
+      "hardwareModel": "p106ap",
+      "cpuId": "8942",
+      "boardId": "0C"
+    },
+    "iPad2,7": {
+      "name": "iPad mini Wi-Fi + Cellular (MM)",
+      "fingerprint": false,
+      "faceId": false,
+      "screenInches": "7.9",
+      "network": [
+        "CDMA",
+        "WiFi"
+      ],
+      "releasedEn": "10/24/2012",
+      "hardwareModel": "p107ap",
+      "cpuId": "8942",
+      "boardId": "0E"
+    },
+    "iPad4,4": {
+      "name": "iPad mini 2 Wi-Fi",
+      "fingerprint": false,
+      "faceId": false,
+      "screenInches": "7.9",
+      "network": [
+        "WiFi"
+      ],
+      "releasedEn": "10/22/2013",
+      "hardwareModel": "j85ap",
+      "cpuId": "8960",
+      "boardId": "0A"
+    },
+    "iPad4,5": {
+      "name": "iPad mini 2 Wi-Fi + Cellular",
+      "fingerprint": false,
+      "faceId": false,
+      "screenInches": "7.9",
+      "network": [
+        "4G",
+        "WiFi"
+      ],
+      "releasedEn": "10/22/2013",
+      "hardwareModel": "j86ap",
+      "cpuId": "8960",
+      "boardId": "0C"
+    },
+    "iPad4,6": {
+      "name": "iPad mini 2 Wi-Fi + Cellular (TD-LTE)",
+      "fingerprint": false,
+      "faceId": false,
+      "screenInches": "7.9",
+      "network": [
+        "4G",
+        "WiFi"
+      ],
+      "releasedEn": "10/22/2013",
+      "hardwareModel": "j87ap",
+      "cpuId": "8960",
+      "boardId": "0E"
+    },
+    "iPad4,7": {
+      "name": "iPad mini 3 Wi-Fi",
+      "fingerprint": true,
+      "faceId": false,
+      "screenInches": "7.9",
+      "network": [
+        "WiFi"
+      ],
+      "releasedEn": "10/16/2014",
+      "hardwareModel": "j85map",
+      "cpuId": "8960",
+      "boardId": "32"
+    },
+    "iPad4,8": {
+      "name": "iPad mini 3 Wi-Fi + Cellular",
+      "fingerprint": true,
+      "faceId": false,
+      "screenInches": "7.9",
+      "network": [
+        "4G",
+        "WiFi"
+      ],
+      "releasedEn": "10/16/2014",
+      "hardwareModel": "j86map",
+      "cpuId": "8960",
+      "boardId": "34"
+    },
+    "iPad4,9": {
+      "name": "iPad mini 3 Wi-Fi + Cellular (TD-LTE)",
+      "fingerprint": true,
+      "faceId": false,
+      "screenInches": "7.9",
+      "network": [
+        "4G",
+        "WiFi"
+      ],
+      "releasedEn": "10/16/2014",
+      "hardwareModel": "j87map",
+      "cpuId": "8960",
+      "boardId": "36"
+    },
+    "iPad5,1": {
+      "name": "iPad mini 4 Wi-Fi",
+      "fingerprint": true,
+      "faceId": false,
+      "screenInches": "7.9",
+      "network": [
+        "WiFi"
+      ],
+      "releasedEn": "9/9/2015",
+      "hardwareModel": "j96ap",
+      "cpuId": "7000",
+      "boardId": "08"
+    },
+    "iPad5,2": {
+      "name": "iPad mini 4 Wi-Fi + Cellular",
+      "fingerprint": true,
+      "faceId": false,
+      "screenInches": "7.9",
+      "network": [
+        "4G",
+        "WiFi"
+      ],
+      "releasedEn": "9/9/2015",
+      "hardwareModel": "j97ap",
+      "cpuId": "7000",
+      "boardId": "0A"
+    },
+    "iPad11,1": {
+      "name": "iPad mini (5th generation) Wi-Fi",
+      "fingerprint": true,
+      "faceId": false,
+      "screenInches": "7.9",
+      "network": [
+        "WiFi"
+      ],
+      "releasedEn": "3/18/2019",
+      "hardwareModel": "j210ap",
+      "cpuId": "8020",
+      "boardId": "14"
+    },
+    "iPad11,2": {
+      "name": "iPad mini (5th generation) Wi-Fi + Cellular",
+      "fingerprint": true,
+      "faceId": false,
+      "screenInches": "7.9",
+      "network": [
+        "4G",
+        "WiFi"
+      ],
+      "releasedEn": "3/18/2019",
+      "hardwareModel": "j211ap",
+      "cpuId": "8020",
+      "boardId": "16"
+    },
+    "iPad14,1": {
+      "name": "iPad mini (6th generation) Wi-Fi",
+      "fingerprint": true,
+      "faceId": false,
+      "screenInches": "8.3",
+      "network": [
+        "WiFi"
+      ],
+      "releasedEn": "9/14/2021",
+      "hardwareModel": "j310ap",
+      "cpuId": "8110",
+      "boardId": "04"
+    },
+    "iPad14,2": {
+      "name": "iPad mini (6th generation) Wi-Fi + Cellular",
+      "fingerprint": true,
+      "faceId": false,
+      "screenInches": "8.3",
+      "network": [
+        "5G",
+        "WiFi"
+      ],
+      "releasedEn": "9/14/2021",
+      "hardwareModel": "j311ap",
+      "cpuId": "8110",
+      "boardId": "06"
+    },
+    "iPad16,1": {
+      "name": "iPad mini (A17 Pro) Wi-Fi",
+      "fingerprint": true,
+      "faceId": false,
+      "screenInches": "8.3",
+      "network": [
+        "WiFi"
+      ],
+      "releasedEn": "10/15/2024",
+      "hardwareModel": "j410ap",
+      "cpuId": "8130",
+      "boardId": "08"
+    },
+    "iPad16,2": {
+      "name": "iPad mini (A17 Pro) Wi-Fi + Cellular",
+      "fingerprint": true,
+      "faceId": false,
+      "screenInches": "8.3",
+      "network": [
+        "5G",
+        "WiFi"
+      ],
+      "releasedEn": "10/15/2024",
+      "hardwareModel": "j411ap",
+      "cpuId": "8130",
+      "boardId": "0A"
+    },
+    "iPad12,1": {
+      "name": "iPad (9th generation) Wi-Fi",
+      "fingerprint": true,
+      "faceId": false,
+      "screenInches": "10.2",
+      "network": [
+        "WiFi"
+      ],
+      "releasedEn": "9/14/2021",
+      "hardwareModel": "j181ap",
+      "cpuId": "8030",
+      "boardId": "18"
+    },
+    "iPad12,2": {
+      "name": "iPad (9th generation) Wi-Fi + Cellular",
+      "fingerprint": true,
+      "faceId": false,
+      "screenInches": "10.2",
+      "network": [
+        "4G",
+        "WiFi"
+      ],
+      "releasedEn": "9/14/2021",
+      "hardwareModel": "j182ap",
+      "cpuId": "8030",
+      "boardId": "1A"
+    },
+    "iPad11,6": {
+      "name": "iPad (8th generation) Wi-Fi",
+      "fingerprint": true,
+      "faceId": false,
+      "screenInches": "10.2",
+      "network": [
+        "WiFi"
+      ],
+      "releasedEn": "9/15/2020",
+      "hardwareModel": "j171aap",
+      "cpuId": "8020",
+      "boardId": "24"
+    },
+    "iPad11,7": {
+      "name": "iPad (8th generation) Wi-Fi + Cellular",
+      "fingerprint": true,
+      "faceId": false,
+      "screenInches": "10.2",
+      "network": [
+        "4G",
+        "WiFi"
+      ],
+      "releasedEn": "9/15/2020",
+      "hardwareModel": "j172aap",
+      "cpuId": "8020",
+      "boardId": "26"
+    },
+    "iPad13,18": {
+      "name": "iPad (10th generation) Wi-Fi",
+      "fingerprint": true,
+      "faceId": false,
+      "screenInches": "10.9",
+      "network": [
+        "WiFi"
+      ],
+      "releasedEn": "10/18/2022",
+      "hardwareModel": "j271ap",
+      "cpuId": "8101",
+      "boardId": "14"
+    },
+    "iPad13,19": {
+      "name": "iPad (10th generation) Wi-Fi + Cellular",
+      "fingerprint": true,
+      "faceId": false,
+      "screenInches": "10.9",
+      "network": [
+        "4G",
+        "WiFi"
+      ],
+      "releasedEn": "10/18/2022",
+      "hardwareModel": "j271ap",
+      "cpuId": "8101",
+      "boardId": "14"
+    },
+    "iPad15,7": {
+      "name": "iPad (A16) Wi-Fi",
+      "fingerprint": true,
+      "faceId": false,
+      "screenInches": "11",
+      "network": [
+        "WiFi"
+      ],
+      "releasedEn": "3/4/2025",
+      "hardwareModel": "j481ap",
+      "cpuId": "8120",
+      "boardId": "10"
+    },
+    "iPad15,8": {
+      "name": "iPad (A16) Wi-Fi + Cellular",
+      "fingerprint": true,
+      "faceId": false,
+      "screenInches": "11",
+      "network": [
+        "5G",
+        "WiFi"
+      ],
+      "releasedEn": "3/4/2025",
+      "hardwareModel": "j482ap",
+      "cpuId": "8120",
+      "boardId": "12"
+    },
+    "iPod1,1": {
+      "name": "iPod touch (1st generation)",
+      "fingerprint": false,
+      "faceId": false,
+      "screenInches": "3.5",
+      "network": [
+        "WiFi"
+      ],
+      "releasedEn": "9/5/2007",
+      "hardwareModel": "n45ap",
+      "cpuId": "8900",
+      "boardId": "02"
+    },
+    "iPod2,1": {
+      "name": "iPod touch (2nd generation)",
+      "fingerprint": false,
+      "faceId": false,
+      "screenInches": "3.5",
+      "network": [
+        "WiFi"
+      ],
+      "releasedEn": "9/9/2008",
+      "hardwareModel": "n45ap",
+      "cpuId": "8720",
+      "boardId": "00"
+    },
+    "iPod3,1": {
+      "name": "iPod touch (3rd generation)",
+      "fingerprint": false,
+      "faceId": false,
+      "screenInches": "3.5",
+      "network": [
+        "WiFi"
+      ],
+      "releasedEn": "9/9/2009",
+      "hardwareModel": "n18ap",
+      "cpuId": "8922",
+      "boardId": "00"
+    },
+    "iPod4,1": {
+      "name": "iPod touch (4th generation)",
+      "fingerprint": false,
+      "faceId": false,
+      "screenInches": "3.5",
+      "network": [
+        "WiFi"
+      ],
+      "releasedEn": "9/1/2010",
+      "hardwareModel": "n81ap",
+      "cpuId": "8930",
+      "boardId": "08"
+    },
+    "iPod5,1": {
+      "name": "iPod touch (5th generation)",
+      "fingerprint": false,
+      "faceId": false,
+      "screenInches": "4.0",
+      "network": [
+        "WiFi"
+      ],
+      "releasedEn": "6/26/2014",
+      "hardwareModel": "n78ap",
+      "cpuId": "8942",
+      "boardId": "00"
+    },
+    "iPod7,1": {
+      "name": "iPod touch (6th generation)",
+      "fingerprint": false,
+      "faceId": false,
+      "screenInches": "4.0",
+      "network": [
+        "WiFi"
+      ],
+      "releasedEn": "7/15/2015",
+      "hardwareModel": "n102ap",
+      "cpuId": "7000",
+      "boardId": "10"
+    },
+    "iPod9,1": {
+      "name": "iPod touch (7th generation)",
+      "fingerprint": false,
+      "faceId": false,
+      "screenInches": "4.0",
+      "network": [
+        "WiFi"
+      ],
+      "releasedEn": "5/28/2019",
+      "hardwareModel": "n112ap",
+      "cpuId": "8010",
+      "boardId": "16"
+    },
+    "ADP3,2": {
+      "name": "Developer TransKit",
+      "fingerprint": false,
+      "faceId": false,
+      "screenInches": "",
+      "network": [
+        "WiFi"
+      ],
+      "releasedEn": "",
+      "hardwareModel": "j273aap",
+      "cpuId": "8027",
+      "boardId": "42"
+    },
+    "Macmini9,1": {
+      "name": "Mac mini",
+      "fingerprint": false,
+      "faceId": false,
+      "screenInches": "",
+      "network": [
+        "WiFi"
+      ],
+      "releasedEn": "",
+      "hardwareModel": "j274ap",
+      "cpuId": "8103",
+      "boardId": "22"
+    },
+    "MacBookPro17,1": {
+      "name": "MacBook Pro",
+      "fingerprint": false,
+      "faceId": false,
+      "screenInches": "",
+      "network": [
+        "WiFi"
+      ],
+      "releasedEn": "",
+      "hardwareModel": "j293ap",
+      "cpuId": "8103",
+      "boardId": "24"
+    },
+    "MacBookPro18,1": {
+      "name": "MacBook Pro",
+      "fingerprint": false,
+      "faceId": false,
+      "screenInches": "",
+      "network": [
+        "WiFi"
+      ],
+      "releasedEn": "",
+      "hardwareModel": "j316sap",
+      "cpuId": "6000",
+      "boardId": "0A"
+    },
+    "MacBookPro18,2": {
+      "name": "MacBook Pro",
+      "fingerprint": false,
+      "faceId": false,
+      "screenInches": "",
+      "network": [
+        "WiFi"
+      ],
+      "releasedEn": "",
+      "hardwareModel": "j316cap",
+      "cpuId": "6001",
+      "boardId": "0A"
+    },
+    "MacBookPro18,3": {
+      "name": "MacBook Pro",
+      "fingerprint": false,
+      "faceId": false,
+      "screenInches": "",
+      "network": [
+        "WiFi"
+      ],
+      "releasedEn": "",
+      "hardwareModel": "j314sap",
+      "cpuId": "6000",
+      "boardId": "08"
+    },
+    "MacBookPro18,4": {
+      "name": "MacBook Pro",
+      "fingerprint": false,
+      "faceId": false,
+      "screenInches": "",
+      "network": [
+        "WiFi"
+      ],
+      "releasedEn": "",
+      "hardwareModel": "j314cap",
+      "cpuId": "6001",
+      "boardId": "08"
+    },
+    "MacBookAir10,1": {
+      "name": "MacBook Air",
+      "fingerprint": false,
+      "faceId": false,
+      "screenInches": "",
+      "network": [
+        "WiFi"
+      ],
+      "releasedEn": "",
+      "hardwareModel": "j313ap",
+      "cpuId": "8103",
+      "boardId": "26"
+    },
+    "iMac21,1": {
+      "name": "iMac",
+      "fingerprint": false,
+      "faceId": false,
+      "screenInches": "",
+      "network": [
+        "WiFi"
+      ],
+      "releasedEn": "",
+      "hardwareModel": "j456ap",
+      "cpuId": "8103",
+      "boardId": "28"
+    },
+    "iMac21,2": {
+      "name": "iMac",
+      "fingerprint": false,
+      "faceId": false,
+      "screenInches": "",
+      "network": [
+        "WiFi"
+      ],
+      "releasedEn": "",
+      "hardwareModel": "j457ap",
+      "cpuId": "8103",
+      "boardId": "2A"
+    },
+    "Mac13,1": {
+      "name": "Mac Studio",
+      "fingerprint": false,
+      "faceId": false,
+      "screenInches": "",
+      "network": [
+        "WiFi"
+      ],
+      "releasedEn": "",
+      "hardwareModel": "j375cap",
+      "cpuId": "6001",
+      "boardId": "04"
+    },
+    "Mac13,2": {
+      "name": "Mac Studio",
+      "fingerprint": false,
+      "faceId": false,
+      "screenInches": "",
+      "network": [
+        "WiFi"
+      ],
+      "releasedEn": "",
+      "hardwareModel": "j375dap",
+      "cpuId": "6002",
+      "boardId": "0C"
+    },
+    "Mac14,2": {
+      "name": "MacBook Air",
+      "fingerprint": false,
+      "faceId": false,
+      "screenInches": "",
+      "network": [
+        "WiFi"
+      ],
+      "releasedEn": "",
+      "hardwareModel": "j413ap",
+      "cpuId": "8112",
+      "boardId": "28"
+    },
+    "Mac14,7": {
+      "name": "MacBook Pro",
+      "fingerprint": false,
+      "faceId": false,
+      "screenInches": "",
+      "network": [
+        "WiFi"
+      ],
+      "releasedEn": "",
+      "hardwareModel": "j493ap",
+      "cpuId": "8112",
+      "boardId": "2A"
+    },
+    "VirtualMac2,1": {
+      "name": "Apple VM",
+      "fingerprint": false,
+      "faceId": false,
+      "screenInches": "",
+      "network": [
+        "WiFi"
+      ],
+      "releasedEn": "",
+      "hardwareModel": "vma2macosap",
+      "cpuId": "FE00",
+      "boardId": "20"
+    },
+    "AppleTV1,1": {
+      "name": "Apple TV (1st generation)"
+    },
+    "AppleTV11,1": {
+      "name": "Apple TV 4K (2nd generation)"
+    },
+    "AppleTV14,1": {
+      "name": "Apple TV 4K (3rd generation) Wi-Fi + Ethernet"
+    },
+    "AppleTV14,4": {
+      "name": "Unreleased Apple TV"
+    },
+    "AppleTV14,5": {
+      "name": "Unreleased Apple TV"
+    },
+    "AppleTV2,1": {
+      "name": "Apple TV (2nd generation)"
+    },
+    "AppleTV3,1": {
+      "name": "Apple TV (3rd generation)"
+    },
+    "AppleTV3,2": {
+      "name": "Apple TV (3rd generation, Rev A)"
+    },
+    "AppleTV5,3": {
+      "name": "Apple TV HD (4th generation)"
+    },
+    "AppleTV6,2": {
+      "name": "Apple TV 4K (1st generation)"
+    },
+    "Watch1,1": {
+      "name": "Apple Watch (1st generation) (38mm)"
+    },
+    "Watch1,2": {
+      "name": "Apple Watch (1st generation) (42mm)"
+    },
+    "Watch2,1": {
+      "name": "Unreleased Apple Watch Series 2 (Cellular, 38mm)"
+    },
+    "Watch2,2": {
+      "name": "Unreleased Apple Watch Series 2 (Cellular, 42mm)"
+    },
+    "Watch2,3": {
+      "name": "Apple Watch Series 2 (38mm)"
+    },
+    "Watch2,4": {
+      "name": "Apple Watch Series 2 (42mm)"
+    },
+    "Watch2,6": {
+      "name": "Apple Watch Series 1 (38mm)"
+    },
+    "Watch2,7": {
+      "name": "Apple Watch Series 1 (42mm)"
+    },
+    "Watch3,1": {
+      "name": "Apple Watch Series 3 (GPS + Cellular, 38mm)"
+    },
+    "Watch3,2": {
+      "name": "Apple Watch Series 3 (GPS + Cellular, 42mm)"
+    },
+    "Watch3,3": {
+      "name": "Apple Watch Series 3 (GPS, 38mm)"
+    },
+    "Watch3,4": {
+      "name": "Apple Watch Series 3 (GPS, 42mm)"
+    },
+    "Watch4,1": {
+      "name": "Apple Watch Series 4 (GPS, 40mm)"
+    },
+    "Watch4,2": {
+      "name": "Apple Watch Series 4 (GPS, 44mm)"
+    },
+    "Watch4,3": {
+      "name": "Apple Watch Series 4 (GPS + Cellular, 40mm)"
+    },
+    "Watch4,4": {
+      "name": "Apple Watch Series 4 (GPS + Cellular, 44mm)"
+    },
+    "Watch5,1": {
+      "name": "Apple Watch Series 5 (GPS, 40mm)"
+    },
+    "Watch5,10": {
+      "name": "Apple Watch SE (1st generation, GPS, 44mm)"
+    },
+    "Watch5,11": {
+      "name": "Apple Watch SE (1st generation, GPS + Cellular, 44mm)"
+    },
+    "Watch5,12": {
+      "name": "Apple Watch SE (1st generation, GPS + Cellular, 44mm)"
+    },
+    "Watch5,2": {
+      "name": "Apple Watch Series 5 (GPS, 44mm)"
+    },
+    "Watch5,3": {
+      "name": "Apple Watch Series 5 (GPS + Cellular, 40mm)"
+    },
+    "Watch5,4": {
+      "name": "Apple Watch Series 5 (GPS + Cellular, 44mm)"
+    },
+    "Watch5,9": {
+      "name": "Apple Watch SE (1st generation, GPS, 40mm)"
+    },
+    "Watch6,1": {
+      "name": "Apple Watch Series 6 (GPS, 40mm)"
+    },
+    "Watch6,10": {
+      "name": "Apple Watch SE (2nd generation, GPS, 40mm)"
+    },
+    "Watch6,11": {
+      "name": "Apple Watch SE (2nd generation, GPS, 44mm)"
+    },
+    "Watch6,12": {
+      "name": "Apple Watch SE (2nd generation, GPS + Cellular, 40mm)"
+    },
+    "Watch6,13": {
+      "name": "Apple Watch SE (2nd generation, GPS + Cellular, 44mm)"
+    },
+    "Watch6,14": {
+      "name": "Apple Watch Series 8 (GPS, 41mm)"
+    },
+    "Watch6,15": {
+      "name": "Apple Watch Series 8 (GPS, 45mm)"
+    },
+    "Watch6,16": {
+      "name": "Apple Watch Series 8 (GPS + Cellular, 41mm)"
+    },
+    "Watch6,17": {
+      "name": "Apple Watch Series 8 (GPS + Cellular, 45mm)"
+    },
+    "Watch6,18": {
+      "name": "Apple Watch Ultra"
+    },
+    "Watch6,2": {
+      "name": "Apple Watch Series 6 (GPS, 44mm)"
+    },
+    "Watch6,3": {
+      "name": "Apple Watch Series 6 (GPS + Cellular, 40mm)"
+    },
+    "Watch6,4": {
+      "name": "Apple Watch Series 6 (GPS + Cellular, 44mm)"
+    },
+    "Watch6,6": {
+      "name": "Apple Watch Series 7 (GPS, 41mm)"
+    },
+    "Watch6,7": {
+      "name": "Apple Watch Series 7 (GPS, 45mm)"
+    },
+    "Watch6,8": {
+      "name": "Apple Watch Series 7 (GPS + Cellular, 41mm)"
+    },
+    "Watch6,9": {
+      "name": "Apple Watch Series 7 (GPS + Cellular, 45mm)"
+    },
+    "Watch7,1": {
+      "name": "Apple Watch Series 9 (GPS, 41mm)"
+    },
+    "Watch7,10": {
+      "name": "Apple Watch Series 10 (GPS + Cellular, 42mm)"
+    },
+    "Watch7,11": {
+      "name": "Apple Watch Series 10 (GPS + Cellular, 46mm)"
+    },
+    "Watch7,12": {
+      "name": "Apple Watch Ultra 3"
+    },
+    "Watch7,13": {
+      "name": "Apple Watch SE 3 (GPS, 40mm)"
+    },
+    "Watch7,14": {
+      "name": "Apple Watch SE 3 (GPS, 44mm)"
+    },
+    "Watch7,15": {
+      "name": "Apple Watch SE 3 (GPS + Cellular, 40mm)"
+    },
+    "Watch7,16": {
+      "name": "Apple Watch SE 3 (GPS + Cellular, 44mm)"
+    },
+    "Watch7,17": {
+      "name": "Apple Watch Series 11 (GPS, 42mm)"
+    },
+    "Watch7,18": {
+      "name": "Apple Watch Series 11 (GPS, 46mm)"
+    },
+    "Watch7,19": {
+      "name": "Apple Watch Series 11 (GPS + Cellular, 42mm)"
+    },
+    "Watch7,2": {
+      "name": "Apple Watch Series 9 (GPS, 45mm)"
+    },
+    "Watch7,20": {
+      "name": "Apple Watch Series 11 (GPS + Cellular, 46mm)"
+    },
+    "Watch7,3": {
+      "name": "Apple Watch Series 9 (GPS + Cellular, 41mm)"
+    },
+    "Watch7,4": {
+      "name": "Apple Watch Series 9 (GPS + Cellular, 45mm)"
+    },
+    "Watch7,5": {
+      "name": "Apple Watch Ultra 2"
+    },
+    "Watch7,8": {
+      "name": "Apple Watch Series 10 (GPS, 42mm)"
+    },
+    "Watch7,9": {
+      "name": "Apple Watch Series 10 (GPS, 46mm)"
+    },
+    "AudioAccessory1,1": {
+      "name": "HomePod (1st generation)"
+    },
+    "AudioAccessory1,2": {
+      "name": "HomePod (1st generation, Unknown Model)"
+    },
+    "AudioAccessory5,1": {
+      "name": "HomePod mini"
+    },
+    "AudioAccessorySingle5,1": {
+      "name": "HomePod mini"
+    },
+    "AudioAccessory6,1": {
+      "name": "HomePod (2nd generation)"
+    },
+    "iPad13,20": {
+      "name": "Unreleased iPad"
+    },
+    "iPad13,21": {
+      "name": "Unreleased iPad"
+    },
+    "iPad5,5": {
+      "name": "Unreleased iPad Pro"
+    },
+    "iPad5,6": {
+      "name": "Unreleased iPad Pro"
+    },
+    "iPad6,1": {
+      "name": "Unreleased iPad mini"
+    },
+    "iPad6,2": {
+      "name": "Unreleased iPad mini"
+    },
+    "iPod2,2": {
+      "name": "Unreleased iPod touch (2nd generation, Rev. A)"
+    },
+    "iPod4,2": {
+      "name": "Unreleased iPod touch"
+    }
+  }
+}

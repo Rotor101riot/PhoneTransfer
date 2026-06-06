@@ -1,0 +1,36 @@
+# Built artifacts
+*.apk
+*.aar
+*.ap_
+*.aab
+
+# Build directories
+**/build/
+.gradle/
+local.properties
+captures/
+
+# Generated sources (R.java, BuildConfig, etc.)
+**/generated/
+
+# Android Studio / IntelliJ
+*.iml
+.idea/
+*.hprof
+.DS_Store
+Thumbs.db
+
+# Signing keys — never commit these
+*.jks
+*.keystore
+release.properties
+keystore.properties
+
+# Build logs and lint reports
+build_log.txt
+lint-results*.xml
+lint-results*.html
+
+# Test output
+**/test-results/
+**/androidTest-results/

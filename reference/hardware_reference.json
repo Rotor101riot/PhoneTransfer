@@ -1,0 +1,198 @@
+{
+  "_source": "Derived from 3uTools devices_table.txt v2026.03.06.02",
+  "_note": "Diagnostic reference data. Not required for core transfer logic. Useful for device_detector info display or future diagnostics features.",
+  "batteryManufacturerPrefixes": [
+    {
+      "prefix": "YW",
+      "manufacturer": "SONY"
+    },
+    {
+      "prefix": "YV",
+      "manufacturer": "SONY"
+    },
+    {
+      "prefix": "AE",
+      "manufacturer": "ATL"
+    },
+    {
+      "prefix": "AF",
+      "manufacturer": "ATL"
+    },
+    {
+      "prefix": "SB",
+      "manufacturer": "SAMSUNG"
+    },
+    {
+      "prefix": "L5",
+      "manufacturer": "LISHEN"
+    },
+    {
+      "prefix": "TP",
+      "manufacturer": "LISHEN"
+    },
+    {
+      "prefix": "D8",
+      "manufacturer": "SIMPLO"
+    },
+    {
+      "prefix": "FG",
+      "manufacturer": "SIMPLO"
+    },
+    {
+      "prefix": "F5",
+      "manufacturer": "DESAY"
+    },
+    {
+      "prefix": "F8",
+      "manufacturer": "SUNWODA"
+    },
+    {
+      "prefix": "C0",
+      "manufacturer": "DYNAPACK"
+    },
+    {
+      "prefix": "LN",
+      "manufacturer": "LG Chem"
+    }
+  ],
+  "wifiModuleGrades": [
+    {
+      "vendor": "Murata",
+      "grade": "High Temp WiFi"
+    },
+    {
+      "vendor": "TDK",
+      "grade": "Middle Temp WiFi"
+    },
+    {
+      "vendor": "USI",
+      "grade": "Low Temp WiFi"
+    },
+    {
+      "vendor": "Taiyo",
+      "grade": "Low Temp WiFi"
+    },
+    {
+      "vendor": "STATS",
+      "grade": "Low Temp WiFi"
+    },
+    {
+      "vendor": "Apple",
+      "grade": "Low Temp WiFi"
+    }
+  ],
+  "lightningCableChipIds": [
+    {
+      "chipId": "101D08000000",
+      "model": "C52",
+      "type": "Official Quick Charge Cable"
+    },
+    {
+      "chipId": "10C000000000",
+      "model": "C48",
+      "type": "MFi Certified Common Cable"
+    },
+    {
+      "chipId": "08C000000000",
+      "model": "C68A",
+      "type": "MFi Certified Audio Cable"
+    },
+    {
+      "chipId": "100100000000",
+      "model": "C89",
+      "type": "MFi Certified Common Cable"
+    },
+    {
+      "chipId": "100C00000000",
+      "model": "E75",
+      "type": "Official Normal Cable"
+    },
+    {
+      "chipId": "101908000000",
+      "model": "C91",
+      "type": "Official Quick Charge Cable"
+    },
+    {
+      "chipId": "100808001000",
+      "model": "C91M",
+      "type": "MFi Certified Quick Charge Cable"
+    },
+    {
+      "chipId": "100908000000",
+      "model": "C94",
+      "type": "MFi Certified Quick Charge Cable"
+    },
+    {
+      "chipId": "04F100000000",
+      "model": "C100",
+      "type": "Audio Cable"
+    },
+    {
+      "chipId": "0BF000000000",
+      "model": "",
+      "type": "Official to HDMI Cable"
+    }
+  ],
+  "lightningConnectorManufacturers": [
+    {
+      "prefix": "DW",
+      "manufacturer": "FOXCONN"
+    },
+    {
+      "prefix": "DY",
+      "manufacturer": "JAE"
+    },
+    {
+      "prefix": "F1",
+      "manufacturer": "MOLEX"
+    }
+  ],
+  "accessoryManufacturers": [
+    {
+      "prefix": "F0",
+      "manufacturer": "FOXLINK"
+    },
+    {
+      "prefix": "FC",
+      "manufacturer": "LUXSHARE"
+    },
+    {
+      "prefix": "FG",
+      "manufacturer": "FIH VIETNAM"
+    }
+  ],
+  "airPodsPidNames": [
+    {
+      "pid": "PID_1393",
+      "name": "AirPods 1st"
+    },
+    {
+      "pid": "PID_139A",
+      "name": "AirPods 3rd"
+    },
+    {
+      "pid": "PID_139C",
+      "name": "AirPods Pro 1st"
+    },
+    {
+      "pid": "PID_139D",
+      "name": "AirPods 3rd"
+    },
+    {
+      "pid": "PID_139E",
+      "name": "AirPods Pro 2nd"
+    },
+    {
+      "pid": "PID_13A0",
+      "name": "AirPods 4th"
+    },
+    {
+      "pid": "PID_139F",
+      "name": "AirPods 4th"
+    },
+    {
+      "pid": "PID_13A1",
+      "name": "AirPods Pro 3rd"
+    }
+  ]
+}

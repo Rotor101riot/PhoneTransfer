@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PhoneTransfer Companion</string>
+    <string name="status_waiting">Waiting for connection on port 7337…</string>
+    <string name="status_connected">Connected: %s</string>
+    <string name="status_transferring">Transferring: %s</string>
+    <string name="status_done">Transfer complete</string>
+    <string name="btn_start">Start Service</string>
+    <string name="btn_stop">Stop Service</string>
+    <string name="btn_grant_permissions">Grant Permissions</string>
+    <string name="notification_channel_name">Transfer Progress</string>
+    <string name="notification_waiting">Waiting for PC connection on port 7337…</string>
+    <string name="notification_connected">Connected: %s</string>
+    <string name="notification_transferring">Transferring %s (%d of %d)</string>
+    <string name="notification_done">Transfer complete</string>
+    <string name="port_label">Listening on port 7337</string>
+    <string name="perm_rationale">PhoneTransfer Companion needs these permissions to read and write your phone\'s data during a transfer.</string>
+    <string name="status_inactive">Service inactive</string>
+    <string name="status_waiting_pc">Waiting for PC&#8230;</string>
+    <string name="status_needs_permissions">Permissions required</string>
+    <string name="btn_activate">Activate Service</string>
+</resources>

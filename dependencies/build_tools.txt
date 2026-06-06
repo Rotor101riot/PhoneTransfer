@@ -1,0 +1,92 @@
+# Build & Development Tools (developer machine requirements)
+# ─────────────────────────────────────────────────────────────
+# These are tools needed to BUILD and DEVELOP the project.
+# End users do not need these — only the compiled .exe output.
+
+# ── PC-SIDE BUILD ────────────────────────────────────────────
+Python 3.11+
+  Download: https://www.python.org/downloads/
+  Notes:    Add to PATH during install. Use 64-bit.
+
+pip (bundled with Python)
+  Usage: Install all packages from python_packages.txt
+
+PyInstaller 6.x
+  Install: pip install pyinstaller
+  Usage:   Compiles the Python project into a standalone .exe with all deps bundled
+  Notes:   Use --onedir mode (not --onefile) for better AV compatibility and faster startup
+  Alt:     Nuitka (produces faster runtime but longer compile — optional future optimization)
+
+Git
+  Download: https://git-scm.com/download/win
+  Usage:    Version control, submodules for any vendored OSS libs
+
+PowerShell 7+
+  Download: https://github.com/PowerShell/PowerShell
+  Usage:    Build scripts, setup automation, Windows-specific tasks
+
+Windows Subsystem for Linux 2 (WSL2) + Ubuntu 22.04 LTS
+  Setup:    wsl --install (Windows 11 built-in)
+  Usage:    ONLY if specific Linux-only tooling is needed (e.g. certain libimobiledevice
+            build steps, Linux-only crypto tools). Treat as last resort.
+
+Visual Studio Build Tools 2022 (C++ workload)
+  Download: https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2022
+  Usage:    Required to compile any Python packages with C extensions (pycryptodome,
+            pyusb, pysqlcipher3) on Windows
+
+# ── ANDROID BUILD ────────────────────────────────────────────
+Android Studio (Hedgehog 2023.1.1 or newer)
+  Download: https://developer.android.com/studio
+  Usage:    IDE for companion APK development and build
+
+Android SDK
+  API Level 26 minimum (Android 8.0) — compile and min target
+  API Level 35 (Android 15) — target SDK
+  Install via Android Studio SDK Manager
+
+Android SDK Build Tools
+  Version: 34.0.0+
+  Install via Android Studio SDK Manager
+
+Android SDK Platform Tools
+  Contains: adb, fastboot
+  Install via Android Studio SDK Manager (also bundled separately in /bin)
+
+Java JDK 17 (LTS)
+  Download: https://adoptium.net/ (Eclipse Temurin recommended)
+  Notes:    Android Studio ships its own JDK — external JDK only needed for
+            command-line Gradle builds
+  Set JAVA_HOME to JDK 17 path
+
+Gradle (wrapper bundled in companion_app project)
+  Version:  8.x (via gradlew wrapper — no manual install needed)
+  Usage:    companion_app build system
+
+Kotlin
+  Version:  1.9+ (bundled with Android Studio / Gradle plugin — no manual install)
+
+# ── OPTIONAL / QUALITY OF LIFE ───────────────────────────────
+VS Code
+  Usage:    Recommended editor for Python modules (with Pylance, Black formatter)
+  Extensions: Python, Pylance, GitLens, Even Better TOML
+
+Black (Python formatter)
+  Install: pip install black
+  Usage:   Code style consistency across all .py modules
+
+Pylint / Flake8
+  Install: pip install pylint flake8
+  Usage:   Lint Python modules before commit
+
+DB Browser for SQLite
+  Download: https://sqlitebrowser.org/
+  Usage:    Inspect iOS backup SQLite files, Android databases during development
+
+iExplorer / iMazing (trial)
+  Usage:    Reference tool — verify extraction results during development
+  Note:     Free tier is sufficient for spot-checking during dev
+
+Wireshark + usbpcap
+  Usage:    Inspect iOS USB protocol traffic for reverse engineering backup/AFC behavior
+  Download: https://www.wireshark.org/

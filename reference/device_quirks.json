@@ -1,0 +1,488 @@
+{
+  "_source": "Compiled from libimobiledevice/issues, pymobiledevice3/issues, XDA Forums, OpenMTP, Android developer docs, and production testing.",
+  "_note": "Each quirk has match criteria evaluated against DeviceInfo fields. The 'applies_to' field controls which device role (source/destination/either) the quirk checks against.",
+
+  "quirks": [
+
+    {
+      "id": "android_trust_computer",
+      "title": "Allow USB Debugging on your phone",
+      "applies_to": "either",
+      "severity": "warning",
+      "match": {
+        "platform": "android"
+      },
+      "description": "Android will show an 'Allow USB debugging?' dialog on the phone screen when it connects to a new computer. The transfer cannot start until you tap 'Allow' — and check 'Always allow from this computer' so it doesn't expire.",
+      "steps": [
+        "Plug the phone into this computer via USB.",
+        "On the phone, pull down the notification shade — look for a 'USB debugging connected' or 'Allow USB debugging?' prompt.",
+        "Tap 'Allow' (or 'Always allow from this computer' to avoid repeating this step).",
+        "If no prompt appears, go to Settings → Developer Options → Revoke USB debugging authorizations, then reconnect."
+      ],
+      "revert_steps": []
+    },
+
+    {
+      "id": "android_developer_options",
+      "title": "Enable Developer Options & USB Debugging",
+      "applies_to": "either",
+      "severity": "warning",
+      "match": {
+        "platform": "android"
+      },
+      "description": "USB Debugging must be enabled in Developer Options before any data transfer can begin. This is required regardless of manufacturer.",
+      "steps": [
+        "Open Settings → About Phone.",
+        "Tap 'Build Number' 7 times rapidly until you see 'You are now a developer!'.",
+        "Go back to Settings → Developer Options (may appear at the bottom of Settings or under 'System').",
+        "Enable 'USB Debugging'.",
+        "Reconnect the USB cable — your phone may prompt for the 'Allow USB debugging?' dialog."
+      ],
+      "revert_steps": [
+        "If you want to disable Developer Options: Settings → Developer Options → toggle it off at the top."
+      ]
+    },
+
+    {
+      "id": "ios_trust_dialog",
+      "title": "Trust this computer on your iPhone/iPad",
+      "applies_to": "either",
+      "severity": "warning",
+      "match": {
+        "platform": "ios"
+      },
+      "description": "iOS will show a 'Trust This Computer?' alert on the screen when connecting to a new Mac or PC. The transfer cannot begin until you tap 'Trust' and enter your passcode if prompted.",
+      "steps": [
+        "Unlock your iPhone/iPad with your Face ID, Touch ID, or passcode.",
+        "Plug it into this computer via USB.",
+        "On the iPhone screen, tap 'Trust' in the 'Trust This Computer?' alert.",
+        "If prompted, enter your passcode to confirm.",
+        "If no alert appears (device was previously trusted), you are ready."
+      ],
+      "revert_steps": [
+        "If you want to revoke all trusted computers later: Settings → General → Transfer or Reset iPhone → Reset → Reset Location & Privacy."
+      ]
+    },
+
+    {
+      "id": "ios_usb_restricted_mode",
+      "title": "Disable USB Restricted Mode (iOS 11.4.1+)",
+      "applies_to": "source",
+      "severity": "warning",
+      "match": {
+        "platform": "ios",
+        "os_version_min": "11.4.1"
+      },
+      "description": "If your iPhone has been locked for more than one hour without connecting USB accessories, iOS blocks all data transfer over USB — only charging works. You must allow USB accessories in your lock screen settings before plugging in.",
+      "steps": [
+        "On your iPhone, go to Settings → Face ID & Passcode (or Touch ID & Passcode).",
+        "Enter your passcode.",
+        "Scroll down to 'Allow Access When Locked'.",
+        "Turn ON 'USB Accessories'.",
+        "Now plug the iPhone in — data transfer should work even when locked."
+      ],
+      "revert_steps": [
+        "For security, you may want to turn 'USB Accessories' back OFF after the transfer: Settings → Face ID & Passcode → USB Accessories → OFF."
+      ]
+    },
+
+    {
+      "id": "ios_16_developer_mode",
+      "title": "Enable Developer Mode (iOS 16+)",
+      "applies_to": "source",
+      "severity": "info",
+      "match": {
+        "platform": "ios",
+        "os_version_min": "16.0",
+        "is_jailbroken": true
+      },
+      "description": "On iOS 16 and later, certain developer services require Developer Mode to be active. If your device is jailbroken and you are transferring via direct file access, this must be enabled.",
+      "steps": [
+        "Connect the iPhone to this computer once.",
+        "On the iPhone, go to Settings → Privacy & Security → Developer Mode.",
+        "Toggle Developer Mode ON.",
+        "Tap 'Restart' when prompted, then confirm with 'Turn On' after reboot.",
+        "Enter your passcode when asked."
+      ],
+      "revert_steps": [
+        "Developer Mode can be turned back off: Settings → Privacy & Security → Developer Mode → OFF (requires a restart)."
+      ]
+    },
+
+    {
+      "id": "ios_16_backup_verification",
+      "title": "Confirm ownership on iPhone during backup (iOS 16.1+)",
+      "applies_to": "source",
+      "severity": "warning",
+      "match": {
+        "platform": "ios",
+        "os_version_min": "16.1"
+      },
+      "description": "iOS 16.1 added an ownership verification step: when a backup starts, your iPhone will display a prompt asking you to confirm you own the device. The backup will pause until you respond on the phone.",
+      "steps": [
+        "Keep your iPhone screen on and nearby during the transfer.",
+        "When the backup begins, watch for a prompt on the iPhone screen asking to verify ownership.",
+        "Tap 'Continue' or enter your passcode when prompted.",
+        "The transfer will resume automatically after confirmation."
+      ],
+      "revert_steps": []
+    },
+
+    {
+      "id": "ios_17_tunnel_transport",
+      "title": "iOS 17+ requires updated drivers for USB transfer",
+      "applies_to": "source",
+      "severity": "warning",
+      "match": {
+        "platform": "ios",
+        "os_version_min": "17.0"
+      },
+      "description": "iOS 17 changed the USB communication protocol from the older usbmuxd method to a new NCM (Ethernet-over-USB) tunnel. This requires Apple's latest USB drivers on Windows. If the Apple USB driver is missing, the transfer will fail to connect.",
+      "steps": [
+        "Make sure the Apple USB drivers are installed (PhoneTransfer installs these automatically via the Drivers menu).",
+        "If you see a 'device not found' error, open Device Manager and check for a yellow '!' next to 'Apple Mobile Device USB Driver'.",
+        "If the driver is missing, go to PhoneTransfer → Tools → Install Apple USB Drivers and follow the prompts.",
+        "Reconnect the iPhone after the driver installs."
+      ],
+      "revert_steps": []
+    },
+
+    {
+      "id": "samsung_ptp_mode",
+      "title": "Samsung: Switch USB to PTP mode before transfer",
+      "applies_to": "either",
+      "severity": "warning",
+      "match": {
+        "platform": "android",
+        "brand_contains": ["samsung"]
+      },
+      "description": "Samsung phones default to MTP (file transfer) mode, which conflicts with ADB on many Samsung devices — ADB stops responding while MTP is active. Switching to PTP mode lets ADB and data access work correctly.",
+      "steps": [
+        "On your Samsung phone, open Settings → Developer Options.",
+        "Find 'Default USB Configuration' and tap it.",
+        "Select 'PTP (Picture Transfer Protocol)' — not MTP.",
+        "Reconnect the USB cable. You should now see the 'Allow USB debugging?' prompt if not already trusted."
+      ],
+      "revert_steps": [
+        "After the transfer, switch back to MTP if you use Samsung DeX or file sharing: Settings → Developer Options → Default USB Configuration → MTP."
+      ]
+    },
+
+    {
+      "id": "samsung_knox_secure_folder",
+      "title": "Samsung: Secure Folder may block access to contacts/messages",
+      "applies_to": "source",
+      "severity": "info",
+      "match": {
+        "platform": "android",
+        "brand_contains": ["samsung"]
+      },
+      "description": "If you use Samsung's Secure Folder to store contacts or messages, those items are encrypted inside the Knox container and cannot be read by ADB. Only contacts/messages stored in the main area of your phone will be transferred.",
+      "steps": [
+        "Before transferring, move any important contacts or messages OUT of Secure Folder into your main storage.",
+        "Open Secure Folder → Contacts (or Messages) → select items → More → Move out of Secure Folder.",
+        "Alternatively, skip this step if you only need your main (non-Secure) contacts and messages."
+      ],
+      "revert_steps": [
+        "After the transfer, move items back into Secure Folder if desired: Contacts → select → More → Move to Secure Folder."
+      ]
+    },
+
+    {
+      "id": "xiaomi_miui_optimization",
+      "title": "Xiaomi/MIUI: Disable MIUI Optimization to allow ADB",
+      "applies_to": "either",
+      "severity": "warning",
+      "match": {
+        "platform": "android",
+        "brand_contains": ["xiaomi", "redmi", "poco"]
+      },
+      "description": "MIUI's 'MIUI Optimization' feature can block ADB enrollment (the trust dialog never appears and the transfer fails). It must be disabled before USB debugging will work reliably.",
+      "steps": [
+        "On your Xiaomi phone, go to Settings → Additional Settings → Developer Options.",
+        "Scroll down and find 'Enable MIUI Optimization'.",
+        "Turn it OFF. Tap 'OK' when warned about performance changes.",
+        "Restart the phone.",
+        "After restart, reconnect USB — the ADB 'Allow USB debugging?' prompt should appear."
+      ],
+      "revert_steps": [
+        "You can re-enable MIUI Optimization after the transfer: Settings → Additional Settings → Developer Options → Enable MIUI Optimization → ON."
+      ]
+    },
+
+    {
+      "id": "xiaomi_sim_required",
+      "title": "Xiaomi: SIM card required to enable USB Debugging",
+      "applies_to": "either",
+      "severity": "warning",
+      "match": {
+        "platform": "android",
+        "brand_contains": ["xiaomi", "redmi", "poco"]
+      },
+      "description": "Some MIUI versions require an active SIM card to be inserted before USB Debugging can be fully enabled. Without a SIM, the Developer Options toggle may be greyed out or the ADB pairing fails silently.",
+      "steps": [
+        "Insert your SIM card into the Xiaomi phone if it is not already installed.",
+        "If the phone is on a different carrier, ensure the SIM is recognized (shows carrier name in the status bar).",
+        "Now try enabling USB Debugging in Settings → Developer Options.",
+        "If the toggle was greyed out before, it should now be accessible."
+      ],
+      "revert_steps": []
+    },
+
+    {
+      "id": "huawei_hdb_mode",
+      "title": "Huawei/Honor: Enable HDB (HiSuite debugging) mode",
+      "applies_to": "either",
+      "severity": "warning",
+      "match": {
+        "platform": "android",
+        "brand_contains": ["huawei", "honor"]
+      },
+      "description": "Huawei devices use a proprietary protocol called HDB instead of standard ADB for data access. HDB must be explicitly enabled in security settings, separate from regular USB Debugging.",
+      "steps": [
+        "On your Huawei phone, go to Settings → Security → More Settings (or Settings → Security directly on some EMUI versions).",
+        "Find 'Allow HiSuite to use HDB' and toggle it ON.",
+        "Also ensure USB Debugging is enabled: Settings → Developer Options → USB Debugging ON.",
+        "Set the USB connection mode to 'HiSuite' or 'MTP' when the USB notification appears.",
+        "If HDB is not visible, update to the latest EMUI version and try again."
+      ],
+      "revert_steps": [
+        "After the transfer, turn off HDB in Settings → Security → Allow HiSuite to use HDB → OFF."
+      ]
+    },
+
+    {
+      "id": "oneplus_usb_mode_reset",
+      "title": "OnePlus: USB mode resets to 'Charging' on every reconnect",
+      "applies_to": "either",
+      "severity": "warning",
+      "match": {
+        "platform": "android",
+        "brand_contains": ["oneplus"]
+      },
+      "description": "Some OxygenOS versions reset the USB mode to 'Charging only' every time the cable is reconnected. You must manually set it to 'File Transfer' or 'MTP' each time, or it will appear as a dumb charger.",
+      "steps": [
+        "Plug your OnePlus phone into this computer.",
+        "On the phone, pull down the notification shade and look for the USB connection notification.",
+        "Tap it and select 'File Transfer' (or 'MTP') — NOT 'Charging only'.",
+        "If no notification appears, go to Settings → Developer Options → Default USB Configuration and set it to 'MTP' manually.",
+        "Note: this setting may reset after unplugging — repeat if you reconnect."
+      ],
+      "revert_steps": []
+    },
+
+    {
+      "id": "oneplus_usb3_port",
+      "title": "OnePlus: Avoid USB 3.0 ports — use USB 2.0",
+      "applies_to": "either",
+      "severity": "info",
+      "match": {
+        "platform": "android",
+        "brand_contains": ["oneplus"]
+      },
+      "description": "Several OnePlus models fail to establish MTP or ADB on USB 3.0 ports (typically the blue ports or front-panel ports on desktops). Connecting via a USB 2.0 hub or rear USB 2.0 port resolves this.",
+      "steps": [
+        "If the phone is not recognized, try a different USB port — preferably a USB 2.0 port (black port) or a USB 2.0 hub.",
+        "Avoid front-panel USB ports on desktop PCs if possible.",
+        "Once connected to a working port, proceed normally."
+      ],
+      "revert_steps": []
+    },
+
+    {
+      "id": "motorola_mtp_notification",
+      "title": "Motorola: Select 'File Transfer' from the USB notification",
+      "applies_to": "either",
+      "severity": "warning",
+      "match": {
+        "platform": "android",
+        "brand_contains": ["motorola", "moto", "lenovo"]
+      },
+      "description": "Motorola phones running Android 6+ default to 'Charging only' when plugged in and do not automatically switch to MTP. You must select File Transfer from the notification before the transfer can begin.",
+      "steps": [
+        "Plug the Motorola phone into this computer.",
+        "Pull down the notification shade on the phone.",
+        "Tap the USB notification (it may say 'Charging this device via USB').",
+        "Select 'File Transfer' or 'Transfer files'.",
+        "The phone will now appear as a storage device and ADB will work."
+      ],
+      "revert_steps": []
+    },
+
+    {
+      "id": "android_battery_low",
+      "title": "Charge both devices before transferring",
+      "applies_to": "either",
+      "severity": "info",
+      "match": {
+        "platform": "android"
+      },
+      "description": "If a phone's battery dies mid-transfer, the operation will fail and partial data may be left in an inconsistent state. Charge both devices to at least 50% before starting a long transfer.",
+      "steps": [
+        "Check the battery level on both phones.",
+        "If either is below 30%, plug it in to charge before starting.",
+        "Both devices can stay plugged in during the transfer — this is recommended for large transfers."
+      ],
+      "revert_steps": []
+    },
+
+    {
+      "id": "ios_battery_low",
+      "title": "Charge your iPhone/iPad before transferring",
+      "applies_to": "either",
+      "severity": "info",
+      "match": {
+        "platform": "ios"
+      },
+      "description": "iOS backups can take 10–30 minutes. If the battery drops too low, iOS may abort the backup. Keep the device plugged in during the transfer.",
+      "steps": [
+        "Check the battery level on your iPhone/iPad.",
+        "If it is below 30%, plug it into a charger before starting.",
+        "The device can remain on its charger during the entire transfer."
+      ],
+      "revert_steps": []
+    },
+
+    {
+      "id": "android_enterprise_mdm",
+      "title": "Work/Enterprise device: MDM may block USB transfers",
+      "applies_to": "either",
+      "severity": "warning",
+      "match": {
+        "platform": "android"
+      },
+      "description": "If this is a work-issued or enterprise-managed Android phone, Mobile Device Management (MDM) policies may block ADB, USB file transfer, or even prevent backup. Contact your IT administrator if the transfer fails with a permission error.",
+      "steps": [
+        "If you see 'USB debugging not allowed' or 'USB data access blocked', this is an MDM restriction.",
+        "Contact your IT department and ask them to temporarily whitelist USB debugging for your device.",
+        "Alternatively, use the 'From Backup' mode if you have an unencrypted local backup available."
+      ],
+      "revert_steps": []
+    },
+
+    {
+      "id": "ios_encrypted_backup_password",
+      "title": "Remember your backup password for encrypted iOS backups",
+      "applies_to": "source",
+      "severity": "info",
+      "match": {
+        "platform": "ios"
+      },
+      "description": "If you have previously enabled encrypted backups in iTunes/Finder, any new backup will require the same password. This password is stored on the device — if you forget it, you cannot decrypt the backup. Encrypted backups include health data, passwords, and call history; unencrypted backups do not.",
+      "steps": [
+        "If prompted for a backup password during the transfer, enter the password you previously set in iTunes or Finder.",
+        "If you do not remember the password, you can reset it: Settings → General → Transfer or Reset iPhone → Reset → Reset All Settings (warning: this resets all device settings).",
+        "After a reset, create a new unencrypted backup and transfer will proceed without a password."
+      ],
+      "revert_steps": []
+    },
+
+    {
+      "id": "sony_companion_mode",
+      "title": "Sony: Use Xperia Companion mode for best ADB compatibility",
+      "applies_to": "either",
+      "severity": "info",
+      "match": {
+        "platform": "android",
+        "brand_contains": ["sony", "xperia"]
+      },
+      "description": "Some Sony Xperia models need a specific USB connection mode to allow both ADB and data access simultaneously. Selecting 'Transfer files' explicitly resolves most connection issues.",
+      "steps": [
+        "Plug the Sony Xperia phone into this computer.",
+        "On the phone, swipe down to open the notification shade.",
+        "Tap the USB connection notification and select 'Transfer files (MTP)'.",
+        "If ADB still does not connect, try Settings → Developer Options → Select USB Configuration → MTP."
+      ],
+      "revert_steps": []
+    },
+
+    {
+      "id": "android_oem_unlock_bootloader",
+      "title": "Note: OEM Unlock is NOT required for a standard transfer",
+      "applies_to": "either",
+      "severity": "info",
+      "match": {
+        "platform": "android",
+        "brand_contains": ["samsung", "xiaomi", "redmi", "poco", "oneplus", "huawei", "honor"]
+      },
+      "description": "You do NOT need to unlock the bootloader or root your phone for a standard data transfer. This tool uses ADB and ContentProvider access only. OEM Unlock and rooting change your device warranty and security — do not do this unless you specifically want extended access.",
+      "steps": [
+        "No action needed — proceed with the standard transfer.",
+        "Do not enable OEM Unlock unless you intend to root your device."
+      ],
+      "revert_steps": []
+    },
+
+    {
+      "id": "ios18_schema_drift",
+      "title": "iOS 18 source — contacts or reminders may be incomplete",
+      "applies_to": "source",
+      "severity": "warning",
+      "match": {
+        "platform": "ios",
+        "os_version_min": "18.0"
+      },
+      "description": "iOS 18 tightened backup encryption schemas for several domains including Contacts and Reminders. Some column layouts changed from iOS 17, which can cause those categories to transfer as empty even when the backup decrypts successfully. Check the log file (tmp/logs/phonetransfer.log) for extractor warnings after the run.",
+      "steps": [
+        "Proceed with the transfer — most categories will work correctly.",
+        "If Contacts or Reminders are empty after transfer, open the Contacts app on the source iPhone and export contacts as a .vcf file, then import on the destination.",
+        "Attach tmp/logs/phonetransfer.log when reporting the issue (personal data is redacted)."
+      ],
+      "revert_steps": []
+    },
+
+    {
+      "id": "ios17_abmultivalue_uid",
+      "title": "iOS 17 source — contact phone/email ordering may differ",
+      "applies_to": "source",
+      "severity": "info",
+      "match": {
+        "platform": "ios",
+        "os_version_min": "17.0",
+        "os_version_max": "17.99"
+      },
+      "description": "iOS 17 changed the ABMultiValue table schema: the 'uid' column used to order phone numbers and email addresses within a contact was removed. Contacts will transfer correctly but the preferred phone/email ordering may not be preserved.",
+      "steps": [
+        "No action needed — contact data will be transferred.",
+        "If phone/email ordering matters, review contacts on the destination after transfer and reorder as needed."
+      ],
+      "revert_steps": []
+    },
+
+    {
+      "id": "ios_major_version_downgrade",
+      "title": "Transferring to an older iOS version — some data may not restore",
+      "applies_to": "destination",
+      "severity": "warning",
+      "match": {
+        "platform": "ios",
+        "os_version_max": "16.99"
+      },
+      "description": "The destination iPhone is running an older iOS version than the source. Apple's backup schema evolves with each major iOS release, so records written by a newer iOS extractor may use columns or formats not understood by an older destination. Contacts, reminders, and calendar events are most commonly affected.",
+      "steps": [
+        "Update the destination iPhone to the same iOS major version as the source if possible (Settings → General → Software Update).",
+        "If updating is not possible, proceed — most categories will transfer but a few items may be silently skipped.",
+        "After transfer, spot-check contacts, SMS, and calendar on the destination device."
+      ],
+      "revert_steps": []
+    },
+
+    {
+      "id": "ios_reminders_schema_ios16",
+      "title": "iOS 16+ reminders — subtasks and tags not transferred to Android",
+      "applies_to": "source",
+      "severity": "info",
+      "match": {
+        "platform": "ios",
+        "os_version_min": "16.0"
+      },
+      "description": "iOS 16 introduced subtasks (child reminders) and tags in the Reminders app. These use columns (ZREMCDREMINDER, ZPARENTREMINDER) that have no equivalent in Android's ContentProvider reminder schema. Subtasks and tags will not appear on the Android destination.",
+      "steps": [
+        "No action needed if the destination is another iPhone — subtask data is preserved in the backup-mod path.",
+        "For Android destinations: subtasks and tags will be silently dropped. Top-level reminders and due dates are transferred correctly."
+      ],
+      "revert_steps": []
+    }
+
+  ]
+}

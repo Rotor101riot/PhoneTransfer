@@ -1,0 +1,68 @@
+# Python Packages (pip install)
+# ─────────────────────────────────────────────────────────────
+# iOS Communication
+pymobiledevice3          # [YES] Primary iOS device protocol stack — pure Python, fully bundleable
+# pyirecovery            # [NO]  DFU/recovery mode wrapper — excluded, not in current scope.
+
+# Android Communication
+adb-shell                # Pure-Python ADB client (supplements platform-tools ADB)
+
+# Backup & Filesystem Parsing
+iOSbackup                # Parses Apple MobileSync backup format, Manifest.db
+plistlib                 # stdlib — Apple .plist read/write (binary and XML)
+construct                # Binary structure parsing (Core Data, protobuf-lite structures)
+
+# Database
+# sqlite3 is stdlib — no install needed
+
+# Image & Media
+Pillow                   # General image processing
+pillow-heif              # HEIC/HEIF decode support — pre-built wheel, replaces pyheif
+# pyheif                 # [REMOVED] — requires MSVC to build on Windows; pillow-heif covers this fully
+
+# Audio / Video (all heavy lifting via subprocess to ffmpeg binary)
+# No Python package needed — ffmpeg_wrapper.py calls ffmpeg directly
+
+# Contact / Calendar Formats
+vobject                  # vCard (.vcf) read/write
+icalendar                # iCalendar (.ics) read/write
+
+# WhatsApp Decryption
+wa-crypt-tools           # msgstore.db.crypt12/14/15 decryption
+pycryptodome             # AES crypto dependency for wa-crypt-tools
+
+# Signal Decryption
+sqlcipher3               # SQLCipher (encrypted SQLite) — use sqlcipher3, NOT pysqlcipher3
+                         # pysqlcipher3 requires MSVC to compile on Windows and fails on Python 3.14
+                         # sqlcipher3 installs cleanly without build tools
+
+# UI / UX (EXE wrapper shell)
+rich                     # Terminal UI — progress bars, tables, colored output
+click                    # CLI argument parsing for dev/debug mode
+customtkinter            # Modern tkinter-based GUI for the main .exe window
+
+# USB / Device Monitoring
+pyusb                    # Low-level USB device detection
+watchdog                 # Filesystem and device event monitoring
+
+# Packaging / Distribution
+pyinstaller              # Compiles Python project to standalone .exe
+
+# Utilities
+tqdm                     # Progress bars (CLI fallback / scripted use)
+colorlog                 # Colored logging output
+python-dateutil          # Robust date parsing for calendar/SMS timestamp conversion
+chardet                  # Character encoding detection for SMS body text
+requests                 # HTTP (used for Play Store package lookup, optional)
+
+# ── INSTALL COMMAND ───────────────────────────────────────────
+# py -m pip install pymobiledevice3 iOSbackup construct Pillow pillow-heif vobject icalendar python-dateutil adb-shell wa-crypt-tools pycryptodome sqlcipher3 rich click customtkinter tqdm colorlog pyusb watchdog chardet requests pyinstaller
+
+# ── KNOWN ISSUES (Python 3.14 / Windows) ─────────────────────
+# pylzss, lzfse — transitive deps of pyimg4 → pymobiledevice3
+#   These fail to build (need MSVC). pyimg4 parses Apple firmware Image4/IPSW
+#   format — outside project scope. pymobiledevice3 core functionality unaffected.
+#   Safe to leave unresolved.
+#
+# pysqlcipher3 — fails on Python 3.14 / Windows without MSVC. Replaced by sqlcipher3.
+# pyheif       — fails on Python 3.14 / Windows without MSVC. Replaced by pillow-heif.

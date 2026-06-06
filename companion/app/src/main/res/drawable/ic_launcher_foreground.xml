@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Adaptive icon foreground — a phone-frame outline in the same blue (#4FC3F7)
+  used by the Windows app's customtkinter theme.
+
+  Viewport: 108 × 108 dp  (Android adaptive icon standard)
+  Safe zone: inner 72 × 72 dp (18 → 90 on each axis).
+  The phone frame is kept within the safe zone so nothing is clipped by
+  circle/squircle masks on any launcher.
+
+  Dimensions (all in dp):
+    frame left/right : 30 → 78   (width  48)
+    frame top/bottom : 14 → 94   (height 80)
+    corner radius    : 10
+    stroke width     : 5
+  → aspect ratio 48 : 80 = 0.60  (matches a typical smartphone silhouette)
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Phone body outline -->
+    <path
+        android:pathData="M40,18 h28 a8,8 0 0 1 8,8 v56 a8,8 0 0 1 -8,8 H40 a8,8 0 0 1 -8,-8 V26 a8,8 0 0 1 8,-8 z"
+        android:fillColor="#00000000"
+        android:strokeColor="#4FC3F7"
+        android:strokeWidth="5" />
+
+</vector>

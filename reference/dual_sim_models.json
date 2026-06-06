@@ -1,0 +1,32 @@
+{
+  "_source": "Derived from 3uTools devices_table.txt v2026.03.06.02",
+  "_note": "Apple model numbers (A-numbers) for iPhones with physical dual-SIM trays. Obtainable via lockdown info key RegionInfo or engraved on device. These are China-market variants with nano-SIM + nano-SIM (no eSIM).",
+  "modelNumbers": [
+    "A2104",
+    "A2108",
+    "A2217",
+    "A2220",
+    "A2223",
+    "A2404",
+    "A2408",
+    "A2412",
+    "A2634",
+    "A2639",
+    "A2644",
+    "A2884",
+    "A2888",
+    "A2892",
+    "A2896",
+    "A3092",
+    "A3096",
+    "A3104",
+    "A3108",
+    "A3288",
+    "A3294",
+    "A3297",
+    "A3410",
+    "A3521",
+    "A3524",
+    "A3527"
+  ]
+}

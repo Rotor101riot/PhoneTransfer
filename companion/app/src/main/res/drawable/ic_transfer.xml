@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Notification small icon — used by TransferNotification.kt.
+
+  Android requires notification small icons to be white-on-transparent;
+  the system tints them automatically.  Do NOT use coloured fills here.
+
+  Viewport 24 × 24 dp (standard notification icon size).
+    Phone body  : rounded rect 3,1 → 21,23, radius 2
+    Arrow stem  : horizontal 9 → 15 at y=12
+    Arrowhead   : V-shape at x=15, tips at y=10 and y=14
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <!-- Phone body outline -->
+    <path
+        android:pathData="M5,2 h14 a2,2 0 0 1 2,2 v16 a2,2 0 0 1 -2,2 H5 a2,2 0 0 1 -2,-2 V4 a2,2 0 0 1 2,-2 z"
+        android:fillColor="#00000000"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="1.5" />
+
+    <!-- Arrow stem -->
+    <path
+        android:pathData="M9,12 L15,12"
+        android:fillColor="#00000000"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="1.5"
+        android:strokeLineCap="round" />
+
+    <!-- Arrowhead top leg -->
+    <path
+        android:pathData="M13,10 L15,12"
+        android:fillColor="#00000000"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="1.5"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round" />
+
+    <!-- Arrowhead bottom leg -->
+    <path
+        android:pathData="M15,12 L13,14"
+        android:fillColor="#00000000"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="1.5"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round" />
+
+</vector>

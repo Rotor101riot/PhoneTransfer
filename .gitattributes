@@ -1,0 +1,26 @@
+# Normalize line endings for all text files on commit.
+# Developers get their platform's native endings in the working tree.
+* text=auto
+
+# Force LF for shell scripts and Gradle wrappers regardless of platform.
+*.sh text eol=lf
+gradlew text eol=lf
+
+# Treat binary files as binary — never mangle them.
+*.exe binary
+*.dll binary
+*.so binary
+*.dylib binary
+*.apk binary
+*.aar binary
+*.jar binary
+*.ico binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.pdf binary
+*.msi binary
+*.msix binary
+*.sys binary
+*.inf binary

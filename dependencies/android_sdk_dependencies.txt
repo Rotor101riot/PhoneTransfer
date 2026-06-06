@@ -1,0 +1,46 @@
+# Android SDK / Gradle Dependencies (companion_app build.gradle)
+# ─────────────────────────────────────────────────────────────
+# Min SDK: API 26 (Android 8.0 Oreo) — covers ~99% of active devices
+# Target SDK: API 35 (Android 15)
+# Language: Kotlin
+
+# Core AndroidX
+androidx.appcompat:appcompat                    # Backward-compatible app components
+androidx.core:core-ktx                          # Kotlin extensions for Android core APIs
+androidx.lifecycle:lifecycle-service            # Lifecycle-aware background service support
+androidx.lifecycle:lifecycle-runtime-ktx
+
+# UI (minimal — this is a background service app, not a full UI app)
+com.google.android.material:material            # Material Design components for setup wizard
+androidx.constraintlayout:constraintlayout      # Setup/status screen layout
+
+# Networking / IPC (USB TCP server)
+com.nanohttpd:nanohttpd                         # Lightweight embedded HTTP server for USB TCP bridge
+# Alternative: fi.iki.elonen:nanohttpd
+
+# Root Access
+com.github.topjohnwu.libsu:core                 # libsu — Magisk/su shell access library
+com.github.topjohnwu.libsu:service              # libsu service extension
+com.github.topjohnwu.libsu:io                   # libsu file I/O with root
+
+# Health Connect
+androidx.health.connect:connect-client          # HealthConnect API (Android 13+)
+
+# Coroutines (async operations)
+org.jetbrains.kotlinx:kotlinx-coroutines-android
+org.jetbrains.kotlinx:kotlinx-coroutines-core
+
+# JSON serialization (for PC protocol messages)
+com.google.code.gson:gson                       # JSON serialize/deserialize for command protocol
+# Alternative: org.jetbrains.kotlinx:kotlinx-serialization-json
+
+# Content Provider helpers
+androidx.loader:loader                          # CursorLoader for async content provider queries
+
+# Permissions
+androidx.activity:activity-ktx                  # registerForActivityResult permission launcher
+
+# Testing
+junit:junit                                     # Unit tests
+androidx.test.ext:junit                         # Android instrumented tests
+androidx.test.espresso:espresso-core            # UI tests

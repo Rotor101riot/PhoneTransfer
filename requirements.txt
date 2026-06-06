@@ -1,0 +1,58 @@
+# PhoneTransfer — Python dependencies (direct, with minimum versions)
+# ─────────────────────────────────────────────────────────────────────────────
+# Install with:   py -m pip install -r requirements.txt
+# Reproduce the exact tested combination:
+#                 py -m pip install -r requirements-lock.txt
+#
+# Python:  3.10 or newer is required (codebase uses PEP 604 `int | None`
+#          union syntax).  Tested under 3.14.3 on Windows 11.
+
+# ── UI ───────────────────────────────────────────────────────────────────────
+customtkinter>=5.2.2
+
+# ── iOS device communication ────────────────────────────────────────────────
+pymobiledevice3>=4.14.16
+iOSbackup>=0.9.925
+# Backup-mod core: decrypts MobileSync backups for the IOSBackupRepacker.
+iphone_backup_decrypt>=0.9.0
+
+# ── Cryptography ────────────────────────────────────────────────────────────
+# Imported directly by inject_sms_ios for AES helpers, and transitively by
+# wa-crypt-tools.  Pin loosely to avoid sub-1.0 ABI breakage.
+pycryptodome>=3.20.0
+# Transitive dep of pymobiledevice3 / iphone_backup_decrypt; pinned because
+# the wheels for 47+ require Rust on some platforms — older 41-46 work fine
+# without a build toolchain.
+cryptography>=41.0.0
+
+# ── Android / WhatsApp ──────────────────────────────────────────────────────
+wa-crypt-tools>=0.1.0
+
+# ── Signal (encrypted SQLite) ───────────────────────────────────────────────
+# Use sqlcipher3 (NOT pysqlcipher3) — pysqlcipher3 needs MSVC on Windows
+# and fails on Python 3.14; sqlcipher3 ships pre-built wheels.
+sqlcipher3>=0.6.0
+
+# ── Contact / Calendar formats ──────────────────────────────────────────────
+vobject>=0.9.9
+
+# ── Image / HEIC support ────────────────────────────────────────────────────
+# Pillow is used for EXIF reads + thumbnail extraction; pillow-heif decodes
+# iOS HEIC photos for cross-platform delivery to Android destinations.
+Pillow>=10.3.0
+pillow-heif>=0.16.0
+
+# ── Optional: iCalendar export ──────────────────────────────────────────────
+# Enable when calendar_ios extractor adds .ics export fallback path.
+# icalendar>=6.0.0
+
+# ── Build / packaging (developer only — not needed at runtime) ──────────────
+# pyinstaller>=6.0.0   # builds the standalone .exe via PhoneTransfer.spec
+
+# ── Notes ───────────────────────────────────────────────────────────────────
+# Known-broken transitive deps that are SAFE to leave unresolved on Windows
+# without MSVC (do not block any feature actually exposed by this project):
+#
+#   pylzss, lzfse  — only reached via pyimg4 → pymobiledevice3 IPSW handling.
+#                    PhoneTransfer never touches IPSW; the rest of
+#                    pymobiledevice3 works without them.

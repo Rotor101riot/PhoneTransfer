@@ -1,0 +1,30 @@
+{
+  "_source": "Derived from 3uTools devices_table.txt v2026.03.06.02",
+  "_note": "Apple model numbers for iPhones with NO physical SIM tray (eSIM-only). All are US-market models. When detected, inform user no physical SIM transfer is possible.",
+  "modelNumbers": [
+    {
+      "modelNumber": "A2649",
+      "device": "iPhone 14 (US)"
+    },
+    {
+      "modelNumber": "A2632",
+      "device": "iPhone 13 mini (US)"
+    },
+    {
+      "modelNumber": "A2650",
+      "device": "iPhone 13 (US)"
+    },
+    {
+      "modelNumber": "A2651",
+      "device": "iPhone 13 Pro (US)"
+    },
+    {
+      "modelNumber": "A2996",
+      "device": "iPhone 15 (US)"
+    },
+    {
+      "modelNumber": "A3518",
+      "device": "iPhone 16 (US)"
+    }
+  ]
+}

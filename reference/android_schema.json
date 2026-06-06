@@ -1,0 +1,584 @@
+{
+  "_source": "Android ContentProvider and ADB shell schemas. Compiled from AOSP source, MVT (Amnesty International), and kacos2000/queries. Covers Android 5–15.",
+  "_note": "Each entry describes the ContentProvider URI, required ADB permissions, and column schemas. Samsung/Xiaomi/OPPO forks may add OEM columns; use PRAGMA table_info or ContentResolver.query projection=null to discover extras.",
+
+  "contacts": {
+    "provider": "ContactsContract",
+    "authority": "com.android.contacts",
+    "adb_permission": "READ_CONTACTS",
+    "tables": {
+      "RawContacts": {
+        "uri": "content://com.android.contacts/raw_contacts",
+        "columns": {
+          "RAW_CONTACT_ID":      {"type": "INTEGER", "note": "Primary key"},
+          "ACCOUNT_TYPE":        {"type": "TEXT",    "note": "e.g. com.google, com.samsung.android.sync"},
+          "ACCOUNT_NAME":        {"type": "TEXT",    "note": "Google account email"},
+          "DISPLAY_NAME_PRIMARY":{"type": "TEXT",    "note": "Resolved display name"},
+          "DELETED":             {"type": "INTEGER", "note": "Soft-delete flag; skip when 1"}
+        }
+      },
+      "Data": {
+        "uri": "content://com.android.contacts/data",
+        "note": "All contact fields (polymorphic). Join with RawContacts on RAW_CONTACT_ID.",
+        "columns": {
+          "DATA_ID":             {"type": "INTEGER", "note": "Primary key"},
+          "RAW_CONTACT_ID":      {"type": "INTEGER", "note": "FK to RawContacts"},
+          "MIMETYPE":            {"type": "TEXT",    "note": "Determines meaning of DATA1-DATA15"},
+          "DATA1":               {"type": "TEXT",    "note": "Primary value (phone number, email, etc.)"},
+          "DATA2":               {"type": "INTEGER", "note": "Type subtype (e.g. TYPE_MOBILE=2)"},
+          "DATA3":               {"type": "TEXT",    "note": "Label for custom types"},
+          "DATA4":               {"type": "TEXT",    "note": "Secondary value (phone normalized, etc.)"},
+          "IS_PRIMARY":          {"type": "INTEGER", "note": "1 = primary entry for this MIME type"}
+        },
+        "mimetypes": {
+          "vnd.android.cursor.item/name":         {"DATA1": "display name", "DATA2": "given name", "DATA3": "family name", "DATA4": "prefix", "DATA5": "middle name", "DATA6": "suffix", "DATA7": "phonetic given", "DATA8": "phonetic middle", "DATA9": "phonetic family"},
+          "vnd.android.cursor.item/phone_v2":     {"DATA1": "phone number", "DATA2": "type (1=home,2=mobile,3=work,7=other)", "DATA3": "custom label", "DATA4": "normalized number"},
+          "vnd.android.cursor.item/email_v2":     {"DATA1": "email address", "DATA2": "type (1=home,2=work,3=other)", "DATA3": "custom label"},
+          "vnd.android.cursor.item/postal-address_v2": {"DATA1": "formatted address", "DATA4": "street", "DATA7": "city", "DATA8": "region", "DATA9": "postcode", "DATA10": "country"},
+          "vnd.android.cursor.item/organization": {"DATA1": "company", "DATA2": "type", "DATA4": "title", "DATA5": "department"},
+          "vnd.android.cursor.item/note":         {"DATA1": "note text"},
+          "vnd.android.cursor.item/website":      {"DATA1": "URL", "DATA2": "type (1=homepage,2=blog,3=profile,4=home,5=work,6=ftp,7=other)"},
+          "vnd.android.cursor.item/im":           {"DATA1": "IM handle", "DATA2": "type", "DATA5": "protocol (0=AIM,1=MSN,2=Yahoo,3=Skype,4=QQ,5=GoogleTalk,6=ICQ,7=Jabber,8=NetMeeting)"},
+          "vnd.android.cursor.item/photo":        {"DATA15": "BLOB of photo data"},
+          "vnd.android.cursor.item/relation":     {"DATA1": "name", "DATA2": "type (1=assistant,2=brother,3=child,4=domestic partner,5=father,6=friend,7=manager,8=mother,9=parent,10=partner,11=referred by,12=relative,13=sister,14=spouse)"},
+          "vnd.android.cursor.item/sip_address":  {"DATA1": "SIP URI"},
+          "vnd.android.cursor.item/contact_event":{"DATA1": "date (YYYY-MM-DD or --MM-DD)", "DATA2": "type (1=anniversary,2=other,3=birthday)"}
+        }
+      }
+    },
+    "extraction_notes": [
+      "Use ContentResolver.query on ContactsContract.Data to get all fields in one pass.",
+      "Filter DELETED=0 on RawContacts.",
+      "On Samsung (account_type=com.samsung.android.sync), contacts may also exist in a separate vCard store at /sdcard/Contacts/.",
+      "Android 11+ enforces READ_CONTACTS; MANAGE_CONTACTS permission required for write.",
+      "adb shell: content query --uri content://com.android.contacts/raw_contacts --projection display_name:account_type"
+    ]
+  },
+
+  "sms": {
+    "provider": "TelephonyProvider (Telephony.Sms / Telephony.Mms)",
+    "authority": "mms-sms",
+    "adb_permission": "READ_SMS",
+    "tables": {
+      "sms": {
+        "uri": "content://sms",
+        "db_path": "/data/data/com.android.providers.telephony/databases/mmssms.db",
+        "backup_path": "via adb backup (requires unlocked backup or root)",
+        "columns": {
+          "_id":        {"type": "INTEGER", "note": "Primary key"},
+          "thread_id":  {"type": "INTEGER", "note": "FK to threads._id (conversation grouping)"},
+          "address":    {"type": "TEXT",    "note": "Remote phone number"},
+          "date":       {"type": "INTEGER", "note": "Unix milliseconds (sent/received timestamp)"},
+          "date_sent":  {"type": "INTEGER", "note": "Unix milliseconds (carrier-reported sent time; Android 4.4+)"},
+          "read":       {"type": "INTEGER", "note": "0=unread, 1=read"},
+          "status":     {"type": "INTEGER", "note": "Delivery status: -1=none, 0=complete, 32=pending, 64=failed"},
+          "type":       {"type": "INTEGER", "note": "1=inbox, 2=sent, 3=draft, 4=outbox, 5=failed, 6=queued"},
+          "body":       {"type": "TEXT",    "note": "Message body"},
+          "seen":       {"type": "INTEGER", "note": "0=not seen in UI, 1=seen"},
+          "sub_id":     {"type": "INTEGER", "note": "Subscription/SIM slot ID (Android 5.1+)"},
+          "error_code": {"type": "INTEGER", "note": "Non-zero on send failure"}
+        }
+      },
+      "mms": {
+        "uri": "content://mms",
+        "columns": {
+          "_id":           {"type": "INTEGER", "note": "Primary key"},
+          "thread_id":     {"type": "INTEGER"},
+          "date":          {"type": "INTEGER", "note": "Unix seconds (not ms!)"},
+          "msg_box":       {"type": "INTEGER", "note": "1=inbox, 2=sent, 4=outbox, 3=draft"},
+          "m_type":        {"type": "INTEGER", "note": "128=retrieve.conf (received), 132=send.req (sent)"},
+          "read":          {"type": "INTEGER"},
+          "sub":           {"type": "TEXT",    "note": "Subject line"},
+          "ct_t":          {"type": "TEXT",    "note": "Content-Type (always application/vnd.wap.multipart.related)"},
+          "m_size":        {"type": "INTEGER", "note": "Total MMS size in bytes"}
+        }
+      },
+      "mms_part": {
+        "uri": "content://mms/part",
+        "note": "Each row is one MIME part of an MMS message.",
+        "columns": {
+          "_id":    {"type": "INTEGER"},
+          "mid":    {"type": "INTEGER", "note": "FK to mms._id"},
+          "seq":    {"type": "INTEGER", "note": "Part order"},
+          "ct":     {"type": "TEXT",    "note": "MIME content-type (e.g. text/plain, image/jpeg)"},
+          "name":   {"type": "TEXT",    "note": "Filename"},
+          "_data":  {"type": "TEXT",    "note": "Path to part file under /data/data/com.android.providers.telephony/app_parts/"},
+          "text":   {"type": "TEXT",    "note": "Inline text (when ct=text/plain)"}
+        }
+      },
+      "threads": {
+        "uri": "content://mms-sms/conversations",
+        "columns": {
+          "_id":              {"type": "INTEGER"},
+          "recipient_ids":    {"type": "TEXT", "note": "Space-separated IDs into canonical_addresses table"},
+          "message_count":    {"type": "INTEGER"},
+          "snippet":          {"type": "TEXT"},
+          "read":             {"type": "INTEGER"}
+        }
+      }
+    },
+    "extraction_notes": [
+      "date in sms table is milliseconds; date in mms table is seconds. Normalize before comparing.",
+      "type=1 is inbox (received), type=2 is sent. Filter drafts/outbox for transfer.",
+      "MMS recipients: query content://mms/{id}/addr — ADDR.type=137 is 'To', 151 is 'From'.",
+      "Samsung Knox devices may restrict content://sms access even with READ_SMS; use adb backup fallback.",
+      "On Android 10+ (Q), READ_SMS requires the app to be the default SMS app to query via content provider from ADB shell. Root or backup is needed otherwise.",
+      "adb shell: content query --uri content://sms --projection _id:address:date:body:type | head -20"
+    ]
+  },
+
+  "calls": {
+    "provider": "CallLog.Calls",
+    "authority": "call_log",
+    "adb_permission": "READ_CALL_LOG",
+    "db_path": "/data/data/com.android.providers.contacts/databases/calllog.db",
+    "tables": {
+      "calls": {
+        "uri": "content://call_log/calls",
+        "columns": {
+          "_id":              {"type": "INTEGER"},
+          "number":           {"type": "TEXT",    "note": "Phone number dialed or received"},
+          "number_presentation": {"type": "INTEGER", "note": "1=allowed, 2=restricted, 3=unknown, 4=payphone"},
+          "date":             {"type": "INTEGER", "note": "Unix milliseconds"},
+          "duration":         {"type": "INTEGER", "note": "Seconds"},
+          "type":             {"type": "INTEGER", "note": "1=incoming, 2=outgoing, 3=missed, 4=voicemail, 5=rejected, 6=blocked"},
+          "new":              {"type": "INTEGER", "note": "1=not yet seen"},
+          "name":             {"type": "TEXT",    "note": "Cached contact name at time of call"},
+          "numbertype":       {"type": "INTEGER", "note": "ContactsContract phone type"},
+          "numberlabel":      {"type": "TEXT"},
+          "countryiso":       {"type": "TEXT",    "note": "ISO 3166-1 alpha-2 (Android 4.0+)"},
+          "geocoded_location":{"type": "TEXT",    "note": "Human-readable location guess"},
+          "phone_account_id": {"type": "TEXT",    "note": "SIM slot / account (Android 5.0+)"},
+          "features":         {"type": "INTEGER", "note": "Bitmask: 1=HD call, 2=wifi call, 4=volte, 8=video"},
+          "post_dial_digits": {"type": "TEXT",    "note": "DTMF digits after connection"},
+          "via_number":       {"type": "TEXT",    "note": "Call-through number (Android 9+)"},
+          "is_read":          {"type": "INTEGER", "note": "Android 9+ alias for new=0"}
+        }
+      }
+    },
+    "extraction_notes": [
+      "type=3 is missed, type=1 is incoming, type=2 is outgoing.",
+      "Samsung adds SAMSUNG_CALL_TYPE column (regular/video/voice) in Samsung dialer db.",
+      "On Android 9+ READ_CALL_LOG is a separate permission from READ_CONTACTS.",
+      "MIUI (Xiaomi) stores calls in a separate db: /data/data/com.android.providers.contacts/databases/.",
+      "adb shell: content query --uri content://call_log/calls --projection number:date:duration:type | head -20"
+    ]
+  },
+
+  "calendar": {
+    "provider": "CalendarContract",
+    "authority": "com.android.calendar",
+    "adb_permission": "READ_CALENDAR",
+    "db_path": "/data/data/com.android.providers.calendar/databases/calendar.db",
+    "tables": {
+      "calendars": {
+        "uri": "content://com.android.calendar/calendars",
+        "columns": {
+          "_id":              {"type": "INTEGER"},
+          "account_name":     {"type": "TEXT",    "note": "Google account (e.g. user@gmail.com)"},
+          "account_type":     {"type": "TEXT",    "note": "com.google / LOCAL"},
+          "name":             {"type": "TEXT",    "note": "Calendar display name"},
+          "calendar_color":   {"type": "INTEGER", "note": "ARGB packed int"},
+          "visible":          {"type": "INTEGER"},
+          "sync_id":          {"type": "TEXT",    "note": "Server-side calendar ID"}
+        }
+      },
+      "events": {
+        "uri": "content://com.android.calendar/events",
+        "columns": {
+          "_id":              {"type": "INTEGER"},
+          "calendar_id":      {"type": "INTEGER", "note": "FK to calendars._id"},
+          "title":            {"type": "TEXT"},
+          "description":      {"type": "TEXT"},
+          "eventLocation":    {"type": "TEXT"},
+          "dtstart":          {"type": "INTEGER", "note": "Unix milliseconds"},
+          "dtend":            {"type": "INTEGER", "note": "Unix milliseconds (NULL for recurring events)"},
+          "duration":         {"type": "TEXT",    "note": "RFC 5545 duration string (for recurring events)"},
+          "allDay":           {"type": "INTEGER", "note": "1=all-day event"},
+          "rrule":            {"type": "TEXT",    "note": "RFC 5545 RRULE string"},
+          "rdate":            {"type": "TEXT",    "note": "Additional recurrence dates"},
+          "exrule":           {"type": "TEXT",    "note": "Exception rule"},
+          "exdate":           {"type": "TEXT",    "note": "Exception dates"},
+          "eventTimezone":    {"type": "TEXT",    "note": "IANA timezone name (e.g. America/New_York)"},
+          "eventEndTimezone": {"type": "TEXT"},
+          "status":           {"type": "INTEGER", "note": "0=tentative, 1=confirmed, 2=cancelled"},
+          "uid2445":          {"type": "TEXT",    "note": "iCal UID (Android 4.0+)"},
+          "deleted":          {"type": "INTEGER", "note": "Soft delete — skip when 1"},
+          "sync_id":          {"type": "TEXT"},
+          "dirty":            {"type": "INTEGER"}
+        }
+      },
+      "attendees": {
+        "uri": "content://com.android.calendar/attendees",
+        "columns": {
+          "_id":               {"type": "INTEGER"},
+          "event_id":          {"type": "INTEGER"},
+          "attendeeName":      {"type": "TEXT"},
+          "attendeeEmail":     {"type": "TEXT"},
+          "attendeeRelationship": {"type": "INTEGER", "note": "0=none,1=attendee,2=organizer,3=performer,4=speaker"},
+          "attendeeType":      {"type": "INTEGER", "note": "0=none,1=required,2=optional,3=resource"},
+          "attendeeStatus":    {"type": "INTEGER", "note": "0=none,1=accepted,2=declined,3=invited,4=tentative"}
+        }
+      },
+      "reminders": {
+        "uri": "content://com.android.calendar/reminders",
+        "columns": {
+          "_id":      {"type": "INTEGER"},
+          "event_id": {"type": "INTEGER"},
+          "minutes":  {"type": "INTEGER", "note": "Minutes before event"},
+          "method":   {"type": "INTEGER", "note": "1=default,2=alert,3=email,4=sms"}
+        }
+      }
+    },
+    "extraction_notes": [
+      "Filter deleted=0 on events table.",
+      "For recurring events dtend is NULL; compute from dtstart + duration.",
+      "allDay=1 events have dtstart in UTC midnight regardless of eventTimezone.",
+      "Samsung Galaxy (com.samsung.android.calendar) uses the same CalendarContract API.",
+      "adb shell: content query --uri content://com.android.calendar/events --projection _id:title:dtstart:dtend:allDay | head -10"
+    ]
+  },
+
+  "whatsapp_android": {
+    "notes": "WhatsApp does NOT expose a ContentProvider. Access requires root or encrypted backup extraction.",
+    "db_paths": {
+      "messages":   "/data/data/com.whatsapp/databases/msgstore.db",
+      "contacts":   "/data/data/com.whatsapp/databases/wa.db",
+      "media_root": "/sdcard/Android/media/com.whatsapp/WhatsApp/Media/"
+    },
+    "backup_paths": {
+      "crypt15": "/sdcard/WhatsApp/Databases/msgstore.db.crypt15",
+      "key_file": "/data/data/com.whatsapp/files/key  (requires root)"
+    },
+    "tables": {
+      "messages": {
+        "db": "msgstore.db",
+        "columns": {
+          "_id":              {"type": "INTEGER"},
+          "key_remote_jid":   {"type": "TEXT",    "note": "Sender/recipient JID (phone@s.whatsapp.net or group@g.us)"},
+          "key_from_me":      {"type": "INTEGER", "note": "1=sent, 0=received"},
+          "key_id":           {"type": "TEXT",    "note": "WhatsApp message ID"},
+          "status":           {"type": "INTEGER", "note": "0=received, 4=waiting, 5=sent, 6=read, 7=played, 13=pending"},
+          "needs_push":       {"type": "INTEGER"},
+          "data":             {"type": "TEXT",    "note": "Message body text"},
+          "timestamp":        {"type": "INTEGER", "note": "Unix seconds"},
+          "media_url":        {"type": "TEXT"},
+          "media_mime_type":  {"type": "TEXT"},
+          "media_size":       {"type": "INTEGER"},
+          "media_name":       {"type": "TEXT"},
+          "media_caption":    {"type": "TEXT",    "note": "Caption on image/video"},
+          "latitude":         {"type": "REAL",    "note": "Location message lat"},
+          "longitude":        {"type": "REAL",    "note": "Location message lon"},
+          "thumb_image":      {"type": "TEXT",    "note": "Base64 thumbnail"},
+          "remote_resource":  {"type": "TEXT",    "note": "Group sender JID (non-null for group messages)"},
+          "received_timestamp": {"type": "INTEGER", "note": "Unix seconds — when device received it"},
+          "send_timestamp":   {"type": "INTEGER"},
+          "receipt_server_timestamp": {"type": "INTEGER"},
+          "message_type":     {"type": "INTEGER", "note": "0=text,1=image,2=audio,3=video,4=contact,5=location,7=url,8=document,9=audio(ptt),11=gif,16=sticker"}
+        }
+      },
+      "jid": {
+        "db": "msgstore.db",
+        "columns": {
+          "_id":    {"type": "INTEGER"},
+          "raw_string": {"type": "TEXT", "note": "JID string (phone@s.whatsapp.net)"},
+          "user":   {"type": "TEXT",    "note": "Phone number portion"},
+          "server": {"type": "TEXT",    "note": "s.whatsapp.net or g.us"}
+        }
+      },
+      "chat": {
+        "db": "msgstore.db",
+        "columns": {
+          "_id":              {"type": "INTEGER"},
+          "key_remote_jid":   {"type": "TEXT"},
+          "message_table_id": {"type": "INTEGER"},
+          "subject":          {"type": "TEXT",    "note": "Group subject"},
+          "creation":         {"type": "INTEGER"},
+          "last_read_message_table_id": {"type": "INTEGER"}
+        }
+      },
+      "wa_contacts": {
+        "db": "wa.db",
+        "columns": {
+          "_id":            {"type": "INTEGER"},
+          "jid":            {"type": "TEXT"},
+          "display_name":   {"type": "TEXT"},
+          "number":         {"type": "TEXT"},
+          "status":         {"type": "TEXT"},
+          "photo_ts":       {"type": "INTEGER"}
+        }
+      }
+    },
+    "extraction_notes": [
+      "crypt15 backups are encrypted with AES-256-GCM using a key from /data/data/com.whatsapp/files/key (root required).",
+      "On Android 12+ WhatsApp uses scoped storage; media is at /sdcard/Android/media/com.whatsapp/ even without root.",
+      "key_from_me=1 and remote_resource IS NULL = 1-on-1 sent message.",
+      "key_from_me=0 and remote_resource IS NOT NULL = group received message (remote_resource is sender JID).",
+      "message_type=0 is text; 1/2/3 are image/audio/video with media in /sdcard/WhatsApp/Media/."
+    ]
+  },
+
+  "signal_android": {
+    "notes": "Signal does NOT expose a ContentProvider. Database is encrypted with SQLCipher. Key is derived from device credentials.",
+    "db_paths": {
+      "encrypted_db": "/data/data/org.thoughtcrime.securesms/databases/signal.db",
+      "decrypted_backup": "Signal in-app backup (Settings > Chats > Chat backups) produces signal-YYYY-MM-DD-HH-MM-SS.backup"
+    },
+    "tables": {
+      "sms": {
+        "columns": {
+          "_id":          {"type": "INTEGER"},
+          "thread_id":    {"type": "INTEGER"},
+          "address":      {"type": "TEXT",    "note": "Recipient phone number"},
+          "date_sent":    {"type": "INTEGER", "note": "Unix milliseconds"},
+          "date_received":{"type": "INTEGER", "note": "Unix milliseconds"},
+          "type":         {"type": "INTEGER", "note": "Same bitmask as Android Telephony.Sms.TYPE_*"},
+          "body":         {"type": "TEXT"},
+          "read":         {"type": "INTEGER"}
+        }
+      },
+      "mms": {
+        "note": "Signal uses mms table for group messages and media messages",
+        "columns": {
+          "_id":          {"type": "INTEGER"},
+          "thread_id":    {"type": "INTEGER"},
+          "date":         {"type": "INTEGER", "note": "Unix milliseconds"},
+          "msg_box":      {"type": "INTEGER"},
+          "body":         {"type": "TEXT"},
+          "quote_id":     {"type": "INTEGER", "note": "Replied-to message _id"},
+          "quote_author": {"type": "TEXT"},
+          "quote_body":   {"type": "TEXT"}
+        }
+      },
+      "thread": {
+        "columns": {
+          "_id":          {"type": "INTEGER"},
+          "recipient_id": {"type": "INTEGER"},
+          "date":         {"type": "INTEGER"},
+          "snippet":      {"type": "TEXT"},
+          "meaningful_messages": {"type": "INTEGER"}
+        }
+      }
+    }
+  },
+
+  "media": {
+    "provider": "MediaStore",
+    "authority": "media",
+    "adb_permission": "READ_EXTERNAL_STORAGE (Android < 10) / READ_MEDIA_IMAGES+READ_MEDIA_VIDEO (Android 13+)",
+    "tables": {
+      "images": {
+        "uri": "content://media/external/images/media",
+        "columns": {
+          "_id":            {"type": "INTEGER"},
+          "_display_name":  {"type": "TEXT",    "note": "Filename"},
+          "_data":          {"type": "TEXT",    "note": "Absolute path (deprecated Android 10+, use URI)"},
+          "date_added":     {"type": "INTEGER", "note": "Unix seconds"},
+          "date_modified":  {"type": "INTEGER", "note": "Unix seconds"},
+          "date_taken":     {"type": "INTEGER", "note": "Unix milliseconds (from EXIF)"},
+          "mime_type":      {"type": "TEXT"},
+          "_size":          {"type": "INTEGER", "note": "Bytes"},
+          "width":          {"type": "INTEGER"},
+          "height":         {"type": "INTEGER"},
+          "latitude":       {"type": "REAL",    "note": "EXIF GPS (deprecated Android 10+)"},
+          "longitude":      {"type": "REAL",    "note": "EXIF GPS (deprecated Android 10+)"},
+          "bucket_display_name": {"type": "TEXT", "note": "Album/folder name"},
+          "is_favorite":    {"type": "INTEGER", "note": "Android 11+"},
+          "is_trashed":     {"type": "INTEGER", "note": "Android 11+ — skip when 1"}
+        }
+      },
+      "video": {
+        "uri": "content://media/external/video/media",
+        "columns": {
+          "_id":            {"type": "INTEGER"},
+          "_display_name":  {"type": "TEXT"},
+          "_data":          {"type": "TEXT"},
+          "date_added":     {"type": "INTEGER"},
+          "date_taken":     {"type": "INTEGER", "note": "Unix milliseconds"},
+          "mime_type":      {"type": "TEXT"},
+          "_size":          {"type": "INTEGER"},
+          "duration":       {"type": "INTEGER", "note": "Milliseconds"},
+          "width":          {"type": "INTEGER"},
+          "height":         {"type": "INTEGER"},
+          "resolution":     {"type": "TEXT"},
+          "bucket_display_name": {"type": "TEXT"}
+        }
+      },
+      "audio": {
+        "uri": "content://media/external/audio/media",
+        "columns": {
+          "_id":            {"type": "INTEGER"},
+          "_display_name":  {"type": "TEXT"},
+          "_data":          {"type": "TEXT"},
+          "mime_type":      {"type": "TEXT"},
+          "duration":       {"type": "INTEGER", "note": "Milliseconds"},
+          "artist":         {"type": "TEXT"},
+          "album":          {"type": "TEXT"},
+          "title":          {"type": "TEXT"},
+          "is_ringtone":    {"type": "INTEGER"},
+          "is_notification":{"type": "INTEGER"},
+          "is_alarm":       {"type": "INTEGER"},
+          "is_music":       {"type": "INTEGER"},
+          "is_recording":   {"type": "INTEGER", "note": "Android 10+"}
+        }
+      }
+    },
+    "extraction_notes": [
+      "Android 10+ (Q): _data column may be empty/NULL. Use openFileDescriptor(uri) to read bytes.",
+      "Android 13+ (T): READ_EXTERNAL_STORAGE replaced by READ_MEDIA_IMAGES / READ_MEDIA_VIDEO / READ_MEDIA_AUDIO.",
+      "Filter is_trashed=0 to exclude recently deleted items.",
+      "adb shell: content query --uri content://media/external/images/media --projection _id:_display_name:date_taken:_size | head -20",
+      "adb pull /sdcard/DCIM/ works for photos even without root on most devices."
+    ]
+  },
+
+  "notes": {
+    "samsung_notes": {
+      "package": "com.samsung.android.app.notes",
+      "db_path": "/data/data/com.samsung.android.app.notes/databases/Notes_v4.db (root required)",
+      "alternative": "Samsung Notes content provider: content://com.samsung.android.provider.snote/notes",
+      "columns": {
+        "_id":           {"type": "INTEGER"},
+        "title":         {"type": "TEXT"},
+        "body":          {"type": "TEXT",  "note": "HTML or plain text depending on version"},
+        "created_date":  {"type": "INTEGER", "note": "Unix milliseconds"},
+        "modified_date": {"type": "INTEGER"},
+        "category_id":   {"type": "INTEGER"},
+        "is_deleted":    {"type": "INTEGER"}
+      }
+    },
+    "google_keep": {
+      "package": "com.google.android.keep",
+      "db_path": "/data/data/com.google.android.keep/databases/keep.db (root required)",
+      "note": "Keep data syncs via Google Drive; offline extraction requires root or backup."
+    },
+    "miui_notes": {
+      "package": "com.miui.notes",
+      "provider": "content://com.miui.notes.provider.noteprovider/notes",
+      "columns": {
+        "_id":        {"type": "INTEGER"},
+        "snippet":    {"type": "TEXT",    "note": "First ~50 chars of body"},
+        "content":    {"type": "TEXT"},
+        "created":    {"type": "INTEGER", "note": "Unix milliseconds"},
+        "modified":   {"type": "INTEGER"},
+        "folder_id":  {"type": "INTEGER"}
+      }
+    }
+  },
+
+  "alarms": {
+    "deskclock": {
+      "package": "com.google.android.deskclock (Pixel) / com.android.deskclock (AOSP)",
+      "provider": "content://com.android.deskclock/alarms",
+      "note": "Schema is consistent across AOSP since Android 4.4.",
+      "columns": {
+        "_id":        {"type": "INTEGER"},
+        "hour":       {"type": "INTEGER", "note": "0-23"},
+        "minutes":    {"type": "INTEGER", "note": "0-59"},
+        "daysofweek": {"type": "INTEGER", "note": "Bitmask: bit0=Monday...bit6=Sunday"},
+        "enabled":    {"type": "INTEGER", "note": "1=enabled"},
+        "vibrate":    {"type": "INTEGER"},
+        "message":    {"type": "TEXT",    "note": "Alarm label"},
+        "alert":      {"type": "TEXT",    "note": "Ringtone URI"}
+      },
+      "oem_notes": {
+        "samsung": "com.samsung.android.app.clockpackage — content://com.sec.android.app.clockpackage/alarm",
+        "xiaomi":  "com.android.deskclock with MIUI skin — same schema via content://com.android.deskclock/alarms",
+        "oneplus": "com.oneplus.deskclock — may use a separate DB"
+      }
+    }
+  },
+
+  "bookmarks": {
+    "chrome": {
+      "package": "com.android.chrome",
+      "db_path": "/data/data/com.android.chrome/app_chrome/Default/Bookmarks (JSON format)",
+      "format": "JSON file — Chrome Bookmarks format",
+      "structure": {
+        "roots.bookmark_bar.children": "Array of bookmark/folder objects",
+        "bookmark_object": {
+          "guid":         "UUID string",
+          "id":           "integer string",
+          "name":         "Title",
+          "type":         "url or folder",
+          "url":          "URL string (present when type=url)",
+          "date_added":   "Microseconds since Windows epoch (1601-01-01)",
+          "date_modified":"Microseconds since Windows epoch"
+        }
+      }
+    },
+    "samsung_browser": {
+      "package": "com.sec.android.app.sbrowser",
+      "db_path": "/data/data/com.sec.android.app.sbrowser/databases/sbrowser.db (root required)",
+      "table": "bookmark",
+      "columns": {
+        "_id":          {"type": "INTEGER"},
+        "title":        {"type": "TEXT"},
+        "url":          {"type": "TEXT"},
+        "created":      {"type": "INTEGER", "note": "Unix milliseconds"},
+        "folder":       {"type": "INTEGER", "note": "FK to bookmark_folder"}
+      }
+    }
+  },
+
+  "blocked_numbers": {
+    "provider": "BlockedNumberContract",
+    "authority": "blocked",
+    "adb_permission": "READ_BLOCKED_NUMBERS (Android 7+; requires system or default dialer app)",
+    "uri": "content://blocked/blocked_numbers",
+    "columns": {
+      "_id":                  {"type": "INTEGER"},
+      "original_number":      {"type": "TEXT", "note": "Number as entered"},
+      "e164_number":          {"type": "TEXT", "note": "E.164 normalized (may be null)"},
+      "stripped_number":      {"type": "TEXT"}
+    },
+    "extraction_notes": [
+      "Only the default dialer or COMPANION_DEVICE_MANAGER apps can access this provider.",
+      "Samsung duplicates blocked list in com.samsung.android.providers.blocked."
+    ]
+  },
+
+  "version_api_changes": {
+    "Android_5_Lollipop_API21": [
+      "CallLog: phone_account_id added for multi-SIM",
+      "ContactsContract: SipAddress MIME type standardized"
+    ],
+    "Android_6_Marshmallow_API23": [
+      "Runtime permissions introduced — READ_CONTACTS, READ_SMS, READ_CALL_LOG must be granted at runtime"
+    ],
+    "Android_7_Nougat_API24": [
+      "BlockedNumberContract introduced",
+      "sms table: sub_id (SIM ID) becomes widely used"
+    ],
+    "Android_9_Pie_API28": [
+      "READ_CALL_LOG separated from READ_CONTACTS",
+      "CallLog.Calls: is_read column added"
+    ],
+    "Android_10_Q_API29": [
+      "MediaStore: _data column deprecated — use openFileDescriptor(uri) instead",
+      "Scoped storage: apps cannot access /sdcard freely without legacy flag",
+      "Location metadata stripped from MediaStore without ACCESS_MEDIA_LOCATION permission"
+    ],
+    "Android_11_R_API30": [
+      "MediaStore: is_favorite, is_trashed columns added",
+      "MANAGE_EXTERNAL_STORAGE permission for broad file access",
+      "WhatsApp moved media to /sdcard/Android/media/com.whatsapp/"
+    ],
+    "Android_12_S_API31": [
+      "Approximate location only without FINE permission",
+      "Clipboard read restricted to foreground apps"
+    ],
+    "Android_13_T_API33": [
+      "READ_EXTERNAL_STORAGE split into READ_MEDIA_IMAGES / READ_MEDIA_VIDEO / READ_MEDIA_AUDIO",
+      "Photo picker API introduced (no READ_MEDIA permission required for limited selection)"
+    ],
+    "Android_14_U_API34": [
+      "READ_MEDIA_VISUAL_USER_SELECTED: partial photo/video access via new picker",
+      "Health Connect data access requires HealthConnect permission (separate from ContentProvider)"
+    ],
+    "Android_15_V_API35": [
+      "Predictive back gesture enforced",
+      "No significant ContentProvider API changes for the data types above"
+    ]
+  }
+}

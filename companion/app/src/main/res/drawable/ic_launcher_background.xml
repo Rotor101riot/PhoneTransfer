@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Adaptive icon background — solid dark colour matching the Windows app's
+  dark theme (#0D1117).  Used by ic_launcher.xml / ic_launcher_round.xml.
+-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#0D1117" />
+</shape>

@@ -1,0 +1,402 @@
+{
+  "_source": "Compiled from: The iPhone Wiki, kacos2000/queries, MVT project, richinfante.com reverse engineering, reincubate.com",
+  "_note": "Stable reference for iOS backup file locations and SQLite schemas. SHA-1 hashes derived from SHA1('<Domain>-<RelativePath>').",
+
+  "backup_file_hashes": {
+    "sms_db": {
+      "hash": "3d0d7e5fb2ce288813306e4d4636395e047a3d28",
+      "domain": "HomeDomain",
+      "relative_path": "Library/SMS/sms.db",
+      "device_path": "/var/mobile/Library/SMS/sms.db",
+      "description": "All SMS, MMS, and iMessage records"
+    },
+    "addressbook": {
+      "hash": "31bb7ba8914766d4ba40d6dfb6113c8b614be442",
+      "domain": "HomeDomain",
+      "relative_path": "Library/AddressBook/AddressBook.sqlitedb",
+      "device_path": "/var/mobile/Library/AddressBook/AddressBook.sqlitedb",
+      "description": "All contacts (ABPerson + ABMultiValue)"
+    },
+    "addressbook_images": {
+      "hash": "cd6702cea29fe89cf280a76794405adb17f9a0d",
+      "domain": "HomeDomain",
+      "relative_path": "Library/AddressBook/AddressBookImages.sqlitedb",
+      "device_path": "/var/mobile/Library/AddressBook/AddressBookImages.sqlitedb",
+      "description": "Contact photo thumbnails"
+    },
+    "call_history": {
+      "hash": "2b2b0084a1bc3a5ac8c27afdf14afb42c61a19ca",
+      "domain": "WirelessDomain",
+      "relative_path": "Library/CallHistory/call_history.db",
+      "device_path": "/var/wireless/Library/CallHistory/call_history.db",
+      "description": "Call history — older iOS (pre-iOS 13 approximate)"
+    },
+    "call_history_storedata": {
+      "hash": null,
+      "domain": "HomeDomain",
+      "relative_path": "Library/CallHistoryDB/CallHistory.storedata",
+      "device_path": "/var/mobile/Library/CallHistoryDB/CallHistory.storedata",
+      "description": "Call history — iOS 8+ Core Data store with ZCALLRECORD table"
+    },
+    "calendar": {
+      "hash": "2041457d5fe04d39d0ab481178355df6781e6858",
+      "domain": "HomeDomain",
+      "relative_path": "Library/Calendars/Calendar.sqlitedb",
+      "device_path": "/var/mobile/Library/Calendars/Calendar.sqlitedb",
+      "description": "Calendar events (Core Data: ZCALCALENDARITEM)"
+    },
+    "notes": {
+      "hash": "ca3bc056d4da0b9cf695bfd40f0d87be0a5f3a1",
+      "domain": "HomeDomain",
+      "relative_path": "Library/Notes/notes.sqlite",
+      "device_path": "/var/mobile/Library/Notes/notes.sqlite",
+      "description": "Apple Notes (ZNOTE / ZNOTEBODY)"
+    },
+    "voicemail": {
+      "hash": "992df473bbb9e132f4b3ab6d6d8149618e57b89",
+      "domain": "HomeDomain",
+      "relative_path": "Library/Voicemail/voicemail.db",
+      "device_path": "/var/mobile/Library/Voicemail/voicemail.db",
+      "description": "Voicemail metadata"
+    },
+    "whatsapp_chatstorage": {
+      "hash": "7c7fba66680ef796b916b067077cc246adacf01d",
+      "domain": "AppDomain-net.whatsapp.WhatsApp",
+      "relative_path": "Documents/ChatStorage.sqlite",
+      "device_path": "/var/mobile/Containers/Data/Application/<UUID>/Documents/ChatStorage.sqlite",
+      "description": "WhatsApp messages (ZWAMESSAGE + ZWAMEDIAITEM)"
+    },
+    "whatsapp_contacts": {
+      "hash": null,
+      "domain": "AppDomain-net.whatsapp.WhatsApp",
+      "relative_path": "Documents/ContactsV2.sqlite",
+      "device_path": "/var/mobile/Containers/Data/Application/<UUID>/Documents/ContactsV2.sqlite",
+      "description": "WhatsApp contact cache"
+    },
+    "photos_sqlite": {
+      "hash": null,
+      "domain": "CameraRollDomain",
+      "relative_path": "Media/PhotoData/Photos.sqlite",
+      "device_path": "/var/mobile/Media/PhotoData/Photos.sqlite",
+      "description": "Photos library metadata (ZGENERICASSET)"
+    }
+  },
+
+  "backup_domains": {
+    "HomeDomain": "User data: SMS, Contacts, Notes, Safari, Voicemail, Health",
+    "CameraRollDomain": "Photos and videos (DCIM + PhotoData)",
+    "MediaDomain": "Ringtones, recorded audio, SMS attachments media",
+    "WirelessDomain": "Call history (older iOS), carrier settings",
+    "AppDomain-<bundle_id>": "Third-party app data by bundle ID",
+    "DatabaseDomain": "System databases",
+    "SystemPreferencesDomain": "Device settings (.GlobalPreferences.plist etc.)"
+  },
+
+  "schemas": {
+
+    "sms_db": {
+      "description": "SMS, MMS, iMessage — /var/mobile/Library/SMS/sms.db",
+      "timestamp_note": "Apple epoch (seconds since 2001-01-01). iOS 11+ uses nanoseconds for 'date' column — detect by magnitude > 1e10.",
+      "tables": {
+        "message": {
+          "columns": {
+            "ROWID": "INTEGER PRIMARY KEY",
+            "text": "TEXT — message body (NULL for media-only messages)",
+            "handle_id": "INTEGER — FK to handle.ROWID (0 = self/unknown)",
+            "subject": "TEXT — MMS subject line",
+            "service": "TEXT — 'iMessage' | 'SMS' | 'MMS'",
+            "date": "INTEGER — Apple epoch, nanoseconds on iOS 11+",
+            "date_read": "INTEGER — when message was read (Apple epoch)",
+            "date_delivered": "INTEGER — when iMessage was delivered (Apple epoch)",
+            "is_from_me": "INTEGER — 1=sent by device owner, 0=received",
+            "is_read": "INTEGER — 1=read",
+            "is_delivered": "INTEGER — 1=delivered (iMessage)",
+            "is_sent": "INTEGER — 1=successfully sent",
+            "cache_has_attachments": "INTEGER — 1=has attachment rows",
+            "error": "INTEGER — non-zero means send failure",
+            "reply_to_guid": "TEXT — GUID of parent message (threaded replies, iOS 16+)",
+            "date_retracted": "INTEGER — set when message is unsent (iOS 16+)",
+            "date_edited": "INTEGER — set when message is edited (iOS 16+)",
+            "was_deduplicated": "INTEGER — iMessage dedup flag",
+            "is_spam": "INTEGER — spam flag (iOS 16+)"
+          },
+          "notes": "Join with handle via handle_id. Join with attachment via message_attachment_join."
+        },
+        "handle": {
+          "columns": {
+            "ROWID": "INTEGER PRIMARY KEY",
+            "id": "TEXT — phone number or email address",
+            "country": "TEXT — ISO country code",
+            "service": "TEXT — 'iMessage' | 'SMS'",
+            "uncanonicalized_id": "TEXT — raw unformatted number"
+          }
+        },
+        "chat": {
+          "columns": {
+            "ROWID": "INTEGER PRIMARY KEY",
+            "guid": "TEXT — unique identifier (e.g. iMessage;-;+15551234567)",
+            "chat_identifier": "TEXT — phone/email for 1:1; group ID for groups",
+            "display_name": "TEXT — group name (NULL for 1:1)",
+            "group_id": "TEXT",
+            "style": "INTEGER — 45=iMessage group, 43=SMS/MMS 1:1",
+            "properties": "BLOB — binary plist with metadata"
+          }
+        },
+        "chat_message_join": {
+          "columns": {
+            "chat_id": "INTEGER — FK to chat.ROWID",
+            "message_id": "INTEGER — FK to message.ROWID"
+          },
+          "notes": "Many-to-many linking messages to chat threads. Needed for group chat identification."
+        },
+        "attachment": {
+          "columns": {
+            "ROWID": "INTEGER PRIMARY KEY",
+            "guid": "TEXT",
+            "filename": "TEXT — full device path (e.g. ~/Library/SMS/Attachments/xx/yy/file.jpg)",
+            "mime_type": "TEXT",
+            "transfer_name": "TEXT — original filename",
+            "total_bytes": "INTEGER",
+            "is_outgoing": "INTEGER",
+            "created_date": "INTEGER — Apple epoch",
+            "uti": "TEXT — uniform type identifier"
+          }
+        },
+        "message_attachment_join": {
+          "columns": {
+            "message_id": "INTEGER — FK to message.ROWID",
+            "attachment_id": "INTEGER — FK to attachment.ROWID"
+          }
+        },
+        "chat_handle_join": {
+          "columns": {
+            "chat_id": "INTEGER",
+            "handle_id": "INTEGER"
+          },
+          "notes": "Maps handles (participants) to chats — needed for group member enumeration."
+        }
+      }
+    },
+
+    "addressbook": {
+      "description": "Contacts — /var/mobile/Library/AddressBook/AddressBook.sqlitedb",
+      "tables": {
+        "ABPerson": {
+          "columns": {
+            "ROWID": "INTEGER PRIMARY KEY",
+            "First": "TEXT — given name",
+            "Last": "TEXT — family name",
+            "Middle": "TEXT — middle name",
+            "Prefix": "TEXT — name prefix (Mr., Dr., etc.)",
+            "Suffix": "TEXT — name suffix (Jr., PhD, etc.)",
+            "Nickname": "TEXT",
+            "FirstPhonetic": "TEXT",
+            "MiddlePhonetic": "TEXT",
+            "LastPhonetic": "TEXT",
+            "Organization": "TEXT — company name",
+            "Department": "TEXT",
+            "JobTitle": "TEXT",
+            "Note": "TEXT",
+            "Birthday": "REAL — Apple epoch (seconds since 2001-01-01); NULL if not set",
+            "CreationDate": "REAL — Apple epoch",
+            "ModificationDate": "REAL — Apple epoch",
+            "DisplayName": "TEXT — pre-computed display name",
+            "ExternalIdentifier": "TEXT — sync source identifier",
+            "StoreID": "INTEGER — FK to ABStore",
+            "ImageURI": "TEXT — path to contact photo"
+          }
+        },
+        "ABMultiValue": {
+          "columns": {
+            "ROWID": "INTEGER PRIMARY KEY",
+            "record_id": "INTEGER — FK to ABPerson.ROWID",
+            "property": "INTEGER — property type ID (see property_ids below)",
+            "identifier": "INTEGER — index within this property type",
+            "label": "INTEGER — FK to ABMultiValueLabel.ROWID",
+            "value": "TEXT — the actual value"
+          },
+          "property_ids": {
+            "3": "Phone number",
+            "4": "Email address",
+            "5": "Postal address (structured via ABMultiValueEntry)",
+            "12": "Birthday (alternate storage; prefer ABPerson.Birthday)",
+            "13": "Related name (e.g. spouse, parent)",
+            "22": "URL",
+            "46": "Instant message handle",
+            "47": "Social profile"
+          }
+        },
+        "ABMultiValueEntry": {
+          "columns": {
+            "parent_id": "INTEGER — FK to ABMultiValue.ROWID",
+            "key": "INTEGER — FK to ABMultiValueEntryKey.ROWID",
+            "value": "TEXT"
+          },
+          "notes": "Stores structured address components. Keys: Street=0, City=1, State=2, ZIP=3, Country=4, CountryCode=5."
+        },
+        "ABMultiValueLabel": {
+          "columns": {
+            "ROWID": "INTEGER PRIMARY KEY",
+            "value": "TEXT — e.g. '_$!<Mobile>!$_', '_$!<Home>!$_', '_$!<Work>!$_', 'iPhone'"
+          }
+        },
+        "ABStore": {
+          "columns": {
+            "ROWID": "INTEGER PRIMARY KEY",
+            "Name": "TEXT — e.g. 'On My iPhone', 'iCloud'",
+            "AccountID": "TEXT",
+            "Type": "INTEGER"
+          }
+        }
+      }
+    },
+
+    "call_history_storedata": {
+      "description": "Call history — Core Data SQLite, /var/mobile/Library/CallHistoryDB/CallHistory.storedata",
+      "timestamp_note": "ZDATE is Apple epoch seconds (since 2001-01-01). Always seconds, not nanoseconds.",
+      "tables": {
+        "ZCALLRECORD": {
+          "columns": {
+            "Z_PK": "INTEGER PRIMARY KEY",
+            "ZANSWERED": "INTEGER — 1=call was answered",
+            "ZCALLTYPE": "INTEGER — legacy: 0=incoming, 1=outgoing (older iOS)",
+            "ZDISCONNECTED_CAUSE": "INTEGER — hangup reason code",
+            "ZFACE_TIME_DATA": "BLOB — binary plist with FaceTime metadata",
+            "ZHANDLE_TYPE": "INTEGER — 0=phone number, 1=email (FaceTime), 2=unknown",
+            "ZORIGINATED": "INTEGER — 1=outgoing call, 0=incoming",
+            "ZREAD": "INTEGER — 1=notification dismissed",
+            "ZMISSED": "INTEGER — 1=missed call",
+            "ZDATE": "REAL — Apple epoch seconds",
+            "ZDURATION": "REAL — duration in seconds",
+            "ZADDRESS": "TEXT — phone number or email",
+            "ZDEVICE_ID": "TEXT — which device (multi-SIM)",
+            "ZISO_COUNTRY_CODE": "TEXT — e.g. 'us'",
+            "ZLOCATION": "TEXT — caller location string",
+            "ZNAME": "TEXT — resolved contact name at time of call",
+            "ZSERVICE_PROVIDER": "TEXT — 'Phone', 'FaceTime', or third-party app name",
+            "ZUNIQUE_ID": "TEXT — stable UUID for this call record",
+            "ZCALL_CATEGORY": "INTEGER — call category flags"
+          },
+          "call_type_logic": "If ZMISSED=1 -> 'missed'. Elif ZORIGINATED=1 -> 'outgoing'. Else -> 'incoming'."
+        }
+      }
+    },
+
+    "calendar": {
+      "description": "Calendar events — Core Data SQLite, /var/mobile/Library/Calendars/Calendar.sqlitedb",
+      "timestamp_note": "All dates are Apple epoch seconds (since 2001-01-01).",
+      "tables": {
+        "ZCALCALENDARITEM": {
+          "notes": "Main event table. Column names have Z-prefix in Core Data SQLite.",
+          "columns": {
+            "Z_PK": "INTEGER PRIMARY KEY",
+            "ZSUMMARY": "TEXT — event title",
+            "ZNOTES": "TEXT — description/notes",
+            "ZLOCATION": "TEXT",
+            "ZSTARTDATE": "REAL — Apple epoch",
+            "ZENDDATE": "REAL — Apple epoch",
+            "ZISALLDAY": "INTEGER — 1=all-day event",
+            "ZTIMEZONE": "TEXT — IANA timezone string (e.g. 'America/New_York')",
+            "ZRRULE": "TEXT — RFC 5545 recurrence rule",
+            "ZEXTERNALIDENTIFIER": "TEXT — UID from iCloud/CalDAV sync",
+            "ZCALENDAR": "INTEGER — FK to ZCALCALENDAR.Z_PK",
+            "ZSTATUS": "INTEGER — 0=confirmed, 1=tentative, 2=cancelled",
+            "ZDURATION": "REAL — for all-day spanning events",
+            "ZISDETACHED": "INTEGER — 1=exception to a recurrence",
+            "ZORIGINALDATE": "REAL — original date for recurrence exceptions"
+          }
+        },
+        "ZCALCALENDAR": {
+          "columns": {
+            "Z_PK": "INTEGER PRIMARY KEY",
+            "ZTITLE": "TEXT — calendar name",
+            "ZCOLOR": "TEXT — hex color string",
+            "ZTYPE": "INTEGER — 0=local, 1=iCloud, 2=Exchange",
+            "ZACCOUNTID": "TEXT"
+          }
+        },
+        "ZCALATTENDEE": {
+          "columns": {
+            "Z_PK": "INTEGER PRIMARY KEY",
+            "ZCALENDARITEM": "INTEGER — FK to ZCALCALENDARITEM",
+            "ZADDRESS": "TEXT — email address",
+            "ZCOMMONNAME": "TEXT — display name",
+            "ZSTATUS": "INTEGER — 0=unknown, 1=accepted, 2=declined, 3=tentative",
+            "ZROLE": "INTEGER — 0=required, 1=optional, 2=chair",
+            "ZISSELF": "INTEGER — 1=device owner"
+          }
+        }
+      }
+    },
+
+    "whatsapp_chatstorage": {
+      "description": "WhatsApp iOS — AppDomain-net.whatsapp.WhatsApp/Documents/ChatStorage.sqlite",
+      "timestamp_note": "ZMESSAGEDATE is Apple epoch seconds (since 2001-01-01).",
+      "tables": {
+        "ZWAMESSAGE": {
+          "columns": {
+            "Z_PK": "INTEGER PRIMARY KEY",
+            "ZTEXT": "TEXT — message body (NULL for media-only)",
+            "ZMESSAGEDATE": "REAL — Apple epoch",
+            "ZISFROMME": "INTEGER — 1=sent by device owner",
+            "ZCHATSESSION": "INTEGER — FK to ZWACHATSESSION.Z_PK",
+            "ZMESSAGETYPE": "INTEGER — 0=text, 1=image, 2=video, 3=audio, 4=vcard, 5=location, 6=system",
+            "ZSPOTLIGHTSTATUS": "INTEGER",
+            "ZSTARRED": "INTEGER — 1=starred/favourite",
+            "ZGROUPMEMBER": "INTEGER — FK to ZWAGROUPMEMBER (sender in group; NULL for 1:1)",
+            "ZMEDIAITEM": "INTEGER — FK to ZWAMEDIAITEM (NULL if text-only)",
+            "ZPUSHNAME": "TEXT — sender push name at time of receipt",
+            "ZVCARDSTRING": "TEXT — contact card data (type=4)",
+            "ZLONGITUDE": "REAL — location message",
+            "ZLATITUDE": "REAL — location message",
+            "ZQUOTEDMESSAGE": "INTEGER — FK to replied-to message (iOS 16+)"
+          }
+        },
+        "ZWACHATSESSION": {
+          "columns": {
+            "Z_PK": "INTEGER PRIMARY KEY",
+            "ZCONTACTJID": "TEXT — JID e.g. '15551234567@s.whatsapp.net' or 'groupid@g.us'",
+            "ZPARTNERNAME": "TEXT — display name of the chat",
+            "ZLASTMESSAGEDATE": "REAL — Apple epoch",
+            "ZMESSAGECOUNTER": "INTEGER",
+            "ZUNREADCOUNT": "INTEGER",
+            "ZGROUPINFO": "INTEGER — FK to ZWAGROUPINFO (NULL for 1:1)",
+            "ZCONTACTIDENTIFIER": "TEXT"
+          }
+        },
+        "ZWAMEDIAITEM": {
+          "columns": {
+            "Z_PK": "INTEGER PRIMARY KEY",
+            "ZMESSAGE": "INTEGER — FK to ZWAMESSAGE.Z_PK",
+            "ZVCARDSTREAM": "TEXT — MIME type of media",
+            "ZVCARDNAME": "TEXT — media identifier/filename",
+            "ZMEDIALOCALPATH": "TEXT — local device path to media file",
+            "ZTHUMBNAILLOCALPATH": "TEXT — thumbnail path",
+            "ZFILESIZE": "INTEGER — bytes",
+            "ZDURATION": "REAL — audio/video duration seconds",
+            "ZLATITUDE": "REAL",
+            "ZLONGITUDE": "REAL",
+            "ZCREATIONDATE": "REAL — Apple epoch",
+            "ZMOVIEORIENTATION": "INTEGER"
+          }
+        },
+        "ZWAGROUPMEMBER": {
+          "columns": {
+            "Z_PK": "INTEGER PRIMARY KEY",
+            "ZCONTACTJID": "TEXT — member JID",
+            "ZCHATSESSION": "INTEGER — FK to ZWACHATSESSION",
+            "ZMEMBERJID": "TEXT"
+          }
+        },
+        "ZWAGROUPINFO": {
+          "columns": {
+            "Z_PK": "INTEGER PRIMARY KEY",
+            "ZSUBJECT": "TEXT — group name",
+            "ZSUBJECTDATE": "REAL",
+            "ZGROUPCREATIONDATE": "REAL"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Structured data -->
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
+    <uses-permission android:name="android.permission.READ_CALL_LOG" />
+    <uses-permission android:name="android.permission.WRITE_CALL_LOG" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.WRITE_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+    <uses-permission android:name="android.permission.WRITE_CALENDAR" />
+
+    <!-- Media (API 33+) -->
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
+    <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />
+
+    <!-- Required on API 29+ to preserve GPS/location EXIF data in photos.
+         Without this, location metadata is silently stripped even when
+         READ_MEDIA_IMAGES is granted. -->
+    <uses-permission android:name="android.permission.ACCESS_MEDIA_LOCATION" />
+
+    <!-- Storage (API < 33) -->
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="29" />
+
+    <!-- Wallpaper -->
+    <uses-permission android:name="android.permission.SET_WALLPAPER" />
+
+    <!-- Installed apps list (APK backup).
+         DISTRIBUTION CONSTRAINT: QUERY_ALL_PACKAGES is on the Play Store's
+         restricted permissions list (policy: "Device and Network Abuse").
+         Google requires a Declaration Form approval; approval is routinely
+         denied for general-purpose apps.  This app MUST be distributed as a
+         sideload APK (via ADB install) — it cannot be published on Google Play
+         as long as this permission is declared.  See README.md §Distribution. -->
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
+
+    <!-- Mail accounts (account type + email only, no passwords/tokens) -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+
+    <!-- All-files access (Android 11+).
+         Required for writing to arbitrary shared-storage paths (/sdcard/DCIM,
+         /sdcard/Ringtones, /sdcard/PhoneTransfer, etc.) during restore.
+         Without this, companion-side file writes fail silently on API 30+
+         despite WRITE_EXTERNAL_STORAGE being declared.
+         DISTRIBUTION CONSTRAINT: MANAGE_EXTERNAL_STORAGE is a restricted
+         permission under Play Store policy (policy: "Personal and Sensitive
+         Information").  Google limits approval to file managers and backup
+         utilities with explicit justification; approval is not guaranteed.
+         This app MUST be distributed as a sideload APK (via ADB install) —
+         it cannot be published on Google Play as long as this permission is
+         declared.  See README.md §Distribution. -->
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+
+    <!-- App sideload (required to install APKs during app restore).
+         User must also enable "Install unknown apps" for this app in Settings. -->
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+
+    <!--
+         Partial media access (Android 14+ user-selected photos).
+         READ_MEDIA_VISUAL_USER_SELECTED lets the user grant access to a
+         subset of photos/videos rather than the entire library (API 34+).
+         Declare alongside READ_MEDIA_IMAGES/VIDEO so the system falls back
+         gracefully on older API levels.
+    -->
+    <uses-permission
+        android:name="android.permission.READ_MEDIA_VISUAL_USER_SELECTED"
+        android:minSdkVersion="34" />
+
+    <permission
+        android:name="com.phonetransfer.companion.permission.ADB_STATUS"
+        android:protectionLevel="signature" />
+
+    <!-- Service / networking -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <!-- Keep CPU alive during transfers.  Without PARTIAL_WAKE_LOCK the
+         TransferService can be suspended mid-extract by the OS on any OEM
+         that aggressively manages background CPU. -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <!-- Prompt user to exclude this app from battery optimisation.
+         Declared here so Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS
+         resolves; the actual prompt is shown by BatteryOptimizationHelper
+         only when the app is not yet whitelisted. -->
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+
+    <application
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.PhoneTransferCompanion">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <!-- Required: SMS app must handle SENDTO for sms/smsto/mms/mmsto -->
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <action android:name="android.intent.action.SENDTO" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="sms" />
+                <data android:scheme="smsto" />
+                <data android:scheme="mms" />
+                <data android:scheme="mmsto" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name=".TransferService"
+            android:enabled="true"
+            android:exported="false"
+            android:foregroundServiceType="dataSync" />
+
+        <!--
+             Receives ADB-injected broadcasts from the PC so the icon updates
+             during ADB-based transfers (where the TCP socket is not used).
+
+             The PC fires an "am broadcast" with action com.phonetransfer.STATUS,
+             passing string extra "category" and int extras "done" / "total".
+             Setting total=0 (or omitting category) reverts the icon to WAITING.
+        -->
+        <receiver
+            android:name=".AdbStatusReceiver"
+            android:exported="true"
+            android:permission="com.phonetransfer.companion.permission.ADB_STATUS">
+            <intent-filter>
+                <action android:name="com.phonetransfer.STATUS" />
+            </intent-filter>
+        </receiver>
+
+        <!-- ============================================================
+             SMS App Registration Components
+             Android requires ALL FOUR of these to consider an app a
+             valid SMS application eligible for the SMS role.
+             ============================================================ -->
+
+        <!-- 1. SMS_DELIVER receiver — receives incoming SMS when we are default -->
+        <receiver
+            android:name=".sms.SmsReceiver"
+            android:exported="true"
+            android:permission="android.permission.BROADCAST_SMS">
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SMS_DELIVER" />
+            </intent-filter>
+        </receiver>
+
+        <!-- 2. WAP_PUSH_DELIVER receiver — required stub for MMS -->
+        <receiver
+            android:name=".sms.MmsReceiver"
+            android:exported="true"
+            android:permission="android.permission.BROADCAST_WAP_PUSH">
+            <intent-filter>
+                <action android:name="android.provider.Telephony.WAP_PUSH_DELIVER" />
+                <data android:mimeType="application/vnd.wap.mms-message" />
+            </intent-filter>
+        </receiver>
+
+        <!-- 3. RESPOND_VIA_MESSAGE service — required stub -->
+        <service
+            android:name=".sms.HeadlessSmsSendService"
+            android:exported="true"
+            android:permission="android.permission.SEND_RESPOND_VIA_MESSAGE">
+            <intent-filter>
+                <action android:name="android.intent.action.RESPOND_VIA_MESSAGE" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="sms" />
+                <data android:scheme="smsto" />
+                <data android:scheme="mms" />
+                <data android:scheme="mmsto" />
+            </intent-filter>
+        </service>
+
+        <!-- 4. Activity to prompt user to grant the SMS role -->
+        <activity
+            android:name=".sms.ChangeDefaultSmsActivity"
+            android:exported="true"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+    </application>
+
+</manifest>

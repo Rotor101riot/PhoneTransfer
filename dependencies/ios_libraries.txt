@@ -1,0 +1,175 @@
+# iOS-Specific Libraries & References
+# ─────────────────────────────────────────────────────────────
+# Covers open-source iOS communication, backup parsing, and
+# jailbreak-ecosystem tools the project relies on or references.
+
+# ── LIBIMOBILEDEVICE ORGANIZATION — PROJECT DECISIONS ────────
+# Source org: https://github.com/libimobiledevice
+# Windows binaries: obtain pre-built community releases rather than
+# compiling from source. Drop EXEs and DLLs into /bin.
+
+#  [YES] libimobiledevice
+#    Source:  https://github.com/libimobiledevice/libimobiledevice
+#    Purpose: Core C library for iOS USB communication.
+#             Fallback layer when pymobiledevice3 hits version-specific gaps.
+#    EXEs to bundle in /bin:
+#      idevicebackup2.exe    — backup/restore fallback
+#      ideviceinfo.exe       — device info query
+#      idevicepair.exe       — pairing and trust management
+#    DLLs to bundle in /bin:
+#      libimobiledevice-1.0.dll
+#      libssl-3-x64.dll
+#      libcrypto-3-x64.dll
+#      libgcc_s_seh-1.dll
+#      libwinpthread-1.dll
+
+#  [YES] libplist
+#    Source:  https://github.com/libimobiledevice/libplist
+#    Purpose: Apple .plist binary/XML parsing. Required dependency of
+#             libimobiledevice. Also used standalone for plist file work.
+#    DLLs to bundle in /bin:
+#      libplist-2.0.dll
+#      libplist++-2.0.dll
+
+#  [YES] libusbmuxd
+#    Source:  https://github.com/libimobiledevice/libusbmuxd
+#    Purpose: USB multiplexing layer. Required dependency of libimobiledevice.
+#             Handles the low-level USB socket that all iOS communication flows through.
+#    DLLs to bundle in /bin:
+#      libusbmuxd-2.0.dll
+
+#  [YES] libimobiledevice-glue
+#    Source:  https://github.com/libimobiledevice/libimobiledevice-glue
+#    Purpose: Shared utility functions (threads, sockets, logging) required by
+#             libimobiledevice. Will not build or run without it.
+#    DLLs to bundle in /bin:
+#      libimobiledevice-glue-1.0.dll
+
+#  [YES] ideviceinstaller
+#    Source:  https://github.com/libimobiledevice/ideviceinstaller
+#    Purpose: Install, list, and uninstall apps on iOS via CLI.
+#             Used by inject_applist_ios for app installation on destination device.
+#    EXEs to bundle in /bin:
+#      ideviceinstaller.exe
+
+#  [MAYBE] libirecovery
+#    Source:  https://github.com/libimobiledevice/libirecovery
+#    Purpose: DFU and recovery mode communication.
+#             Not needed for standard or jailbreak transfers.
+#             Reserve for future edge case: device stuck in recovery during transfer.
+#    Decision: Downloaded and held. Do not bundle in /bin unless recovery
+#              mode handling is explicitly added as a feature.
+#    DLLs (if activated):
+#      libirecovery-1.0.dll
+
+#  [NO] usbmuxd
+#    Source:  https://github.com/libimobiledevice/usbmuxd
+#    Reason:  This IS the daemon. On Windows, Apple provides this via
+#             AppleMobileDeviceService.exe (installed with iTunes/Apple Devices).
+#             Installing the OSS version would conflict with Apple's service.
+
+#  [NO] ifuse
+#    Source:  https://github.com/libimobiledevice/ifuse
+#    Reason:  FUSE filesystem mount — Linux/macOS only. No Windows support.
+
+#  [NO] idevicerestore
+#    Source:  https://github.com/libimobiledevice/idevicerestore
+#    Reason:  Full firmware/IPSW restore tool. Completely outside project scope.
+
+#  [NO] libtatsu
+#    Source:  https://github.com/libimobiledevice/libtatsu
+#    Reason:  Apple TSS server communication for firmware signing. Out of scope.
+
+#  [NO] ideviceactivation
+#    Source:  https://github.com/libimobiledevice/ideviceactivation
+#    Reason:  Device activation protocol. Out of scope.
+
+#  [NO] libgpod
+#    Source:  https://github.com/libimobiledevice/libgpod
+#    Reason:  Legacy iPod media library. Irrelevant to this project.
+
+# ── PYTHON PACKAGES — iOS LAYER DECISIONS ────────────────────
+
+#  [YES] pymobiledevice3
+#    Source:  https://github.com/doronz88/pymobiledevice3
+#    Install: pip install pymobiledevice3
+#    Purpose: Primary iOS communication layer. Pure Python. PyInstaller-bundleable.
+#             Covers the full Apple USB protocol stack without needing C libs.
+#    Services used:
+#      com.apple.mobilebackup2      — backup and restore
+#      com.apple.afc                — Media partition file access (stock)
+#      com.apple.afc2               — Full root filesystem (jailbreak)
+#      com.apple.mobile.lockdown    — Pairing, device info
+#      com.apple.mobile.installation_proxy — App install/list
+#      com.apple.healthd            — Health data (jailbreak)
+#      com.apple.syslog_relay       — Device logs (debug use)
+
+#  [YES] iOSbackup
+#    Source:  https://github.com/avibrazil/iOSbackup
+#    Install: pip install iOSbackup
+#    Purpose: Parses Apple MobileSync backup format.
+#             Reads Manifest.db, resolves domain + relative path to backup file hash,
+#             extracts specific files from the backup folder by SHA1 hash lookup.
+#             Used by backup_parser_ios.
+
+#  [NO] pyirecovery
+#    Source:  https://github.com/exploit3dguy/pyirecovery
+#    Install: pip install pyirecovery
+#    Reason:  Python wrapper for DFU/recovery mode. Mirrors libirecovery in Python.
+#             Not needed unless recovery mode edge cases are added later.
+#             Excluded to keep the dependency footprint lean.
+#             Revisit if recovery mode support is ever scoped in.
+
+# ── JAILBREAK ECOSYSTEM REFERENCES ───────────────────────────
+# These live on the phone, not the PC. They are not downloaded or bundled.
+
+AFC2 (Apple File Conduit 2)
+  Source:    Cydia/Sileo package — installed on jailbroken device by user
+  Purpose:   Exposes full root filesystem over USB via the com.apple.afc2 service.
+  Detection: PC attempts to open com.apple.afc2 via pymobiledevice3 —
+             success confirms jailbroken + AFC2 installed.
+
+ldrestart (userspace reboot)
+  Source:    Available on jailbroken device via Substrate/launchctl
+  Command:   ldrestart
+  Purpose:   Restarts all user-space processes without kernel reboot.
+             Called by daemon_restarter_ios after data injection.
+             Safe on all jailbreak types. Does not break tethered jailbreaks.
+
+Substitute / Cydia Substrate / Ellekit
+  Purpose:   Jailbreak tweak injection frameworks.
+             Not used directly — their presence on the device confirms
+             an active jailbreak environment during privilege_detector probing.
+
+keychain-dumper  (reference only)
+  Source:    https://github.com/ptoomey3/keychain-dumper
+  Purpose:   Reference implementation for iOS keychain extraction on jailbreak.
+             The project reimplements this via pymobiledevice3 + direct SQLite
+             access to /private/var/Keychains/keychain-2.db
+
+Filza File Manager  (reference only)
+  Purpose:   Reference for full filesystem navigation on jailbroken devices.
+             Not used directly — informs AFC2 path conventions used in extractors.
+
+# ── DATABASE SCHEMAS (documented, not bundled) ───────────────
+sms.db
+  Tables: message, handle, chat, chat_message_join, attachment, message_attachment_join
+  Reference: https://github.com/ReagentX/imessage-exporter
+
+AddressBook.sqlitedb
+  Tables: ABPerson, ABMultiValue, ABMultiValueLabel, ABMultiValueEntry
+
+CallHistory.storedata  (Core Data)
+  Tables: ZCALLRECORD (Z_PK, ZDURATION, ZDATE, ZADDRESS, ZORIGINATED, ZANSWERED)
+
+healthdb.sqlite + healthdb_secure.sqlite
+  Tables: samples, quantity_samples, category_samples, workouts, workout_activities
+  Reference: https://github.com/nicholasstephan/HealthSQL
+
+NoteStore.sqlite
+  Tables: ZICCLOUDSYNCINGOBJECT (ZTITLE, ZBODY, ZCREATIONDATE, ZMODIFICATIONDATE)
+  Body format: Gzip-compressed protobuf (Apple proprietary)
+  Note: Plain text recoverable. Rich formatting (tables, drawings) partial or lost.
+
+Calendar.sqlitedb
+  Tables: ZCALENDARITEM, ZRECURRENCERULE, ZATTACHMENT, ZPARTICIPANT
