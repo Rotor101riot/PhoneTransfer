@@ -151,6 +151,12 @@ See [SECURITY.md](SECURITY.md) for the full security policy and vulnerability re
 
 ---
 
+## Transfer guides
+
+Step-by-step walkthroughs for each transfer mode — prerequisites, exact steps, what to expect, and common fixes:
+
+See [GUIDES.md](GUIDES.md)
+
 ## Roadmap
 
 See [ROADMAP.md](ROADMAP.md) for the prioritised development backlog.
