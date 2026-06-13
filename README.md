@@ -101,7 +101,7 @@ setup-deps.bat
 python main.py
 ```
 
-> `setup-deps.bat` handles a known issue where `pylzss` and `lzfse` (transitive deps of `pymobiledevice3`) fail to build from source on systems without MSVC Build Tools — common on Python 3.13+ and ARM64 Windows. PhoneTransfer never uses IPSW handling, so these are safe to skip. The script pre-installs `pyimg4` with `--no-deps` to break the chain, then installs everything else cleanly.
+> `setup-deps.bat` uses `constraints.txt` to skip `pylzss` and `lzfse` — transitive deps of `pymobiledevice3` that require C compilation and have no pre-built wheels for Python 3.13+ on Windows. PhoneTransfer never uses IPSW handling, so these are safe to skip entirely.
 
 **Manual install (all platforms):**
 ```bash
@@ -109,10 +109,10 @@ pip install -r requirements.txt
 python main.py
 ```
 
-If you hit build errors on Windows, run the two-step instead:
+If you hit build errors on Windows (pylzss/lzfse need MSVC), use the constraints file:
 ```batch
-pip install --no-deps pyimg4
-pip install -r requirements.txt
+pip install --constraint constraints.txt -r requirements.txt
+python main.py
 ```
 
 **Optional — HEIC/HEIF photo conversion:**

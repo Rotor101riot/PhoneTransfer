@@ -1,0 +1,15 @@
+# pip constraints file for PhoneTransfer
+#
+# pylzss and lzfse are transitive deps of pyimg4 -> pymobiledevice3 that
+# require C compilation (MSVC Build Tools / Rust) to build from source.
+# They have no pre-built wheels for Python 3.13+ on Windows.
+#
+# PhoneTransfer never uses IPSW handling, so these packages are entirely
+# unnecessary.  This constraint tells pip to skip them even when they're
+# pulled as transitive dependencies.
+#
+# Usage:  pip install --constraint constraints.txt -r requirements.txt
+
+# Skip the MSVC-bound transitive deps (only needed for IPSW)
+pylzss
+lzfse
