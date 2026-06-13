@@ -75,6 +75,11 @@ _REQUIRED_PACKAGES: dict[str, str] = {
     "sqlcipher3":            "0.6.0",
     "vobject":               "0.9.9",
     "Pillow":                "10.3.0",
+}
+
+# Optional Python packages — checked and warned about if missing, but NOT
+# auto-installed and NOT required for core functionality.
+_OPTIONAL_PACKAGES: dict[str, str] = {
     "pillow-heif":           "0.16.0",
 }
 
@@ -118,7 +123,7 @@ class PrereqReport:
 
     @property
     def all_ok(self) -> bool:
-        pkg_ok = all(s.action in ("ok", "skipped") for s in self.packages)
+        pkg_ok = all(s.action in ("ok", "skipped", "optional") for s in self.packages)
         # Exclude "Android ADB" — it reflects runtime device state, not an
         # installation prerequisite.  An unauthorized/offline device at startup
         # should not trigger the "prerequisites need attention" path.
@@ -134,7 +139,7 @@ class PrereqReport:
         """Human-readable list of items that still need user action."""
         items: list[str] = []
         for s in self.packages:
-            if s.action not in ("ok", "skipped"):
+            if s.action not in ("ok", "skipped", "optional"):
                 items.append(f"Python package '{s.name}' — {s.action}")
         for s in self.system:
             if s.action == "prompt":
@@ -247,6 +252,35 @@ class PrereqChecker:
                 logger.debug(
                     "Package '%s': installed=%s required>=%s → %s",
                     dist_name, installed, min_ver, action,
+                )
+
+        # Optional packages — checked but never auto-installed
+        for dist_name, min_ver in _OPTIONAL_PACKAGES.items():
+            try:
+                installed = pkg_version(dist_name)
+                if _version_gte(installed, min_ver):
+                    action = "ok"
+                else:
+                    action = "optional"
+            except PackageNotFoundError:
+                installed = None
+                action = "optional"
+            except Exception as exc:
+                installed = None
+                action = "optional"
+                logger.debug("Optional package check failed for %s: %s", dist_name, exc)
+
+            statuses.append(PackageStatus(
+                name=dist_name,
+                required=min_ver,
+                installed=installed,
+                action=action,
+            ))
+            if action == "optional":
+                logger.info(
+                    "Optional package '%s' is missing — HEIC→JPEG conversion "
+                    "will be unavailable.  Install with: pip install pillow-heif",
+                    dist_name,
                 )
 
         return statuses

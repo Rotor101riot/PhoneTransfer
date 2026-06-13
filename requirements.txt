@@ -1,8 +1,11 @@
 # PhoneTransfer — Python dependencies (direct, with minimum versions)
 # ─────────────────────────────────────────────────────────────────────────────
-# Install with:   .\install.bat              (recommended — handles MSVC issue)
-#                 .\install.ps1              (PowerShell equivalent)
-#                 py -m pip install -r requirements.txt   (manual, may fail)
+# Install with:   py -m pip install -r requirements.txt
+# 
+# On ARM64 Windows (Surface Pro 9+, Laptop 5+), pip may need to build some
+# packages from source.  If you hit build errors, install pyimg4 first:
+#     pip install --no-deps pyimg4 && pip install -r requirements.txt
+#
 # Reproduce the exact tested combination:
 #                 py -m pip install -r requirements-lock.txt
 #
@@ -22,10 +25,11 @@ iphone_backup_decrypt>=0.9.0
 # Imported directly by inject_sms_ios for AES helpers, and transitively by
 # wa-crypt-tools.  Pin loosely to avoid sub-1.0 ABI breakage.
 pycryptodome>=3.20.0
-# Transitive dep of pymobiledevice3 / iphone_backup_decrypt; pinned because
-# the wheels for 47+ require Rust on some platforms — older 41-46 work fine
-# without a build toolchain.
-cryptography>=41.0.0
+# Transitive dep of pymobiledevice3 / iphone_backup_decrypt; pinned to <47
+# because 47+ dropped win_arm64 wheels (Surface ARM64) and require Rust to
+# build from source.  46.x is the last version with native ARM64 Windows
+# wheels and no Rust requirement.
+cryptography>=41.0.0,<47.0
 
 # ── Android / WhatsApp ──────────────────────────────────────────────────────
 wa-crypt-tools>=0.1.0
@@ -41,8 +45,11 @@ vobject>=0.9.9
 # ── Image / HEIC support ────────────────────────────────────────────────────
 # Pillow is used for EXIF reads + thumbnail extraction; pillow-heif decodes
 # iOS HEIC photos for cross-platform delivery to Android destinations.
+# HEIC conversion gracefully degrades on ARM64 Windows (no win_arm64 wheel) —
+# photos push as HEIC originals, which Android 13+ handles natively.
+# On x86_64:  pip install pillow-heif   # optional, adds HEIC→JPEG conversion
 Pillow>=10.3.0
-pillow-heif>=0.16.0
+# pillow-heif>=0.16.0  # optional — no win_arm64 wheel; code gracefully degrades
 
 # ── Optional: iCalendar export ──────────────────────────────────────────────
 # Enable when calendar_ios extractor adds .ics export fallback path.
