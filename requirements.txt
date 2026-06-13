@@ -1,6 +1,8 @@
 # PhoneTransfer — Python dependencies (direct, with minimum versions)
 # ─────────────────────────────────────────────────────────────────────────────
-# Install with:   py -m pip install -r requirements.txt
+# Install with:   .\install.bat              (recommended — handles MSVC issue)
+#                 .\install.ps1              (PowerShell equivalent)
+#                 py -m pip install -r requirements.txt   (manual, may fail)
 # Reproduce the exact tested combination:
 #                 py -m pip install -r requirements-lock.txt
 #
