@@ -95,14 +95,31 @@ The transfer log written after each run records extracted vs. injected counts pe
 
 ## Install
 
+**Quick start (Windows, recommended):**
 ```
+setup-deps.bat
+python main.py
+```
+
+> `setup-deps.bat` handles a known issue where `pylzss` and `lzfse` (transitive deps of `pymobiledevice3`) fail to build from source on systems without MSVC Build Tools — common on Python 3.13+ and ARM64 Windows. PhoneTransfer never uses IPSW handling, so these are safe to skip. The script pre-installs `pyimg4` with `--no-deps` to break the chain, then installs everything else cleanly.
+
+**Manual install (all platforms):**
+```bash
 pip install -r requirements.txt
 python main.py
 ```
 
-On Windows with encrypted iOS backups, `sqlcipher3` requires the SQLCipher DLL (see `dependencies/`).
+If you hit build errors on Windows, run the two-step instead:
+```batch
+pip install --no-deps pyimg4
+pip install -r requirements.txt
+```
 
-This is the primary and recommended way to run PhoneTransfer. It keeps the code auditable and avoids antivirus friction.
+**Optional — HEIC/HEIF photo conversion:**
+```batch
+pip install pillow-heif
+```
+Without it, HEIC photos push as originals — Android 13+ handles them natively.
 
 ## Optional: standalone exe (Windows)
 
