@@ -100,20 +100,25 @@ The transfer log written after each run records extracted vs. injected counts pe
 setup-deps.bat
 python main.py
 ```
+Or from PowerShell:
+```powershell
+.\setup-deps.ps1
+python main.py
+```
 
-> `setup-deps.bat` uses `constraints.txt` to skip `pylzss` and `lzfse` — transitive deps of `pymobiledevice3` that require C compilation and have no pre-built wheels for Python 3.13+ on Windows. PhoneTransfer never uses IPSW handling, so these are safe to skip entirely.
+> `setup-deps.bat` installs all dependencies in three steps so that `pylzss` and `lzfse` — transitive C-extension deps of `pymobiledevice3` with no pre-built wheels for Python 3.13+ — are never pulled. PhoneTransfer never uses the IPSW firmware features that require them.
+
+These scripts are **verbose** — they explain each step and show every pip package as it installs.
 
 **Manual install (all platforms):**
 ```bash
-pip install -r requirements.txt
+pip install --no-deps pyimg4
+pip install --no-deps -r requirements.txt
+pip install -r requirements-safe.txt
 python main.py
 ```
 
-If you hit build errors on Windows (pylzss/lzfse need MSVC), use the constraints file:
-```batch
-pip install --constraint constraints.txt -r requirements.txt
-python main.py
-```
+`requirements-safe.txt` is generated from `requirements-lock.txt` with `pylzss`, `lzfse`, and `pillow-heif` excluded.  If you upgrade any pinned versions, regenerate it by copying the lock file and removing those three lines.
 
 **Optional — HEIC/HEIF photo conversion:**
 ```batch

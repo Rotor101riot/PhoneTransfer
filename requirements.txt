@@ -1,12 +1,7 @@
 # PhoneTransfer — Python dependencies (direct, with minimum versions)
-# ─────────────────────────────────────────────────────────────────────────────
-# Install with:   setup-deps.bat              (recommended on Windows — uses constraints.txt)
-#                 pip install --constraint constraints.txt -r requirements.txt   (manual, skips MSVC deps)
-#                 pip install -r requirements.txt   (all platforms, needs MSVC for pylzss/lzfse)
-# 
-# On ARM64 Windows (Surface Pro 9+, Laptop 5+), pip may need to build some
-# packages from source.  If you hit build errors, install pyimg4 first:
-#     pip install --no-deps pyimg4 && pip install -r requirements.txt
+# Install with:   setup-deps.bat              (recommended on Windows — skips MSVC-only deps)
+#   OR:   pip install --no-deps pyimg4 && pip install --no-deps -r requirements.txt && pip install -r requirements-safe.txt
+#   OR:   pip install -r requirements.txt   (all platforms — needs MSVC for pylzss/lzfse on Python 3.13+)
 #
 # Reproduce the exact tested combination:
 #                 py -m pip install -r requirements-lock.txt
