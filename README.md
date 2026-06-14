@@ -106,9 +106,7 @@ Or from PowerShell:
 python main.py
 ```
 
-> `setup-deps.bat` installs all dependencies in three steps so that `pylzss` and `lzfse` — transitive C-extension deps of `pymobiledevice3` with no pre-built wheels for Python 3.13+ — are never pulled. PhoneTransfer never uses the IPSW firmware features that require them.
-
-These scripts are **verbose** — they explain each step and show every pip package as it installs.
+> `setup-deps.bat` calls three scripts in `scripts/` — each is independently runnable.  Output streams through so you see every package as it installs.  The three-step approach skips `pylzss` and `lzfse` — transitive C-extension deps of `pymobiledevice3` with no pre-built wheels for Python 3.13+ — which PhoneTransfer never needs (they only serve IPSW firmware handling).
 
 **Manual install (all platforms):**
 ```bash
